@@ -1,0 +1,1524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,400italic' rel='stylesheet' type='text/css'>
+
+    <link rel="stylesheet" type="text/css" href="./theme/stylesheet/style.min.css">
+
+  <link rel="stylesheet" type="text/css" href="./theme/pygments/github.min.css">
+  <link rel="stylesheet" type="text/css" href="./theme/font-awesome/css/font-awesome.min.css">
+
+
+
+
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="" />
+
+
+<meta name="author" content="Chandan u" />
+<meta name="description" content="Table of Contents¶1 Regular expressions1.1 Intro1.2 The Real need for regular expressions:1.3 The language of regular expresions:1.4 Metacharacters:1.4.1 Positioning Metacharactrs:1.4.1.1 ^1.4.1.2 $1.4.1.3 .1.4.2 Some more Metacharacters:1.4.2.1 [ ]1.4.2.2 -1.4.2.3 \d1.4.2.4 \D1.4.2.5 \w1.4.2.6 \W1.4.2.7 \s1.4.2.8 \S1.4.3 Iteration Metacharacters:1.4.3.1 ?1.4.3.2 *1.4.3.3 +1.4.4 Some more examples:1.5 Pattern finding using python:1.6 Things to try: Regular expressions¶ Intro¶When it comes to text mining you need to understand that a text is nothing but a sequence of characters. The character can be a digits, alphabets, symbols, spaces, new line etc. And in this chapter we are going to learn about regular expressions a very powerfull concept that helps us to play with text. It can be used for finding patterns, searching words or characters, substitution etc." />
+<meta name="keywords" content="Text-mining, python">
+<meta property="og:site_name" content="Text-Mining Tutorial"/>
+<meta property="og:title" content="Regular expressions tutorial"/>
+<meta property="og:description" content="Table of Contents¶1 Regular expressions1.1 Intro1.2 The Real need for regular expressions:1.3 The language of regular expresions:1.4 Metacharacters:1.4.1 Positioning Metacharactrs:1.4.1.1 ^1.4.1.2 $1.4.1.3 .1.4.2 Some more Metacharacters:1.4.2.1 [ ]1.4.2.2 -1.4.2.3 \d1.4.2.4 \D1.4.2.5 \w1.4.2.6 \W1.4.2.7 \s1.4.2.8 \S1.4.3 Iteration Metacharacters:1.4.3.1 ?1.4.3.2 *1.4.3.3 +1.4.4 Some more examples:1.5 Pattern finding using python:1.6 Things to try: Regular expressions¶ Intro¶When it comes to text mining you need to understand that a text is nothing but a sequence of characters. The character can be a digits, alphabets, symbols, spaces, new line etc. And in this chapter we are going to learn about regular expressions a very powerfull concept that helps us to play with text. It can be used for finding patterns, searching words or characters, substitution etc."/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content="./regular-expressions.html"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2016-08-15 00:00:00-07:00"/>
+<meta property="article:modified_time" content=""/>
+<meta property="article:author" content="./author/chandan-u.html">
+<meta property="article:section" content="misc"/>
+<meta property="article:tag" content="Text-mining"/>
+<meta property="article:tag" content="python"/>
+<meta property="og:image" content="">
+  <title>Text-Mining Tutorial &ndash; Regular expressions tutorial</title>
+</head>
+<body>
+  <aside>
+    <div>
+      <a href=".">
+        <img src="./theme/img/profile.png" alt="" title="">
+      </a>
+      <h1><a href="."></a></h1>
+      <nav>
+        <ul class="list">
+          <li><a href="./index.html#index">Text mining Tutorial</a></li>
+          <li><a href="http://python.org/" target="_blank">Python.org</a></li>
+        </ul>
+      </nav>
+      <ul class="social">
+        <li><a class="sc-You can add links in your config file" href="#" target="_blank"><i class="fa fa-You can add links in your config file"></i></a></li>
+        <li><a class="sc-Another social link" href="#" target="_blank"><i class="fa fa-Another social link"></i></a></li>
+      </ul>
+    </div>
+  </aside>
+  <main>
+
+<article>
+  <header>
+    <h1 id="regular-expressions">Regular expressions tutorial</h1>
+    <p>Posted on Mon 15 August 2016 in <a href="./category/misc.html">misc</a></p>
+  </header>
+  <div>
+    <style type="text/css">/*!
+*
+* IPython notebook
+*
+*/
+/* CSS font colors for translated ANSI colors. */
+.ansibold {
+  font-weight: bold;
+}
+/* use dark versions for foreground, to improve visibility */
+.ansiblack {
+  color: black;
+}
+.ansired {
+  color: darkred;
+}
+.ansigreen {
+  color: darkgreen;
+}
+.ansiyellow {
+  color: #c4a000;
+}
+.ansiblue {
+  color: darkblue;
+}
+.ansipurple {
+  color: darkviolet;
+}
+.ansicyan {
+  color: steelblue;
+}
+.ansigray {
+  color: gray;
+}
+/* and light for background, for the same reason */
+.ansibgblack {
+  background-color: black;
+}
+.ansibgred {
+  background-color: red;
+}
+.ansibggreen {
+  background-color: green;
+}
+.ansibgyellow {
+  background-color: yellow;
+}
+.ansibgblue {
+  background-color: blue;
+}
+.ansibgpurple {
+  background-color: magenta;
+}
+.ansibgcyan {
+  background-color: cyan;
+}
+.ansibggray {
+  background-color: gray;
+}
+div.cell {
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: vertical;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: vertical;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  border-radius: 2px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  border-width: 1px;
+  border-style: solid;
+  border-color: transparent;
+  width: 100%;
+  padding: 5px;
+  /* This acts as a spacer between cells, that is outside the border */
+  margin: 0px;
+  outline: none;
+  border-left-width: 1px;
+  padding-left: 5px;
+  background: linear-gradient(to right, transparent -40px, transparent 1px, transparent 1px, transparent 100%);
+}
+div.cell.jupyter-soft-selected {
+  border-left-color: #90CAF9;
+  border-left-color: #E3F2FD;
+  border-left-width: 1px;
+  padding-left: 5px;
+  border-right-color: #E3F2FD;
+  border-right-width: 1px;
+  background: #E3F2FD;
+}
+@media print {
+  div.cell.jupyter-soft-selected {
+    border-color: transparent;
+  }
+}
+div.cell.selected {
+  border-color: #ababab;
+  border-left-width: 0px;
+  padding-left: 6px;
+  background: linear-gradient(to right, #42A5F5 -40px, #42A5F5 5px, transparent 5px, transparent 100%);
+}
+@media print {
+  div.cell.selected {
+    border-color: transparent;
+  }
+}
+div.cell.selected.jupyter-soft-selected {
+  border-left-width: 0;
+  padding-left: 6px;
+  background: linear-gradient(to right, #42A5F5 -40px, #42A5F5 7px, #E3F2FD 7px, #E3F2FD 100%);
+}
+.edit_mode div.cell.selected {
+  border-color: #66BB6A;
+  border-left-width: 0px;
+  padding-left: 6px;
+  background: linear-gradient(to right, #66BB6A -40px, #66BB6A 5px, transparent 5px, transparent 100%);
+}
+@media print {
+  .edit_mode div.cell.selected {
+    border-color: transparent;
+  }
+}
+.prompt {
+  /* This needs to be wide enough for 3 digit prompt numbers: In[100]: */
+  min-width: 14ex;
+  /* This padding is tuned to match the padding on the CodeMirror editor. */
+  padding: 0.4em;
+  margin: 0px;
+  font-family: monospace;
+  text-align: right;
+  /* This has to match that of the the CodeMirror class line-height below */
+  line-height: 1.21429em;
+  /* Don't highlight prompt number selection */
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  /* Use default cursor */
+  cursor: default;
+}
+@media (max-width: 540px) {
+  .prompt {
+    text-align: left;
+  }
+}
+div.inner_cell {
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: vertical;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: vertical;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  /* Old browsers */
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  box-flex: 1;
+  /* Modern browsers */
+  flex: 1;
+}
+@-moz-document url-prefix() {
+  div.inner_cell {
+    overflow-x: hidden;
+  }
+}
+/* input_area and input_prompt must match in top border and margin for alignment */
+div.input_area {
+  border: 1px solid #cfcfcf;
+  border-radius: 2px;
+  background: #f7f7f7;
+  line-height: 1.21429em;
+}
+/* This is needed so that empty prompt areas can collapse to zero height when there
+   is no content in the output_subarea and the prompt. The main purpose of this is
+   to make sure that empty JavaScript output_subareas have no height. */
+div.prompt:empty {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+div.unrecognized_cell {
+  padding: 5px 5px 5px 0px;
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: horizontal;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: horizontal;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: horizontal;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+}
+div.unrecognized_cell .inner_cell {
+  border-radius: 2px;
+  padding: 5px;
+  font-weight: bold;
+  color: red;
+  border: 1px solid #cfcfcf;
+  background: #eaeaea;
+}
+div.unrecognized_cell .inner_cell a {
+  color: inherit;
+  text-decoration: none;
+}
+div.unrecognized_cell .inner_cell a:hover {
+  color: inherit;
+  text-decoration: none;
+}
+@media (max-width: 540px) {
+  div.unrecognized_cell > div.prompt {
+    display: none;
+  }
+}
+div.code_cell {
+  /* avoid page breaking on code cells when printing */
+}
+@media print {
+  div.code_cell {
+    page-break-inside: avoid;
+  }
+}
+/* any special styling for code cells that are currently running goes here */
+div.input {
+  page-break-inside: avoid;
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: horizontal;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: horizontal;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: horizontal;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+}
+@media (max-width: 540px) {
+  div.input {
+    /* Old browsers */
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-box-align: stretch;
+    display: -moz-box;
+    -moz-box-orient: vertical;
+    -moz-box-align: stretch;
+    display: box;
+    box-orient: vertical;
+    box-align: stretch;
+    /* Modern browsers */
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+/* input_area and input_prompt must match in top border and margin for alignment */
+div.input_prompt {
+  color: #303F9F;
+  border-top: 1px solid transparent;
+}
+div.input_area > div.highlight {
+  margin: 0.4em;
+  border: none;
+  padding: 0px;
+  background-color: transparent;
+}
+div.input_area > div.highlight > pre {
+  margin: 0px;
+  border: none;
+  padding: 0px;
+  background-color: transparent;
+}
+/* The following gets added to the <head> if it is detected that the user has a
+ * monospace font with inconsistent normal/bold/italic height.  See
+ * notebookmain.js.  Such fonts will have keywords vertically offset with
+ * respect to the rest of the text.  The user should select a better font.
+ * See: https://github.com/ipython/ipython/issues/1503
+ *
+ * .CodeMirror span {
+ *      vertical-align: bottom;
+ * }
+ */
+.CodeMirror {
+  line-height: 1.21429em;
+  /* Changed from 1em to our global default */
+  font-size: 14px;
+  height: auto;
+  /* Changed to auto to autogrow */
+  background: none;
+  /* Changed from white to allow our bg to show through */
+}
+.CodeMirror-scroll {
+  /*  The CodeMirror docs are a bit fuzzy on if overflow-y should be hidden or visible.*/
+  /*  We have found that if it is visible, vertical scrollbars appear with font size changes.*/
+  overflow-y: hidden;
+  overflow-x: auto;
+}
+.CodeMirror-lines {
+  /* In CM2, this used to be 0.4em, but in CM3 it went to 4px. We need the em value because */
+  /* we have set a different line-height and want this to scale with that. */
+  padding: 0.4em;
+}
+.CodeMirror-linenumber {
+  padding: 0 8px 0 4px;
+}
+.CodeMirror-gutters {
+  border-bottom-left-radius: 2px;
+  border-top-left-radius: 2px;
+}
+.CodeMirror pre {
+  /* In CM3 this went to 4px from 0 in CM2. We need the 0 value because of how we size */
+  /* .CodeMirror-lines */
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+}
+/*
+
+Original style from softwaremaniacs.org (c) Ivan Sagalaev <Maniac@SoftwareManiacs.Org>
+Adapted from GitHub theme
+
+*/
+.highlight-base {
+  color: #000;
+}
+.highlight-variable {
+  color: #000;
+}
+.highlight-variable-2 {
+  color: #1a1a1a;
+}
+.highlight-variable-3 {
+  color: #333333;
+}
+.highlight-string {
+  color: #BA2121;
+}
+.highlight-comment {
+  color: #408080;
+  font-style: italic;
+}
+.highlight-number {
+  color: #080;
+}
+.highlight-atom {
+  color: #88F;
+}
+.highlight-keyword {
+  color: #008000;
+  font-weight: bold;
+}
+.highlight-builtin {
+  color: #008000;
+}
+.highlight-error {
+  color: #f00;
+}
+.highlight-operator {
+  color: #AA22FF;
+  font-weight: bold;
+}
+.highlight-meta {
+  color: #AA22FF;
+}
+/* previously not defined, copying from default codemirror */
+.highlight-def {
+  color: #00f;
+}
+.highlight-string-2 {
+  color: #f50;
+}
+.highlight-qualifier {
+  color: #555;
+}
+.highlight-bracket {
+  color: #997;
+}
+.highlight-tag {
+  color: #170;
+}
+.highlight-attribute {
+  color: #00c;
+}
+.highlight-header {
+  color: blue;
+}
+.highlight-quote {
+  color: #090;
+}
+.highlight-link {
+  color: #00c;
+}
+/* apply the same style to codemirror */
+.cm-s-ipython span.cm-keyword {
+  color: #008000;
+  font-weight: bold;
+}
+.cm-s-ipython span.cm-atom {
+  color: #88F;
+}
+.cm-s-ipython span.cm-number {
+  color: #080;
+}
+.cm-s-ipython span.cm-def {
+  color: #00f;
+}
+.cm-s-ipython span.cm-variable {
+  color: #000;
+}
+.cm-s-ipython span.cm-operator {
+  color: #AA22FF;
+  font-weight: bold;
+}
+.cm-s-ipython span.cm-variable-2 {
+  color: #1a1a1a;
+}
+.cm-s-ipython span.cm-variable-3 {
+  color: #333333;
+}
+.cm-s-ipython span.cm-comment {
+  color: #408080;
+  font-style: italic;
+}
+.cm-s-ipython span.cm-string {
+  color: #BA2121;
+}
+.cm-s-ipython span.cm-string-2 {
+  color: #f50;
+}
+.cm-s-ipython span.cm-meta {
+  color: #AA22FF;
+}
+.cm-s-ipython span.cm-qualifier {
+  color: #555;
+}
+.cm-s-ipython span.cm-builtin {
+  color: #008000;
+}
+.cm-s-ipython span.cm-bracket {
+  color: #997;
+}
+.cm-s-ipython span.cm-tag {
+  color: #170;
+}
+.cm-s-ipython span.cm-attribute {
+  color: #00c;
+}
+.cm-s-ipython span.cm-header {
+  color: blue;
+}
+.cm-s-ipython span.cm-quote {
+  color: #090;
+}
+.cm-s-ipython span.cm-link {
+  color: #00c;
+}
+.cm-s-ipython span.cm-error {
+  color: #f00;
+}
+.cm-s-ipython span.cm-tab {
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAMCAYAAAAkuj5RAAAAAXNSR0IArs4c6QAAAGFJREFUSMft1LsRQFAQheHPowAKoACx3IgEKtaEHujDjORSgWTH/ZOdnZOcM/sgk/kFFWY0qV8foQwS4MKBCS3qR6ixBJvElOobYAtivseIE120FaowJPN75GMu8j/LfMwNjh4HUpwg4LUAAAAASUVORK5CYII=);
+  background-position: right;
+  background-repeat: no-repeat;
+}
+div.output_wrapper {
+  /* this position must be relative to enable descendents to be absolute within it */
+  position: relative;
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: vertical;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: vertical;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  z-index: 1;
+}
+/* class for the output area when it should be height-limited */
+div.output_scroll {
+  /* ideally, this would be max-height, but FF barfs all over that */
+  height: 24em;
+  /* FF needs this *and the wrapper* to specify full width, or it will shrinkwrap */
+  width: 100%;
+  overflow: auto;
+  border-radius: 2px;
+  -webkit-box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.8);
+  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.8);
+  display: block;
+}
+/* output div while it is collapsed */
+div.output_collapsed {
+  margin: 0px;
+  padding: 0px;
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: vertical;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: vertical;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+div.out_prompt_overlay {
+  height: 100%;
+  padding: 0px 0.4em;
+  position: absolute;
+  border-radius: 2px;
+}
+div.out_prompt_overlay:hover {
+  /* use inner shadow to get border that is computed the same on WebKit/FF */
+  -webkit-box-shadow: inset 0 0 1px #000;
+  box-shadow: inset 0 0 1px #000;
+  background: rgba(240, 240, 240, 0.5);
+}
+div.output_prompt {
+  color: #D84315;
+}
+/* This class is the outer container of all output sections. */
+div.output_area {
+  padding: 0px;
+  page-break-inside: avoid;
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: horizontal;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: horizontal;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: horizontal;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+}
+div.output_area .MathJax_Display {
+  text-align: left !important;
+}
+div.output_area 
+div.output_area 
+div.output_area img,
+div.output_area svg {
+  max-width: 100%;
+  height: auto;
+}
+div.output_area img.unconfined,
+div.output_area svg.unconfined {
+  max-width: none;
+}
+/* This is needed to protect the pre formating from global settings such
+   as that of bootstrap */
+.output {
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: vertical;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: vertical;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+@media (max-width: 540px) {
+  div.output_area {
+    /* Old browsers */
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-box-align: stretch;
+    display: -moz-box;
+    -moz-box-orient: vertical;
+    -moz-box-align: stretch;
+    display: box;
+    box-orient: vertical;
+    box-align: stretch;
+    /* Modern browsers */
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+div.output_area pre {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  vertical-align: baseline;
+  color: black;
+  background-color: transparent;
+  border-radius: 0;
+}
+/* This class is for the output subarea inside the output_area and after
+   the prompt div. */
+div.output_subarea {
+  overflow-x: auto;
+  padding: 0.4em;
+  /* Old browsers */
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  box-flex: 1;
+  /* Modern browsers */
+  flex: 1;
+  max-width: calc(100% - 14ex);
+}
+div.output_scroll div.output_subarea {
+  overflow-x: visible;
+}
+/* The rest of the output_* classes are for special styling of the different
+   output types */
+/* all text output has this class: */
+div.output_text {
+  text-align: left;
+  color: #000;
+  /* This has to match that of the the CodeMirror class line-height below */
+  line-height: 1.21429em;
+}
+/* stdout/stderr are 'text' as well as 'stream', but execute_result/error are *not* streams */
+div.output_stderr {
+  background: #fdd;
+  /* very light red background for stderr */
+}
+div.output_latex {
+  text-align: left;
+}
+/* Empty output_javascript divs should have no height */
+div.output_javascript:empty {
+  padding: 0;
+}
+.js-error {
+  color: darkred;
+}
+/* raw_input styles */
+div.raw_input_container {
+  line-height: 1.21429em;
+  padding-top: 5px;
+}
+pre.raw_input_prompt {
+  /* nothing needed here. */
+}
+input.raw_input {
+  font-family: monospace;
+  font-size: inherit;
+  color: inherit;
+  width: auto;
+  /* make sure input baseline aligns with prompt */
+  vertical-align: baseline;
+  /* padding + margin = 0.5em between prompt and cursor */
+  padding: 0em 0.25em;
+  margin: 0em 0.25em;
+}
+input.raw_input:focus {
+  box-shadow: none;
+}
+p.p-space {
+  margin-bottom: 10px;
+}
+div.output_unrecognized {
+  padding: 5px;
+  font-weight: bold;
+  color: red;
+}
+div.output_unrecognized a {
+  color: inherit;
+  text-decoration: none;
+}
+div.output_unrecognized a:hover {
+  color: inherit;
+  text-decoration: none;
+}
+.rendered_html {
+  color: #000;
+  /* any extras will just be numbers: */
+}
+
+
+
+.rendered_html :link {
+  text-decoration: underline;
+}
+.rendered_html :visited {
+  text-decoration: underline;
+}
+
+
+
+
+
+
+.rendered_html h1:first-child {
+  margin-top: 0.538em;
+}
+.rendered_html h2:first-child {
+  margin-top: 0.636em;
+}
+.rendered_html h3:first-child {
+  margin-top: 0.777em;
+}
+.rendered_html h4:first-child {
+  margin-top: 1em;
+}
+.rendered_html h5:first-child {
+  margin-top: 1em;
+}
+.rendered_html h6:first-child {
+  margin-top: 1em;
+}
+
+
+
+
+
+
+
+
+.rendered_html * + ul {
+  margin-top: 1em;
+}
+.rendered_html * + ol {
+  margin-top: 1em;
+}
+
+
+.rendered_html pre,
+
+
+
+.rendered_html tr,
+.rendered_html th,
+
+.rendered_html td,
+
+
+.rendered_html * + table {
+  margin-top: 1em;
+}
+
+.rendered_html * + p {
+  margin-top: 1em;
+}
+
+.rendered_html * + img {
+  margin-top: 1em;
+}
+.rendered_html img,
+
+.rendered_html img.unconfined,
+
+div.text_cell {
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: horizontal;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: horizontal;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: horizontal;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+}
+@media (max-width: 540px) {
+  div.text_cell > div.prompt {
+    display: none;
+  }
+}
+div.text_cell_render {
+  /*font-family: "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;*/
+  outline: none;
+  resize: none;
+  width: inherit;
+  border-style: none;
+  padding: 0.5em 0.5em 0.5em 0.4em;
+  color: #000;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+a.anchor-link:link {
+  text-decoration: none;
+  padding: 0px 20px;
+  visibility: hidden;
+}
+h1:hover .anchor-link,
+h2:hover .anchor-link,
+h3:hover .anchor-link,
+h4:hover .anchor-link,
+h5:hover .anchor-link,
+h6:hover .anchor-link {
+  visibility: visible;
+}
+.text_cell.rendered .input_area {
+  display: none;
+}
+.text_cell.rendered 
+.text_cell.unrendered .text_cell_render {
+  display: none;
+}
+.cm-header-1,
+.cm-header-2,
+.cm-header-3,
+.cm-header-4,
+.cm-header-5,
+.cm-header-6 {
+  font-weight: bold;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.cm-header-1 {
+  font-size: 185.7%;
+}
+.cm-header-2 {
+  font-size: 157.1%;
+}
+.cm-header-3 {
+  font-size: 128.6%;
+}
+.cm-header-4 {
+  font-size: 110%;
+}
+.cm-header-5 {
+  font-size: 100%;
+  font-style: italic;
+}
+.cm-header-6 {
+  font-size: 100%;
+  font-style: italic;
+}
+</style>
+<style type="text/css">.highlight .hll { background-color: #ffffcc }
+.highlight  { background: #f8f8f8; }
+.highlight .c { color: #408080; font-style: italic } /* Comment */
+.highlight .err { border: 1px solid #FF0000 } /* Error */
+.highlight .k { color: #008000; font-weight: bold } /* Keyword */
+.highlight .o { color: #666666 } /* Operator */
+.highlight .ch { color: #408080; font-style: italic } /* Comment.Hashbang */
+.highlight .cm { color: #408080; font-style: italic } /* Comment.Multiline */
+.highlight .cp { color: #BC7A00 } /* Comment.Preproc */
+.highlight .cpf { color: #408080; font-style: italic } /* Comment.PreprocFile */
+.highlight .c1 { color: #408080; font-style: italic } /* Comment.Single */
+.highlight .cs { color: #408080; font-style: italic } /* Comment.Special */
+.highlight .gd { color: #A00000 } /* Generic.Deleted */
+.highlight .ge { font-style: italic } /* Generic.Emph */
+.highlight .gr { color: #FF0000 } /* Generic.Error */
+.highlight .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+.highlight .gi { color: #00A000 } /* Generic.Inserted */
+.highlight .go { color: #888888 } /* Generic.Output */
+.highlight .gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+.highlight .gs { font-weight: bold } /* Generic.Strong */
+.highlight .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+.highlight .gt { color: #0044DD } /* Generic.Traceback */
+.highlight .kc { color: #008000; font-weight: bold } /* Keyword.Constant */
+.highlight .kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
+.highlight .kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
+.highlight .kp { color: #008000 } /* Keyword.Pseudo */
+.highlight .kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
+.highlight .kt { color: #B00040 } /* Keyword.Type */
+.highlight .m { color: #666666 } /* Literal.Number */
+.highlight .s { color: #BA2121 } /* Literal.String */
+.highlight .na { color: #7D9029 } /* Name.Attribute */
+.highlight .nb { color: #008000 } /* Name.Builtin */
+.highlight .nc { color: #0000FF; font-weight: bold } /* Name.Class */
+.highlight .no { color: #880000 } /* Name.Constant */
+.highlight .nd { color: #AA22FF } /* Name.Decorator */
+.highlight .ni { color: #999999; font-weight: bold } /* Name.Entity */
+.highlight .ne { color: #D2413A; font-weight: bold } /* Name.Exception */
+.highlight .nf { color: #0000FF } /* Name.Function */
+.highlight .nl { color: #A0A000 } /* Name.Label */
+.highlight .nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+.highlight .nt { color: #008000; font-weight: bold } /* Name.Tag */
+.highlight .nv { color: #19177C } /* Name.Variable */
+.highlight .ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
+.highlight .w { color: #bbbbbb } /* Text.Whitespace */
+.highlight .mb { color: #666666 } /* Literal.Number.Bin */
+.highlight .mf { color: #666666 } /* Literal.Number.Float */
+.highlight .mh { color: #666666 } /* Literal.Number.Hex */
+.highlight .mi { color: #666666 } /* Literal.Number.Integer */
+.highlight .mo { color: #666666 } /* Literal.Number.Oct */
+.highlight .sb { color: #BA2121 } /* Literal.String.Backtick */
+.highlight .sc { color: #BA2121 } /* Literal.String.Char */
+.highlight .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
+.highlight .s2 { color: #BA2121 } /* Literal.String.Double */
+.highlight .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
+.highlight .sh { color: #BA2121 } /* Literal.String.Heredoc */
+.highlight .si { color: #BB6688; font-weight: bold } /* Literal.String.Interpol */
+.highlight .sx { color: #008000 } /* Literal.String.Other */
+.highlight .sr { color: #BB6688 } /* Literal.String.Regex */
+.highlight .s1 { color: #BA2121 } /* Literal.String.Single */
+.highlight .ss { color: #19177C } /* Literal.String.Symbol */
+.highlight .bp { color: #008000 } /* Name.Builtin.Pseudo */
+.highlight .vc { color: #19177C } /* Name.Variable.Class */
+.highlight .vg { color: #19177C } /* Name.Variable.Global */
+.highlight .vi { color: #19177C } /* Name.Variable.Instance */
+.highlight .il { color: #666666 } /* Literal.Number.Integer.Long */</style>
+<style type="text/css">
+/* Temporary definitions which will become obsolete with Notebook release 5.0 */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-bold { font-weight: bold; }
+</style>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Table-of-Contents">Table of Contents<a class="anchor-link" href="#Table-of-Contents">¶</a></h1><p><p><div class="lev1"><a href="#Regular-expressions"><span class="toc-item-num">1  </span>Regular expressions</a></div><div class="lev2"><a href="#Intro"><span class="toc-item-num">1.1  </span>Intro</a></div><div class="lev2"><a href="#The-Real-need-for-regular-expressions:"><span class="toc-item-num">1.2  </span>The Real need for regular expressions:</a></div><div class="lev2"><a href="#The-language-of-regular-expresions:"><span class="toc-item-num">1.3  </span>The language of regular expresions:</a></div><div class="lev2"><a href="#Metacharacters:"><span class="toc-item-num">1.4  </span>Metacharacters:</a></div><div class="lev3"><a href="#Positioning-Metacharactrs:"><span class="toc-item-num">1.4.1  </span>Positioning Metacharactrs:</a></div><div class="lev4"><a href="#^"><span class="toc-item-num">1.4.1.1  </span>^</a></div><div class="lev4"><a href="#\$"><span class="toc-item-num">1.4.1.2  </span><span>$</span></a></div><div class="lev4"><a href="#."><span class="toc-item-num">1.4.1.3  </span><strong>.</strong></a></div><div class="lev3"><a href="#Some-more-Metacharacters:"><span class="toc-item-num">1.4.2  </span>Some more Metacharacters:</a></div><div class="lev4"><a href="#[-]"><span class="toc-item-num">1.4.2.1  </span>[ ]</a></div><div class="lev4"><a href="#-"><span class="toc-item-num">1.4.2.2  </span>-</a></div><div class="lev4"><a href="#\d"><span class="toc-item-num">1.4.2.3  </span>\d</a></div><div class="lev4"><a href="#\D"><span class="toc-item-num">1.4.2.4  </span>\D</a></div><div class="lev4"><a href="#\w"><span class="toc-item-num">1.4.2.5  </span>\w</a></div><div class="lev4"><a href="#\W"><span class="toc-item-num">1.4.2.6  </span>\W</a></div><div class="lev4"><a href="#\s"><span class="toc-item-num">1.4.2.7  </span>\s</a></div><div class="lev4"><a href="#\S"><span class="toc-item-num">1.4.2.8  </span>\S</a></div><div class="lev3"><a href="#Iteration-Metacharacters:"><span class="toc-item-num">1.4.3  </span>Iteration Metacharacters:</a></div><div class="lev4"><a href="#?"><span class="toc-item-num">1.4.3.1  </span>?</a></div><div class="lev4"><a href="#*"><span class="toc-item-num">1.4.3.2  </span>*</a></div><div class="lev4"><a href="#+"><span class="toc-item-num">1.4.3.3  </span>+</a></div><div class="lev3"><a href="#Some-more-examples:"><span class="toc-item-num">1.4.4  </span>Some more examples:</a></div><div class="lev2"><a href="#Pattern-finding-using-python:"><span class="toc-item-num">1.5  </span>Pattern finding using python:</a></div><div class="lev2"><a href="#Things-to-try:"><span class="toc-item-num">1.6  </span>Things to try:</a></div></p>
+</p></div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Regular-expressions">Regular expressions<a class="anchor-link" href="#Regular-expressions">¶</a></h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Intro">Intro<a class="anchor-link" href="#Intro">¶</a></h2><p>When it comes to text mining you need to understand that a text is nothing but a sequence of characters. The character can be a digits, alphabets, symbols, spaces, new line  etc. And in this chapter we are going to learn about regular expressions a very powerfull concept that helps us to play with text. It can be used for finding patterns, searching words or characters, substitution etc.</p>
+<p>Observe the below three examples:</p>
+<p>.Example1:</p>
+<ol>
+<li>abc</li>
+<li>abcdef</li>
+<li>abcdefg</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>.Example2:</p>
+<ol>
+<li>password123</li>
+<li>12353234123</li>
+<li>de12de3</li>
+</ol>
+<p>All these examples have a set of strings. And each set has a comman pattern present in them. In Example1 the string 'abc' is comman pattern that is found all the options. In Example2 string '12' - number characters, is a common pattern that is found in the all it's options. Also the string '123' is a common pattern in option 1 and option 2 of example2.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [4]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># <!-- collapse=True --></span>
+<span class="kn">from</span> <span class="nn">IPython.html</span> <span class="kn">import</span> <span class="n">widgets</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display</span>
+<span class="n">radio</span><span class="o">=</span><span class="n">widgets</span><span class="o">.</span><span class="n">RadioButtons</span><span class="p">(</span>
+    <span class="n">description</span><span class="o">=</span><span class="s1">'Select a pattern that is most common:'</span><span class="p">,</span>
+    <span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="s1">'d12'</span><span class="p">,</span> <span class="s1">'d123'</span><span class="p">,</span> <span class="s1">'123'</span><span class="p">],</span>
+    <span class="p">)</span>
+<span class="n">button</span><span class="o">=</span><span class="n">widgets</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s2">"submit!"</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">msg</span><span class="p">(</span><span class="n">b</span><span class="p">):</span>
+    <span class="n">selected</span> <span class="o">=</span> <span class="n">radio</span><span class="o">.</span><span class="n">value</span>
+    <span class="k">if</span> <span class="n">selected</span> <span class="o">==</span> <span class="s1">'123'</span><span class="p">:</span>
+        <span class="k">print</span> <span class="s2">"Exactly: 123 is the most common pattern among the three strings"</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">print</span> <span class="s2">"close...But not the right one!"</span>
+        
+<span class="n">display</span><span class="p">(</span><span class="n">radio</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">button</span><span class="p">)</span>
+<span class="n">button</span><span class="o">.</span><span class="n">on_click</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span> 
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>patterns need not just be within words alone... they can be in sentences too. Try find the most uncommon of the following:</p>
+<ol>
+<li>Tim is a person.</li>
+<li>Tim is a good person.</li>
+<li>Is Tim a good person?</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [5]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># <!-- collapse=True --></span>
+<span class="kn">from</span> <span class="nn">IPython.html</span> <span class="kn">import</span> <span class="n">widgets</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display</span>
+<span class="n">radio</span><span class="o">=</span><span class="n">widgets</span><span class="o">.</span><span class="n">RadioButtons</span><span class="p">(</span>
+    <span class="n">description</span><span class="o">=</span><span class="s1">'Select a pattern that is most common:'</span><span class="p">,</span>
+    <span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="s1">'Is'</span><span class="p">,</span> <span class="s1">'is'</span><span class="p">,</span> <span class="s1">'?'</span><span class="p">],</span>
+    <span class="p">)</span>
+<span class="n">button</span><span class="o">=</span><span class="n">widgets</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s2">"submit!"</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">msg</span><span class="p">(</span><span class="n">b</span><span class="p">):</span>
+    <span class="n">selected</span> <span class="o">=</span> <span class="n">radio</span><span class="o">.</span><span class="n">value</span>
+    <span class="k">if</span> <span class="n">selected</span> <span class="o">==</span> <span class="s1">'?'</span><span class="p">:</span>
+        <span class="k">print</span> <span class="s2">"Exactly: '?' is the most uncommon pattern among the three strings."</span>
+        <span class="k">print</span>  <span class="s2">"Also if you observe the three strings are very similar."</span> 
+        <span class="k">print</span> <span class="s2">"Even 'Is' can be uncommon pattern if you consider case sensitivity which is upercase and lowercase characters"</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">print</span> <span class="s2">"close...But not the right one!"</span>
+        
+<span class="n">display</span><span class="p">(</span><span class="n">radio</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">button</span><span class="p">)</span>
+<span class="n">button</span><span class="o">.</span><span class="n">on_click</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="The-Real-need-for-regular-expressions:">The Real need for regular expressions:<a class="anchor-link" href="#The-Real-need-for-regular-expressions:">¶</a></h2><p>The main idea behind the above examples is to make you understand the idea of patterns in text. Its easy to indentiy patterns in three or four sentences manually. But can you do it manually, let's say, for a ten thousand book reviews(comments). Well it would take forever. Which is why we need computers to do these things for you. And regular expressions are their way of seeing the patterns in text.</p>
+<h2 id="The-language-of-regular-expresions:">The language of regular expresions:<a class="anchor-link" href="#The-language-of-regular-expresions:">¶</a></h2><p>Regular expressions have a language of their own. A language that computers or most programming languages understand ofcourse. Computers are by themselves a bit dumb. They dont see the patterns in text by themselves. We need to give it instructions on how a pattern would be like. These instructions are the regular expressions. The regular expressions are fundamentally made of the following:</p>
+<ol>
+<li><p><strong>Metacharacters</strong>: Metacharacteres are special characters that are reserved for a  specifif utility which we cover later in this chapter. They are not used as literals.</p>
+</li>
+<li><p><strong>Literals</strong>: Literals are simple characters such that comprises of numbers, alhphabets and other non-metacharacters.</p>
+</li>
+<li><p>If we wanna use the metacharacters as regular characters we need to escape them using backslash().</p>
+</li>
+</ol>
+<p>NOTE: The simplest way to learn the regular expressions is try and apply against a target string or strings</p>
+<h2 id="Metacharacters:">Metacharacters:<a class="anchor-link" href="#Metacharacters:">¶</a></h2><p>Metcharacters are characters that are reserved for specific functionality and these are the main building blocks for regular expressions. The following are the varous METACHARACTERS that we use. They may not make much sense when you read each of them the first time . But upon combining metacharacteres with the literals we can create powerfull pattern matching regular expressions which make more sense( and this is someting we are going to do in the following sections).</p>
+<p>Imagine you have ten or more sentences and let's call them the target strings. With regular expressions we try to extract those strings that have a desired pattern which we are looking for from these target strings:</p>
+<h3 id="Positioning-Metacharactrs:">Positioning Metacharactrs:<a class="anchor-link" href="#Positioning-Metacharactrs:">¶</a></h3><h4 id="^">^<a class="anchor-link" href="#^">¶</a></h4><p>The  claret '^' represents the start or beggining of a string:</p>
+<pre><code>The expression '^hello' matches all those lines that start with the word hello such as _"hello world"_, _"helloooo there"_. It can also be explained as the regular expression looks for the characters: "hello" at the beginning of a any target string. 
+
+
+</code></pre>
+<h4 id="\$">\$<a class="anchor-link" href="#\$">¶</a></h4><p>Simlarly, the '\$' dollar symbol signifies the end of the target string:
+    The expression 'end$' matches only those strings among the target strings, which have the word 'end' at the end of the string ( or sentence). For example:</p>
+<pre><code>    1. "this is the sentence end"
+    2. "thisisthesentenceend" etc ...
+
+
+</code></pre>
+<h4 id="."><strong>.</strong><a class="anchor-link" href="#.">¶</a></h4><p>The '.' or period means any character in it's position. For Example:</p>
+<pre><code>1.  ".en" can represent "ben", "ten", "den" etc. The period can be repaced with any character. It matches all those strings that have that pattern.  
+
+
+</code></pre>
+<h3 id="Some-more-Metacharacters:">Some more Metacharacters:<a class="anchor-link" href="#Some-more-Metacharacters:">¶</a></h3><h4 id="[-]">[ ]<a class="anchor-link" href="#[-]">¶</a></h4><p>The brackets mean to match any one ( and only one) of the characters that is specified inside them.</p>
+<p>An example usage:</p>
+<pre><code>[abcd] :- this means match any character of a,b,c,d
+[12av] :- this means match any character of 1,2,a,v
+[avAV] :- this means match any caharater of a,v,A,V [ notice the lowercase and uppercase.]
+
+
+
+</code></pre>
+<h4 id="-">-<a class="anchor-link" href="#-">¶</a></h4><p>The '-' or iphen helps you to signify a range of characters or numbers at once. For example in the previeous examples we have listed each character that we want to match inside the brackets. But if we need to list out all the characters from '<em>a</em>' to '<em>z</em>' then using iphen or '-' we simply write it as "<strong>[a-z]</strong>"</p>
+<pre><code>[a-z] Matches all characters that are between a-z including the '_a_' and '_z_'
+[0-9] Matches all characters that are between numbers 0 to 9 including the 0 and 9.
+[A-Z] Matches all the uppercase charachters from A to Z
+[0-9a-zA-z] Matches all the alphanumeric characters
+
+
+
+
+</code></pre>
+<h4 id="\d">\d<a class="anchor-link" href="#\d">¶</a></h4><p>This represents any digit. It's simpler to use compared to [0-9] specification:</p>
+<pre><code>"password\d\d\d"  matches: "password123", "password234", "password000" etc , you can substitute any number in its place;
+
+
+</code></pre>
+<h4 id="\D">\D<a class="anchor-link" href="#\D">¶</a></h4><p>This is opposite to \d. It means anything other than a digit (non-numeric characters):</p>
+<pre><code>"\Da\D" matches: "dad", "mad", "cat", even words that dont have any meaning such as "lal", "fal" etc. "\D" can be substituted with any non-numeric character. It need not be just alphabets. It can also match space, tab etc;
+
+</code></pre>
+<h4 id="\w">\w<a class="anchor-link" href="#\w">¶</a></h4><p>This represents any alphanumeric character, similar to [0-9a-zA-Z]</p>
+<pre><code>'\w\w\w' matches: "abc", "a12", "123", "z1z" etc. It just matches anything which is either a number or a alhpabet.
+
+</code></pre>
+<h4 id="\W">\W<a class="anchor-link" href="#\W">¶</a></h4><p>This is opposite to \w. It represents any non alphanumeric characters. Similar to [^0-9a-zA-Z]</p>
+<pre><code>'text\Wmining' matches: "text mining", "text$mining" etc . Just matches anything that is non alphanumeric.
+
+</code></pre>
+<h4 id="\s">\s<a class="anchor-link" href="#\s">¶</a></h4><p>White Space;</p>
+<h4 id="\S">\S<a class="anchor-link" href="#\S">¶</a></h4><p>Anything other than a white space;</p>
+<h3 id="Iteration-Metacharacters:">Iteration Metacharacters:<a class="anchor-link" href="#Iteration-Metacharacters:">¶</a></h3><p>Iteration metacharacters specify the number of times their preceding  character can occur in a pattern:</p>
+<p>Check the below example:</p>
+<ol>
+<li>god</li>
+<li>good</li>
+<li>goooood</li>
+</ol>
+<p>All of the above have one thing in common: the letter 'g' at the start and the letter 'd' at the end and letter 'o' in the middle with repititions. The regular expression 'g[o]d' would represent the first string "god" alone. It does'nt caputre the "good" and "goooood" because they have more than one "o". The simplest way to specify such repititions in regular expressions is to use certain <em>iteration metacharacters</em>:</p>
+<h4 id="?">?<a class="anchor-link" href="#?">¶</a></h4><p>The question mark (?) specfies that the preceding character occurs only 0 or 1 times only. For example:</p>
+<pre><code> "go?d"  matches : "god" and "gd" i.e "o" can occur once or no occurance at all;
+
+
+</code></pre>
+<h4 id="*">*<a class="anchor-link" href="#*">¶</a></h4><p>The asterisk (*) specifies that the preceding  character can occur zero or any number of times:</p>
+<pre><code> "go*d" matches: "god", "good", "goooood", "gd", "goooooooooooood" (like i said any number of "o"s)
+
+</code></pre>
+<h4 id="+">+<a class="anchor-link" href="#+">¶</a></h4><p>The plus (+) sign specifies that it's preceding character should occur atleast i.e >=1 times:</p>
+<pre><code> "go+d" matches:  "god", "good", "goooood", "gooooooooooood" etc but not "gd". 
+
+
+
+
+
+</code></pre>
+<h3 id="Some-more-examples:">Some more examples:<a class="anchor-link" href="#Some-more-examples:">¶</a></h3><p>Lets try to use a combination of these metacharacters to form complex regular expressions</p>
+<table>
+<thead><tr>
+<th>Regular Expression</th>
+<th style="text-align:center">possible matches</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>goa[tl]</td>
+<td style="text-align:center">matches goat, goal</td>
+</tr>
+<tr>
+<td>^good</td>
+<td style="text-align:center">matches all the target strings that start with word good.  It does not match target string such as "life is good" as good here doesnt occur at the start of the sentence</td>
+</tr>
+<tr>
+<td>bye\$</td>
+<td style="text-align:center">matches all the target strings that end with <em>bye</em>. It does not match sentence such as "bye my friend". Because the characters "bye" is not at the end of the string.</td>
+</tr>
+<tr>
+<td>^life is [gf]ood$</td>
+<td style="text-align:center">this regular expression pattern matches all the strings that start with "<em>life is</em>" and end with either <em>good</em> or <em>food</em></td>
+</tr>
+</tbody>
+</table>
+<h2 id="Pattern-finding-using-python:">Pattern finding using python:<a class="anchor-link" href="#Pattern-finding-using-python:">¶</a></h2><p>Now that we have an idea of the language of  the regluar expressions, let's see how we can make computers use regular expressions to extract infromation from text:</p>
+<p>Python has it's own library for processing regular expressions. This is called "re". Let's import it:</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [2]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="kn">import</span> <span class="nn">re</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>consider some patterns:</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [11]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">pattern</span> <span class="o">=</span> <span class="s2">".oo."</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>lets try to find matches for the pattern in a target string:</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [13]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">target_string</span><span class="o">=</span><span class="s2">"I love food, food which is good."</span>
+
+<span class="n">matches</span> <span class="o">=</span><span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">pattern</span><span class="p">,</span> <span class="n">target_string</span><span class="p">)</span>
+<span class="k">print</span> <span class="s2">"list of matches: "</span><span class="p">,</span> <span class="n">matches</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>list of matches:  ['food', 'food', 'good']
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We can also know the position( index) of the match in the target string:</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [23]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="k">for</span> <span class="n">match</span> <span class="ow">in</span>  <span class="n">re</span><span class="o">.</span><span class="n">finditer</span><span class="p">(</span><span class="n">pattern</span><span class="p">,</span> <span class="n">target_string</span><span class="p">):</span>
+    <span class="n">start</span> <span class="o">=</span> <span class="n">match</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+    <span class="n">end</span> <span class="o">=</span> <span class="n">match</span><span class="o">.</span><span class="n">end</span><span class="p">()</span>
+    <span class="k">print</span> <span class="s2">"positions: "</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="s2">":"</span><span class="p">,</span> <span class="n">end</span><span class="p">,</span> <span class="n">target_string</span><span class="p">[</span><span class="n">start</span><span class="p">:</span><span class="n">end</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>positions:  7 : 11 food
+positions:  13 : 17 food
+positions:  27 : 31 good
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><br><br><br /></br></br></p>
+<h2 id="Things-to-try:">Things to try:<a class="anchor-link" href="#Things-to-try:">¶</a></h2><ol>
+<li><p>Write a regular expression that matches the below strings:</p>
+<pre><code>a. casper
+b. Jasper</code></pre>
+</li>
+<li><p>Write a regular expression that would match the bellow strings:</p>
+<pre><code>a. hi
+b. hiii
+c. hiiiiiii</code></pre>
+</li>
+<li><p>Write a regular expression that would match the bellow strings:</p>
+<pre><code>a. code
+b. coding
+c. coder</code></pre>
+</li>
+<li><p>Write a regular expression that would match the bellow strings:</p>
+<pre><code>a. john is a happy man
+b. john is a good man
+c. john is a great man</code></pre>
+</li>
+<li><p>Write a regular expression that would match the strings in a,b,c and skips strings d,c:</p>
+<pre><code>a. cat
+b. rat
+c. bat
+d. sat
+e. mat</code></pre>
+</li>
+<li><p>Write a regular expression that would match the below strings:</p>
+<pre><code>a. life is good
+b. life is great
+c. life is awesome</code></pre>
+</li>
+</ol>
+<ol>
+<li>Consider the given string : " JAMES is  always Confident, consistent and persistent the way he works."
+<pre><code>a. Write a regular expression that would capture the qualities of JAMES in the sentence
+b. Write a program that would capture and print these regular expressions
+c. The program should also print the postions of the words in the sentence.</code></pre>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: 'center'," +
+        "    displayIndent: '0em'," +
+        "    showMathMenu: true," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['$','$'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'black ! important'} }" +
+        "    } " +
+        "}); ";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script>
+
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="./tag/text-mining.html">Text-mining</a>
+      <a href="./tag/python.html">python</a>
+    </p>
+  </div>
+</article>
+
+    <footer>
+        <p>&copy; chandan u </p>
+<p>Built using <a href="http://getpelican.com" target="_blank">Pelican</a> - <a href="https://github.com/alexandrevicenzi/flex" target="_blank">Flex</a> theme by <a href="http://alexandrevicenzi.com" target="_blank">Alexandre Vicenzi</a></p>    </footer>
+  </main>
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " Text-Mining Tutorial ",
+  "url" : ".",
+  "image": "",
+  "description": ""
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "name": "Regular expressions tutorial",
+  "headline": "Regular expressions tutorial",
+  "datePublished": "2016-08-15 00:00:00-07:00",
+  "dateModified": "",
+  "author": {
+    "@type": "Person",
+    "name": "Chandan u",
+    "url": "./author/chandan-u.html"
+  },
+  "image": "{{ SITEURL }}/{{ THEME_STATIC_DIR }}/img/profile.png",
+  "url": "./regular-expressions.html",
+  "description": "Table of Contents¶1 Regular expressions1.1 Intro1.2 The Real need for regular expressions:1.3 The language of regular expresions:1.4 Metacharacters:1.4.1 Positioning Metacharactrs:1.4.1.1 ^1.4.1.2 $1.4.1.3 .1.4.2 Some more Metacharacters:1.4.2.1 [ ]1.4.2.2 -1.4.2.3 \d1.4.2.4 \D1.4.2.5 \w1.4.2.6 \W1.4.2.7 \s1.4.2.8 \S1.4.3 Iteration Metacharacters:1.4.3.1 ?1.4.3.2 *1.4.3.3 +1.4.4 Some more examples:1.5 Pattern finding using python:1.6 Things to try: Regular expressions¶ Intro¶When it comes to text mining you need to understand that a text is nothing but a sequence of characters. The character can be a digits, alphabets, symbols, spaces, new line etc. And in this chapter we are going to learn about regular expressions a very powerfull concept that helps us to play with text. It can be used for finding patterns, searching words or characters, substitution etc."
+}
+</script></body>
+</html>

@@ -35,7 +35,7 @@ RELATIVE_URLS = True
 
 
 # Blog index recreated at :
-INDEX_SAVE_AS = 'blog_index.html'
+INDEX_SAVE_AS = 'index.html'
 
 
 # Saving pages in main directory instead of sub:

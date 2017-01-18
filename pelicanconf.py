@@ -20,13 +20,14 @@ AUTHOR_FEED_ATOM = None
 AUTHOR_FEED_RSS = None
 
 # Blogroll
-LINKS = (
-         ('Python.org', 'http://python.org/'),
-         )
+#LINKS = (
+#         (),         )
 
 # Social widget
-SOCIAL = (('You can add links in your config file', '#'),
-          ('Another social link', '#'),)
+SOCIAL = (('linkedin', 'https://www.linkedin.com/in/chandanu/'),
+          ('github', 'https://github.com/chandan-u'),
+          ('google', 'https://plus.google.com/u/0/112461392309064088729'))
+
 
 DEFAULT_PAGINATION = 10
 

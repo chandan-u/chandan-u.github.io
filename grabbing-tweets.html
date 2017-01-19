@@ -4,9 +4,10 @@
 <head>
   <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,400italic' rel='stylesheet' type='text/css'>
 
-    <link rel="stylesheet" type="text/css" href="./theme/stylesheet/style.min.css">
+    <link rel="stylesheet/less" type="text/css" href="./theme/stylesheet/style.less">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/2.5.1/less.min.js" type="text/javascript"></script>
 
-  <link rel="stylesheet" type="text/css" href="./theme/pygments/github.min.css">
+  <link rel="stylesheet" type="text/css" href="./theme/pygments/monokai.min.css">
   <link rel="stylesheet" type="text/css" href="./theme/font-awesome/css/font-awesome.min.css">
 
 
@@ -17,13 +18,20 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="HandheldFriendly" content="True" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="robots" content="" />
+  <meta name="robots" content="index, follow" />
 
+    <!-- Chrome, Firefox OS and Opera -->
+    <meta name="theme-color" content="#333333">
+    <!-- Windows Phone -->
+    <meta name="msapplication-navbutton-color" content="#333333">
+    <!-- iOS Safari -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
 <meta name="author" content="Chandan u" />
 <meta name="description" content="Table of Contents¶ Introduction:¶Twitter is one of the ten most visited web sites around the world. Its a microblogging platform that allows you share messages of lenght not more than 140 characters. Not just that , but it also helps you discover messages related to the topics you are intrested in. It can be usefull in many ways. Since its one of the most used websites, there is a lot of data flowing through its network which could used for varius research purposes. Fourtunately twitter decided to share this huge data with some limitations ofcourse to the public. Twitter offers API (Application Programing Interface) to do this. In this tutorial we will be exploring Twitter API and what it has to offer and how we can use some of these to obtain the data that we want." />
 <meta name="keywords" content="Text-mining, twitter">
-<meta property="og:site_name" content="Text-Mining Tutorial"/>
+<meta property="og:site_name" content="Chandan 's Blog"/>
 <meta property="og:title" content="Grabbing twitter Data"/>
 <meta property="og:description" content="Table of Contents¶ Introduction:¶Twitter is one of the ten most visited web sites around the world. Its a microblogging platform that allows you share messages of lenght not more than 140 characters. Not just that , but it also helps you discover messages related to the topics you are intrested in. It can be usefull in many ways. Since its one of the most used websites, there is a lot of data flowing through its network which could used for varius research purposes. Fourtunately twitter decided to share this huge data with some limitations ofcourse to the public. Twitter offers API (Application Programing Interface) to do this. In this tutorial we will be exploring Twitter API and what it has to offer and how we can use some of these to obtain the data that we want."/>
 <meta property="og:locale" content="en_US"/>
@@ -35,24 +43,25 @@
 <meta property="article:section" content="misc"/>
 <meta property="article:tag" content="Text-mining"/>
 <meta property="article:tag" content="twitter"/>
-<meta property="og:image" content="">
+<meta property="og:image" content="https://s.gravatar.com/avatar/1ffef3b08b2d7091ed88bcd36cb2030f?s=80">
 
-  <title>Text-Mining Tutorial &ndash; Grabbing twitter Data</title>
+  <title>Chandan 's Blog &ndash; Grabbing twitter Data</title>
 </head>
 <body>
   <aside>
     <div>
       <a href=".">
-        <img src="./theme/img/profile.png" alt="" title="">
+        <img src="https://s.gravatar.com/avatar/1ffef3b08b2d7091ed88bcd36cb2030f?s=80" alt="chandan u" title="chandan u">
       </a>
-      <h1><a href="."></a></h1>
+      <h1><a href=".">chandan u</a></h1>
 
-
+<p>Data science - Student</p>
       <nav>
         <ul class="list">
           <li><a href="./about.html#about">About me</a></li>
           <li><a href="./Text Mining Blog.html#Text Mining Blog">Text mining Tutorial</a></li>
 
+          <li><a href="http://hit9.github.io/GhResume/?chandan-u" target="_blank">portfolio</a></li>
         </ul>
       </nav>
 
@@ -64,14 +73,25 @@
     </div>
   </aside>
   <main>
+    <nav>
+      <a href=".">    Home
+</a>
+
+      <a href="/archives.html">Archives</a>
+      <a href="/categories.html">Categories</a>
+      <a href="/tags.html">Tags</a>
+
+
+    </nav>
 
 <article>
   <header>
     <h1 id="grabbing-tweets">Grabbing twitter Data</h1>
     <p>
-          Posted on Mon 15 August 2016 in <a href="./category/misc.html">misc</a>
+          Posted on August 15, 2016 in <a href="./category/misc.html">misc</a>
 
 
+        &#8226; 19 min read
     </p>
   </header>
   <div>
@@ -1061,7 +1081,7 @@ h6:hover .anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><img alt="" src="./images/images.png" /></p>
+<p><img alt="" src="./images/images.png"/></p>
 <h2 id="Introduction:">Introduction:<a class="anchor-link" href="#Introduction:">¶</a></h2><p>Twitter is  one of the ten most visited  web sites around the world. Its a microblogging platform that allows you share messages of lenght not more than 140 characters. Not just that , but it also helps you discover messages related to the topics you are intrested in. It can be usefull in many ways. Since its one of the most used websites, there is a lot of data flowing through its network which could used for varius research purposes. Fourtunately twitter decided to share this huge data with some limitations ofcourse to the public. Twitter offers API (Application Programing Interface) to do this. In this tutorial we will be exploring Twitter API and what it has to offer and how we can use some of these to obtain the data that we want.</p>
 <h2 id="Understanding-the-Limitations:">Understanding the Limitations:<a class="anchor-link" href="#Understanding-the-Limitations:">¶</a></h2><p>Twitter offers many ways to access its data through its API. Each way has its pros and cons. Some of the limitations  you come across are:</p>
 <ol>
@@ -1072,24 +1092,24 @@ h6:hover .anchor-link {
 <p>We need to understand the limitations of the API thorugly along with what they have to offer before we go ahead and build applications.</p>
 <h2 id="Twitter-Access-keys:">Twitter Access keys:<a class="anchor-link" href="#Twitter-Access-keys:">¶</a></h2><p>In order to build programs that use the twitter API we need Twitter access keys( also know as OAuth Access tokens). The Access keys can be generated on the twitter developer portal. The following are the required steps you need to follow to  generate the access keys:</p>
 <ol>
-<li><p>First you must have twitter account. If you dont have one, please create one. Every twitter account is associated with a mobile number. <br><br /></br></p>
+<li><p>First you must have twitter account. If you dont have one, please create one. Every twitter account is associated with a mobile number. <br><br/></br></p>
 </li>
-<li><p>Once you have your twitter account you can log into the twitter dev account <a href="http://apps.twitter.com/">http://apps.twitter.com/</a> using the same credentials as your twitter account. <br><br /></br></p>
+<li><p>Once you have your twitter account you can log into the twitter dev account <a href="http://apps.twitter.com/">http://apps.twitter.com/</a> using the same credentials as your twitter account. <br><br/></br></p>
 </li>
 <li><p>Create new app. <br>
-<img alt="&quot;click on create new app button&quot;" src="./images/twitter.dev_01.png"><br><br><br><br /></br></br></br></img></br></p>
+<img alt='"click on create new app button"' src="./images/twitter.dev_01.png"><br><br><br><br/></br></br></br></img></br></p>
 </li>
 <li><p>Fill in the necessary details in the form pagee. If all the fields are filed in properly a new page will be loaded. <br>
-<img alt="&quot;click on create new app button&quot;" src="./images/twitter.dev_02.png"><br><br /></br></img></br></p>
+<img alt='"click on create new app button"' src="./images/twitter.dev_02.png"><br><br/></br></img></br></p>
 </li>
-<li><p>Now open the <em>“Keys and Access Tokens”</em> tab. Scroll down and click “Create my access token”. This will generate the <em>Access token</em> and <em>Access token secret</em>. Copy your “Access token” and “Access token secret” along with <em>API Key</em> and <em>API secret</em> which is present at the top of the same page. <br /></p>
+<li><p>Now open the <em>“Keys and Access Tokens”</em> tab. Scroll down and click “Create my access token”. This will generate the <em>Access token</em> and <em>Access token secret</em>. Copy your “Access token” and “Access token secret” along with <em>API Key</em> and <em>API secret</em> which is present at the top of the same page. <br/></p>
 </li>
 </ol>
-<p><img alt="&quot;click on create new app button&quot;" src="./images/twitter.dev_03.png"><br><br /></br></img></p>
+<p><img alt='"click on create new app button"' src="./images/twitter.dev_03.png"><br><br/></br></img></p>
 <ol>
 <li>Congratulations! now that we have access tokens we can start using the API. </li>
 </ol>
-<h2 id="Twitter-libraries:">Twitter libraries:<a class="anchor-link" href="#Twitter-libraries:">¶</a></h2><p>Since we will be using python through out this tutorial we will be disucssing packages related to python. But if you prefer using other languages feel free to explore them. This page has a list of various libraris for accessing twitter API in various programing languages: <a href="https://dev.twitter.com/overview/api/twitter-libraries">twitter Libraries</a> .  libraries make life easy when it comes to programming. For this tutorial we will be using the <strong><em>twitter-python</em></strong> libary.  <br><br /></br></p>
+<h2 id="Twitter-libraries:">Twitter libraries:<a class="anchor-link" href="#Twitter-libraries:">¶</a></h2><p>Since we will be using python through out this tutorial we will be disucssing packages related to python. But if you prefer using other languages feel free to explore them. This page has a list of various libraris for accessing twitter API in various programing languages: <a href="https://dev.twitter.com/overview/api/twitter-libraries">twitter Libraries</a> .  libraries make life easy when it comes to programming. For this tutorial we will be using the <strong><em>twitter-python</em></strong> libary.  <br><br/></br></p>
 <h3 id="Installing:">Installing:<a class="anchor-link" href="#Installing:">¶</a></h3><div class="highlight"><pre><span></span>$ pip install python-twitter
 </pre></div>
 <p>You will get the following message at the end if it worked: <em>Successfully installed future-0.15.2 python-twitter-3.1</em></p>
@@ -1137,7 +1157,7 @@ h6:hover .anchor-link {
 <div class="output">
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>{"created_at": "Wed Sep 30 01:36:35 +0000 2009", "favourites_count": 1, "followers_count": 54, "friends_count": 89, "id": 78477561, "lang": "en", "listed_count": 1, "location": "India", "name": "Surya Teja", "profile_background_color": "C0DEED", "profile_background_image_url": "http://pbs.twimg.com/profile_background_images/198736057/Game_Scenes__14_.jpg", "profile_background_tile": true, "profile_image_url": "http://pbs.twimg.com/profile_images/700970727084666880/wSrJ6NCz_normal.jpg", "profile_link_color": "0084B4", "profile_sidebar_fill_color": "DDEEF6", "profile_text_color": "333333", "screen_name": "SuryaTeja1991", "status": {"created_at": "Mon Jul 14 17:07:38 +0000 2014", "favorite_count": 1, "hashtags": [{"text": "Hitwicket"}], "id": 488731558652956672, "id_str": "488731558652956672", "lang": "en", "source": "<a href="\&quot;http://hitwicket.com\&quot;" rel="\&quot;nofollow\&quot;">Hitwicket</a>", "text": "I'm now a Magnificent manager in Hitwicket! super\n http://t.co/BxUMEsymBe #Hitwicket via @HitwicketGame", "urls": [{"expanded_url": "http://hitwicket.com/team/show/696?utm_source=twitterFeed&utm;_medium=userFeedback&utm;_campaign=team%3A696", "url": "http://t.co/BxUMEsymBe"}], "user_mentions": [{"id": 580912774, "name": "Hitwicket", "screen_name": "HitwicketGame"}]}, "statuses_count": 106, "time_zone": "New Delhi", "utc_offset": 19800}
+<pre>{"created_at": "Wed Sep 30 01:36:35 +0000 2009", "favourites_count": 1, "followers_count": 54, "friends_count": 89, "id": 78477561, "lang": "en", "listed_count": 1, "location": "India", "name": "Surya Teja", "profile_background_color": "C0DEED", "profile_background_image_url": "http://pbs.twimg.com/profile_background_images/198736057/Game_Scenes__14_.jpg", "profile_background_tile": true, "profile_image_url": "http://pbs.twimg.com/profile_images/700970727084666880/wSrJ6NCz_normal.jpg", "profile_link_color": "0084B4", "profile_sidebar_fill_color": "DDEEF6", "profile_text_color": "333333", "screen_name": "SuryaTeja1991", "status": {"created_at": "Mon Jul 14 17:07:38 +0000 2014", "favorite_count": 1, "hashtags": [{"text": "Hitwicket"}], "id": 488731558652956672, "id_str": "488731558652956672", "lang": "en", "source": "<a href='\"http://hitwicket.com\"' rel='\"nofollow\"'>Hitwicket</a>", "text": "I'm now a Magnificent manager in Hitwicket! super\n http://t.co/BxUMEsymBe #Hitwicket via @HitwicketGame", "urls": [{"expanded_url": "http://hitwicket.com/team/show/696?utm_source=twitterFeed&amp;utm;_medium=userFeedback&amp;utm;_campaign=team%3A696", "url": "http://t.co/BxUMEsymBe"}], "user_mentions": [{"id": 580912774, "name": "Hitwicket", "screen_name": "HitwicketGame"}]}, "statuses_count": 106, "time_zone": "New Delhi", "utc_offset": 19800}
 </pre>
 </div>
 </div>
@@ -1150,7 +1170,7 @@ h6:hover .anchor-link {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>The response will be something like this {"id": 16133, "location": "Philadelphia", "name": "bear"}, a json object with a summary of details of your account.</p>
-<h2 id="Twitter-Streaming-API">Twitter Streaming API<a class="anchor-link" href="#Twitter-Streaming-API">¶</a></h2><p>The twitter Streaming API gives you access to the current stream messages i.e you get access to the tweets that are currently being pushed to the twitter. You may no be able to access the whole but you will get <=1 percent of the twitter global stream and thats substantial amount of data.  But on contrary to the REST API offered by twitter, the streaming API has no rate limits. The only limit it has is the cap on the number of messages it delivers.</p>
+<h2 id="Twitter-Streaming-API">Twitter Streaming API<a class="anchor-link" href="#Twitter-Streaming-API">¶</a></h2><p>The twitter Streaming API gives you access to the current stream messages i.e you get access to the tweets that are currently being pushed to the twitter. You may no be able to access the whole but you will get &lt;=1 percent of the twitter global stream and thats substantial amount of data.  But on contrary to the REST API offered by twitter, the streaming API has no rate limits. The only limit it has is the cap on the number of messages it delivers.</p>
 <p>The streaming API gives you the number of messages it couldnt deliver. <a href="https://dev.twitter.com/streaming/overview/messages-types#limit_notices">This is called the limit Notices</a>.</p>
 <h3 id="Usage:">Usage:<a class="anchor-link" href="#Usage:">¶</a></h3><p>Twitter API enables us to specify parameters for filtering the data. The parameters can be keywords that we are looking for in tweets or  geo locations or usernames or user_id's.</p>
 <h3 id="Parameters-:">Parameters :<a class="anchor-link" href="#Parameters-:">¶</a></h3><p>These are the various parameters that you can specify to get the data which you want from twitter:</p>
@@ -1184,7 +1204,7 @@ h6:hover .anchor-link {
 <div class="output">
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>{u'contributors': None, u'truncated': False, u'text': u'RT @DailyMendesLife: Pls dm us your rants and confessions about Shawn and the Mendes Army so I can start posting!  https://t.co/Usor286c2y', u'is_quote_status': True, u'in_reply_to_status_id': None, u'id': 760565175132958721, u'favorite_count': 0, u'entities': {u'user_mentions': [{u'id': 2820952439, u'indices': [3, 19], u'id_str': u'2820952439', u'screen_name': u'DailyMendesLife', u'name': u'shawn mendes'}], u'symbols': [], u'hashtags': [], u'urls': [{u'url': u'https://t.co/Usor286c2y', u'indices': [115, 138], u'expanded_url': u'https://twitter.com/dailymendeslife/status/760564739600748549', u'display_url': u'twitter.com/dailymendeslif\u2026'}]}, u'quoted_status_id': 760564739600748549, u'retweeted': False, u'coordinates': None, u'timestamp_ms': u'1470167843026', u'quoted_status': {u'contributors': None, u'truncated': False, u'text': u"Guys we made another Insta it's @/rantingshawn where you guys can dm us your Shawn rants and confessions and we will post it anonymously!", u'is_quote_status': False, u'in_reply_to_status_id': None, u'id': 760564739600748549, u'favorite_count': 21, u'source': u'<a href="http://twitter.com/download/iphone" rel="nofollow">Twitter for iPhone</a>', u'retweeted': False, u'coordinates': None, u'entities': {u'user_mentions': [], u'symbols': [], u'hashtags': [], u'urls': []}, u'in_reply_to_screen_name': None, u'id_str': u'760564739600748549', u'retweet_count': 4, u'in_reply_to_user_id': None, u'favorited': False, u'user': {u'follow_request_sent': None, u'profile_use_background_image': True, u'default_profile_image': False, u'id': 2820952439, u'verified': False, u'profile_image_url_https': u'https://pbs.twimg.com/profile_images/752622035126267904/G-K22LhL_normal.jpg', u'profile_sidebar_fill_color': u'DDEEF6', u'profile_text_color': u'333333', u'followers_count': 16466, u'profile_sidebar_border_color': u'C0DEED', u'id_str': u'2820952439', u'profile_background_color': u'C0DEED', u'listed_count': 33, u'profile_background_image_url_https': u'https://abs.twimg.com/images/themes/theme1/bg.png', u'utc_offset': -25200, u'statuses_count': 7228, u'description': u'Account owned by @MendesFeatures & @seIuminated', u'friends_count': 776, u'location': u'Instagram: @GoalWithMendes', u'profile_link_color': u'0084B4', u'profile_image_url': u'http://pbs.twimg.com/profile_images/752622035126267904/G-K22LhL_normal.jpg', u'following': None, u'geo_enabled': False, u'profile_banner_url': u'https://pbs.twimg.com/profile_banners/2820952439/1469148330', u'profile_background_image_url': u'http://abs.twimg.com/images/themes/theme1/bg.png', u'name': u'shawn mendes', u'lang': u'en', u'profile_background_tile': False, u'favourites_count': 32917, u'screen_name': u'DailyMendesLife', u'notifications': None, u'url': u'https://twitter.com/goalwithmendes/status/721478509927858176', u'created_at': u'Fri Oct 10 01:03:54 +0000 2014', u'contributors_enabled': False, u'time_zone': u'Pacific Time (US & Canada)', u'protected': False, u'default_profile': True, u'is_translator': False}, u'geo': None, u'in_reply_to_user_id_str': None, u'lang': u'en', u'created_at': u'Tue Aug 02 19:55:39 +0000 2016', u'filter_level': u'low', u'in_reply_to_status_id_str': None, u'place': None}, u'source': u'<a href="http://twitter.com/download/android" rel="nofollow">Twitter for Android</a>', u'in_reply_to_screen_name': None, u'id_str': u'760565175132958721', u'retweet_count': 0, u'in_reply_to_user_id': None, u'favorited': False, u'retweeted_status': {u'contributors': None, u'truncated': False, u'text': u'Pls dm us your rants and confessions about Shawn and the Mendes Army so I can start posting!  https://t.co/Usor286c2y', u'is_quote_status': True, u'in_reply_to_status_id': None, u'id': 760565123937366016, u'favorite_count': 7, u'entities': {u'user_mentions': [], u'symbols': [], u'hashtags': [], u'urls': [{u'url': u'https://t.co/Usor286c2y', u'indices': [94, 117], u'expanded_url': u'https://twitter.com/dailymendeslife/status/760564739600748549', u'display_url': u'twitter.com/dailymendeslif\u2026'}]}, u'quoted_status_id': 760564739600748549, u'retweeted': False, u'coordinates': None, u'quoted_status': {u'contributors': None, u'truncated': False, u'text': u"Guys we made another Insta it's @/rantingshawn where you guys can dm us your Shawn rants and confessions and we will post it anonymously!", u'is_quote_status': False, u'in_reply_to_status_id': None, u'id': 760564739600748549, u'favorite_count': 21, u'source': u'<a href="http://twitter.com/download/iphone" rel="nofollow">Twitter for iPhone</a>', u'retweeted': False, u'coordinates': None, u'entities': {u'user_mentions': [], u'symbols': [], u'hashtags': [], u'urls': []}, u'in_reply_to_screen_name': None, u'id_str': u'760564739600748549', u'retweet_count': 4, u'in_reply_to_user_id': None, u'favorited': False, u'user': {u'follow_request_sent': None, u'profile_use_background_image': True, u'default_profile_image': False, u'id': 2820952439, u'verified': False, u'profile_image_url_https': u'https://pbs.twimg.com/profile_images/752622035126267904/G-K22LhL_normal.jpg', u'profile_sidebar_fill_color': u'DDEEF6', u'profile_text_color': u'333333', u'followers_count': 16466, u'profile_sidebar_border_color': u'C0DEED', u'id_str': u'2820952439', u'profile_background_color': u'C0DEED', u'listed_count': 33, u'profile_background_image_url_https': u'https://abs.twimg.com/images/themes/theme1/bg.png', u'utc_offset': -25200, u'statuses_count': 7228, u'description': u'Account owned by @MendesFeatures & @seIuminated', u'friends_count': 776, u'location': u'Instagram: @GoalWithMendes', u'profile_link_color': u'0084B4', u'profile_image_url': u'http://pbs.twimg.com/profile_images/752622035126267904/G-K22LhL_normal.jpg', u'following': None, u'geo_enabled': False, u'profile_banner_url': u'https://pbs.twimg.com/profile_banners/2820952439/1469148330', u'profile_background_image_url': u'http://abs.twimg.com/images/themes/theme1/bg.png', u'name': u'shawn mendes', u'lang': u'en', u'profile_background_tile': False, u'favourites_count': 32917, u'screen_name': u'DailyMendesLife', u'notifications': None, u'url': u'https://twitter.com/goalwithmendes/status/721478509927858176', u'created_at': u'Fri Oct 10 01:03:54 +0000 2014', u'contributors_enabled': False, u'time_zone': u'Pacific Time (US & Canada)', u'protected': False, u'default_profile': True, u'is_translator': False}, u'geo': None, u'in_reply_to_user_id_str': None, u'lang': u'en', u'created_at': u'Tue Aug 02 19:55:39 +0000 2016', u'filter_level': u'low', u'in_reply_to_status_id_str': None, u'place': None}, u'source': u'<a href="http://twitter.com/download/iphone" rel="nofollow">Twitter for iPhone</a>', u'in_reply_to_screen_name': None, u'id_str': u'760565123937366016', u'retweet_count': 4, u'in_reply_to_user_id': None, u'favorited': False, u'user': {u'follow_request_sent': None, u'profile_use_background_image': True, u'default_profile_image': False, u'id': 2820952439, u'verified': False, u'profile_image_url_https': u'https://pbs.twimg.com/profile_images/752622035126267904/G-K22LhL_normal.jpg', u'profile_sidebar_fill_color': u'DDEEF6', u'profile_text_color': u'333333', u'followers_count': 16466, u'profile_sidebar_border_color': u'C0DEED', u'id_str': u'2820952439', u'profile_background_color': u'C0DEED', u'listed_count': 33, u'profile_background_image_url_https': u'https://abs.twimg.com/images/themes/theme1/bg.png', u'utc_offset': -25200, u'statuses_count': 7228, u'description': u'Account owned by @MendesFeatures & @seIuminated', u'friends_count': 776, u'location': u'Instagram: @GoalWithMendes', u'profile_link_color': u'0084B4', u'profile_image_url': u'http://pbs.twimg.com/profile_images/752622035126267904/G-K22LhL_normal.jpg', u'following': None, u'geo_enabled': False, u'profile_banner_url': u'https://pbs.twimg.com/profile_banners/2820952439/1469148330', u'profile_background_image_url': u'http://abs.twimg.com/images/themes/theme1/bg.png', u'name': u'shawn mendes', u'lang': u'en', u'profile_background_tile': False, u'favourites_count': 32917, u'screen_name': u'DailyMendesLife', u'notifications': None, u'url': u'https://twitter.com/goalwithmendes/status/721478509927858176', u'created_at': u'Fri Oct 10 01:03:54 +0000 2014', u'contributors_enabled': False, u'time_zone': u'Pacific Time (US & Canada)', u'protected': False, u'default_profile': True, u'is_translator': False}, u'geo': None, u'in_reply_to_user_id_str': None, u'possibly_sensitive': False, u'lang': u'en', u'created_at': u'Tue Aug 02 19:57:10 +0000 2016', u'quoted_status_id_str': u'760564739600748549', u'filter_level': u'low', u'in_reply_to_status_id_str': None, u'place': None}, u'user': {u'follow_request_sent': None, u'profile_use_background_image': True, u'default_profile_image': False, u'id': 357243270, u'verified': False, u'profile_image_url_https': u'https://pbs.twimg.com/profile_images/756939005858500608/GYWbvXIM_normal.jpg', u'profile_sidebar_fill_color': u'18E9F0', u'profile_text_color': u'3C3940', u'followers_count': 3344, u'profile_sidebar_border_color': u'FFFFFF', u'id_str': u'357243270', u'profile_background_color': u'FFFFFF', u'listed_count': 15, u'profile_background_image_url_https': u'https://pbs.twimg.com/profile_background_images/699755534853877760/KavcTPpB.jpg', u'utc_offset': -18000, u'statuses_count': 89240, u'description': u'raul mendes is my favourite person in the world', u'friends_count': 1735, u'location': None, u'profile_link_color': u'000000', u'profile_image_url': u'http://pbs.twimg.com/profile_images/756939005858500608/GYWbvXIM_normal.jpg', u'following': None, u'geo_enabled': True, u'profile_banner_url': u'https://pbs.twimg.com/profile_banners/357243270/1469393622', u'profile_background_image_url': u'http://pbs.twimg.com/profile_background_images/699755534853877760/KavcTPpB.jpg', u'name': u'bel', u'lang': u'es', u'profile_background_tile': True, u'favourites_count': 31529, u'screen_name': u'shawnisourangel', u'notifications': None, u'url': u'http://smarturl.it/IlluminateSM', u'created_at': u'Thu Aug 18 02:12:53 +0000 2011', u'contributors_enabled': False, u'time_zone': u'Mexico City', u'protected': False, u'default_profile': False, u'is_translator': False}, u'geo': None, u'in_reply_to_user_id_str': None, u'possibly_sensitive': False, u'lang': u'en', u'created_at': u'Tue Aug 02 19:57:23 +0000 2016', u'quoted_status_id_str': u'760564739600748549', u'filter_level': u'low', u'in_reply_to_status_id_str': None, u'place': None}
+<pre>{u'contributors': None, u'truncated': False, u'text': u'RT @DailyMendesLife: Pls dm us your rants and confessions about Shawn and the Mendes Army so I can start posting!  https://t.co/Usor286c2y', u'is_quote_status': True, u'in_reply_to_status_id': None, u'id': 760565175132958721, u'favorite_count': 0, u'entities': {u'user_mentions': [{u'id': 2820952439, u'indices': [3, 19], u'id_str': u'2820952439', u'screen_name': u'DailyMendesLife', u'name': u'shawn mendes'}], u'symbols': [], u'hashtags': [], u'urls': [{u'url': u'https://t.co/Usor286c2y', u'indices': [115, 138], u'expanded_url': u'https://twitter.com/dailymendeslife/status/760564739600748549', u'display_url': u'twitter.com/dailymendeslif\u2026'}]}, u'quoted_status_id': 760564739600748549, u'retweeted': False, u'coordinates': None, u'timestamp_ms': u'1470167843026', u'quoted_status': {u'contributors': None, u'truncated': False, u'text': u"Guys we made another Insta it's @/rantingshawn where you guys can dm us your Shawn rants and confessions and we will post it anonymously!", u'is_quote_status': False, u'in_reply_to_status_id': None, u'id': 760564739600748549, u'favorite_count': 21, u'source': u'<a href="http://twitter.com/download/iphone" rel="nofollow">Twitter for iPhone</a>', u'retweeted': False, u'coordinates': None, u'entities': {u'user_mentions': [], u'symbols': [], u'hashtags': [], u'urls': []}, u'in_reply_to_screen_name': None, u'id_str': u'760564739600748549', u'retweet_count': 4, u'in_reply_to_user_id': None, u'favorited': False, u'user': {u'follow_request_sent': None, u'profile_use_background_image': True, u'default_profile_image': False, u'id': 2820952439, u'verified': False, u'profile_image_url_https': u'https://pbs.twimg.com/profile_images/752622035126267904/G-K22LhL_normal.jpg', u'profile_sidebar_fill_color': u'DDEEF6', u'profile_text_color': u'333333', u'followers_count': 16466, u'profile_sidebar_border_color': u'C0DEED', u'id_str': u'2820952439', u'profile_background_color': u'C0DEED', u'listed_count': 33, u'profile_background_image_url_https': u'https://abs.twimg.com/images/themes/theme1/bg.png', u'utc_offset': -25200, u'statuses_count': 7228, u'description': u'Account owned by @MendesFeatures &amp; @seIuminated', u'friends_count': 776, u'location': u'Instagram: @GoalWithMendes', u'profile_link_color': u'0084B4', u'profile_image_url': u'http://pbs.twimg.com/profile_images/752622035126267904/G-K22LhL_normal.jpg', u'following': None, u'geo_enabled': False, u'profile_banner_url': u'https://pbs.twimg.com/profile_banners/2820952439/1469148330', u'profile_background_image_url': u'http://abs.twimg.com/images/themes/theme1/bg.png', u'name': u'shawn mendes', u'lang': u'en', u'profile_background_tile': False, u'favourites_count': 32917, u'screen_name': u'DailyMendesLife', u'notifications': None, u'url': u'https://twitter.com/goalwithmendes/status/721478509927858176', u'created_at': u'Fri Oct 10 01:03:54 +0000 2014', u'contributors_enabled': False, u'time_zone': u'Pacific Time (US &amp; Canada)', u'protected': False, u'default_profile': True, u'is_translator': False}, u'geo': None, u'in_reply_to_user_id_str': None, u'lang': u'en', u'created_at': u'Tue Aug 02 19:55:39 +0000 2016', u'filter_level': u'low', u'in_reply_to_status_id_str': None, u'place': None}, u'source': u'<a href="http://twitter.com/download/android" rel="nofollow">Twitter for Android</a>', u'in_reply_to_screen_name': None, u'id_str': u'760565175132958721', u'retweet_count': 0, u'in_reply_to_user_id': None, u'favorited': False, u'retweeted_status': {u'contributors': None, u'truncated': False, u'text': u'Pls dm us your rants and confessions about Shawn and the Mendes Army so I can start posting!  https://t.co/Usor286c2y', u'is_quote_status': True, u'in_reply_to_status_id': None, u'id': 760565123937366016, u'favorite_count': 7, u'entities': {u'user_mentions': [], u'symbols': [], u'hashtags': [], u'urls': [{u'url': u'https://t.co/Usor286c2y', u'indices': [94, 117], u'expanded_url': u'https://twitter.com/dailymendeslife/status/760564739600748549', u'display_url': u'twitter.com/dailymendeslif\u2026'}]}, u'quoted_status_id': 760564739600748549, u'retweeted': False, u'coordinates': None, u'quoted_status': {u'contributors': None, u'truncated': False, u'text': u"Guys we made another Insta it's @/rantingshawn where you guys can dm us your Shawn rants and confessions and we will post it anonymously!", u'is_quote_status': False, u'in_reply_to_status_id': None, u'id': 760564739600748549, u'favorite_count': 21, u'source': u'<a href="http://twitter.com/download/iphone" rel="nofollow">Twitter for iPhone</a>', u'retweeted': False, u'coordinates': None, u'entities': {u'user_mentions': [], u'symbols': [], u'hashtags': [], u'urls': []}, u'in_reply_to_screen_name': None, u'id_str': u'760564739600748549', u'retweet_count': 4, u'in_reply_to_user_id': None, u'favorited': False, u'user': {u'follow_request_sent': None, u'profile_use_background_image': True, u'default_profile_image': False, u'id': 2820952439, u'verified': False, u'profile_image_url_https': u'https://pbs.twimg.com/profile_images/752622035126267904/G-K22LhL_normal.jpg', u'profile_sidebar_fill_color': u'DDEEF6', u'profile_text_color': u'333333', u'followers_count': 16466, u'profile_sidebar_border_color': u'C0DEED', u'id_str': u'2820952439', u'profile_background_color': u'C0DEED', u'listed_count': 33, u'profile_background_image_url_https': u'https://abs.twimg.com/images/themes/theme1/bg.png', u'utc_offset': -25200, u'statuses_count': 7228, u'description': u'Account owned by @MendesFeatures &amp; @seIuminated', u'friends_count': 776, u'location': u'Instagram: @GoalWithMendes', u'profile_link_color': u'0084B4', u'profile_image_url': u'http://pbs.twimg.com/profile_images/752622035126267904/G-K22LhL_normal.jpg', u'following': None, u'geo_enabled': False, u'profile_banner_url': u'https://pbs.twimg.com/profile_banners/2820952439/1469148330', u'profile_background_image_url': u'http://abs.twimg.com/images/themes/theme1/bg.png', u'name': u'shawn mendes', u'lang': u'en', u'profile_background_tile': False, u'favourites_count': 32917, u'screen_name': u'DailyMendesLife', u'notifications': None, u'url': u'https://twitter.com/goalwithmendes/status/721478509927858176', u'created_at': u'Fri Oct 10 01:03:54 +0000 2014', u'contributors_enabled': False, u'time_zone': u'Pacific Time (US &amp; Canada)', u'protected': False, u'default_profile': True, u'is_translator': False}, u'geo': None, u'in_reply_to_user_id_str': None, u'lang': u'en', u'created_at': u'Tue Aug 02 19:55:39 +0000 2016', u'filter_level': u'low', u'in_reply_to_status_id_str': None, u'place': None}, u'source': u'<a href="http://twitter.com/download/iphone" rel="nofollow">Twitter for iPhone</a>', u'in_reply_to_screen_name': None, u'id_str': u'760565123937366016', u'retweet_count': 4, u'in_reply_to_user_id': None, u'favorited': False, u'user': {u'follow_request_sent': None, u'profile_use_background_image': True, u'default_profile_image': False, u'id': 2820952439, u'verified': False, u'profile_image_url_https': u'https://pbs.twimg.com/profile_images/752622035126267904/G-K22LhL_normal.jpg', u'profile_sidebar_fill_color': u'DDEEF6', u'profile_text_color': u'333333', u'followers_count': 16466, u'profile_sidebar_border_color': u'C0DEED', u'id_str': u'2820952439', u'profile_background_color': u'C0DEED', u'listed_count': 33, u'profile_background_image_url_https': u'https://abs.twimg.com/images/themes/theme1/bg.png', u'utc_offset': -25200, u'statuses_count': 7228, u'description': u'Account owned by @MendesFeatures &amp; @seIuminated', u'friends_count': 776, u'location': u'Instagram: @GoalWithMendes', u'profile_link_color': u'0084B4', u'profile_image_url': u'http://pbs.twimg.com/profile_images/752622035126267904/G-K22LhL_normal.jpg', u'following': None, u'geo_enabled': False, u'profile_banner_url': u'https://pbs.twimg.com/profile_banners/2820952439/1469148330', u'profile_background_image_url': u'http://abs.twimg.com/images/themes/theme1/bg.png', u'name': u'shawn mendes', u'lang': u'en', u'profile_background_tile': False, u'favourites_count': 32917, u'screen_name': u'DailyMendesLife', u'notifications': None, u'url': u'https://twitter.com/goalwithmendes/status/721478509927858176', u'created_at': u'Fri Oct 10 01:03:54 +0000 2014', u'contributors_enabled': False, u'time_zone': u'Pacific Time (US &amp; Canada)', u'protected': False, u'default_profile': True, u'is_translator': False}, u'geo': None, u'in_reply_to_user_id_str': None, u'possibly_sensitive': False, u'lang': u'en', u'created_at': u'Tue Aug 02 19:57:10 +0000 2016', u'quoted_status_id_str': u'760564739600748549', u'filter_level': u'low', u'in_reply_to_status_id_str': None, u'place': None}, u'user': {u'follow_request_sent': None, u'profile_use_background_image': True, u'default_profile_image': False, u'id': 357243270, u'verified': False, u'profile_image_url_https': u'https://pbs.twimg.com/profile_images/756939005858500608/GYWbvXIM_normal.jpg', u'profile_sidebar_fill_color': u'18E9F0', u'profile_text_color': u'3C3940', u'followers_count': 3344, u'profile_sidebar_border_color': u'FFFFFF', u'id_str': u'357243270', u'profile_background_color': u'FFFFFF', u'listed_count': 15, u'profile_background_image_url_https': u'https://pbs.twimg.com/profile_background_images/699755534853877760/KavcTPpB.jpg', u'utc_offset': -18000, u'statuses_count': 89240, u'description': u'raul mendes is my favourite person in the world', u'friends_count': 1735, u'location': None, u'profile_link_color': u'000000', u'profile_image_url': u'http://pbs.twimg.com/profile_images/756939005858500608/GYWbvXIM_normal.jpg', u'following': None, u'geo_enabled': True, u'profile_banner_url': u'https://pbs.twimg.com/profile_banners/357243270/1469393622', u'profile_background_image_url': u'http://pbs.twimg.com/profile_background_images/699755534853877760/KavcTPpB.jpg', u'name': u'bel', u'lang': u'es', u'profile_background_tile': True, u'favourites_count': 31529, u'screen_name': u'shawnisourangel', u'notifications': None, u'url': u'http://smarturl.it/IlluminateSM', u'created_at': u'Thu Aug 18 02:12:53 +0000 2011', u'contributors_enabled': False, u'time_zone': u'Mexico City', u'protected': False, u'default_profile': False, u'is_translator': False}, u'geo': None, u'in_reply_to_user_id_str': None, u'possibly_sensitive': False, u'lang': u'en', u'created_at': u'Tue Aug 02 19:57:23 +0000 2016', u'quoted_status_id_str': u'760564739600748549', u'filter_level': u'low', u'in_reply_to_status_id_str': None, u'place': None}
 </pre>
 </div>
 </div>
@@ -1239,10 +1259,10 @@ h6:hover .anchor-link {
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># search with keyword "life" with q=life:</span>
 <span class="c1"># limit the number of tweets to <span class="burk"><span class="mark">100</span></span> with count=100</span>
 <span class="c1"># limit tweets to the most recent tweets with result_type=recent</span>
-<span class="c1"># The paratmeters "count", "q", "result_type" are seperated by '&'.DS_Store</span>
+<span class="c1"># The paratmeters "count", "q", "result_type" are seperated by '&amp;'.DS_Store</span>
 <span class="c1"># %20 just implies a space. </span>
 
-<span class="n">results</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">GetSearch</span><span class="p">(</span> <span class="n">raw_query</span><span class="o">=</span><span class="s2">"q=life%20&result;_type=recent&count;=100"</span><span class="p">)</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">GetSearch</span><span class="p">(</span> <span class="n">raw_query</span><span class="o">=</span><span class="s2">"q=life%20&amp;result;_type=recent&amp;count;=100"</span><span class="p">)</span>
 <span class="k">print</span> <span class="nb">len</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>        <span class="c1"># count the number of records returend by the query</span>
 <span class="k">print</span> <span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>          <span class="c1"># print and see an example one tweet instance.</span>
 </pre></div>
@@ -1254,7 +1274,7 @@ h6:hover .anchor-link {
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>100
-{"created_at": "Sun Jul 03 00:54:25 +0000 2016", "hashtags": [], "id": 749405904525754369, "id_str": "749405904525754369", "lang": "en", "retweet_count": 10, "retweeted_status": {"created_at": "Sun Jul 03 00:34:55 +0000 2016", "favorite_count": 17, "hashtags": [], "id": 749400995726106624, "id_str": "749400995726106624", "lang": "en", "retweet_count": 10, "source": "<a href="\&quot;http://twitter.com/download/iphone\&quot;" rel="\&quot;nofollow\&quot;">Twitter for iPhone</a>", "text": "don't let the things of this world rob you of your spiritual life", "urls": [], "user": {"created_at": "Wed May 07 03:28:55 +0000 2014", "default_profile": true, "description": "child of God, heaven is my home", "favourites_count": 34060, "followers_count": 6599, "friends_count": 641, "id": 2481242240, "lang": "en", "listed_count": 29, "location": "pittsburgh", "name": "dante lee \u271e", "profile_background_color": "C0DEED", "profile_background_image_url": "http://abs.twimg.com/images/themes/theme1/bg.png", "profile_banner_url": "https://pbs.twimg.com/profile_banners/2481242240/1464542980", "profile_image_url": "http://pbs.twimg.com/profile_images/737134592503783424/7yQi_q7O_normal.jpg", "profile_link_color": "0084B4", "profile_sidebar_fill_color": "DDEEF6", "profile_text_color": "333333", "screen_name": "whoknowsdante", "statuses_count": 3582, "time_zone": "Atlantic Time (Canada)", "utc_offset": -10800}, "user_mentions": []}, "source": "<a href="\&quot;http://twitter.com/download/iphone\&quot;" rel="\&quot;nofollow\&quot;">Twitter for iPhone</a>", "text": "RT @whoknowsdante: don't let the things of this world rob you of your spiritual life", "urls": [], "user": {"created_at": "Tue Nov 19 01:35:17 +0000 2013", "default_profile": true, "description": "\u2022beyond blessed \u2022Joshua 21:45 \u2022CCH\u2764\ufe0f\u2022Snapchat: tatianaa_reneee", "favourites_count": 64297, "followers_count": 1514, "friends_count": 966, "geo_enabled": true, "id": 2186766317, "lang": "en", "listed_count": 5, "location": "Florida ", "name": "\u271datiana", "profile_background_color": "C0DEED", "profile_background_image_url": "http://abs.twimg.com/images/themes/theme1/bg.png", "profile_banner_url": "https://pbs.twimg.com/profile_banners/2186766317/1465481330", "profile_image_url": "http://pbs.twimg.com/profile_images/740910215881707520/wxI7_Ylz_normal.jpg", "profile_link_color": "0084B4", "profile_sidebar_fill_color": "DDEEF6", "profile_text_color": "333333", "screen_name": "Totttt_35", "statuses_count": 27255}, "user_mentions": [{"id": 2481242240, "name": "dante lee \u271e", "screen_name": "whoknowsdante"}]}
+{"created_at": "Sun Jul 03 00:54:25 +0000 2016", "hashtags": [], "id": 749405904525754369, "id_str": "749405904525754369", "lang": "en", "retweet_count": 10, "retweeted_status": {"created_at": "Sun Jul 03 00:34:55 +0000 2016", "favorite_count": 17, "hashtags": [], "id": 749400995726106624, "id_str": "749400995726106624", "lang": "en", "retweet_count": 10, "source": "<a href='\"http://twitter.com/download/iphone\"' rel='\"nofollow\"'>Twitter for iPhone</a>", "text": "don't let the things of this world rob you of your spiritual life", "urls": [], "user": {"created_at": "Wed May 07 03:28:55 +0000 2014", "default_profile": true, "description": "child of God, heaven is my home", "favourites_count": 34060, "followers_count": 6599, "friends_count": 641, "id": 2481242240, "lang": "en", "listed_count": 29, "location": "pittsburgh", "name": "dante lee \u271e", "profile_background_color": "C0DEED", "profile_background_image_url": "http://abs.twimg.com/images/themes/theme1/bg.png", "profile_banner_url": "https://pbs.twimg.com/profile_banners/2481242240/1464542980", "profile_image_url": "http://pbs.twimg.com/profile_images/737134592503783424/7yQi_q7O_normal.jpg", "profile_link_color": "0084B4", "profile_sidebar_fill_color": "DDEEF6", "profile_text_color": "333333", "screen_name": "whoknowsdante", "statuses_count": 3582, "time_zone": "Atlantic Time (Canada)", "utc_offset": -10800}, "user_mentions": []}, "source": "<a href='\"http://twitter.com/download/iphone\"' rel='\"nofollow\"'>Twitter for iPhone</a>", "text": "RT @whoknowsdante: don't let the things of this world rob you of your spiritual life", "urls": [], "user": {"created_at": "Tue Nov 19 01:35:17 +0000 2013", "default_profile": true, "description": "\u2022beyond blessed \u2022Joshua 21:45 \u2022CCH\u2764\ufe0f\u2022Snapchat: tatianaa_reneee", "favourites_count": 64297, "followers_count": 1514, "friends_count": 966, "geo_enabled": true, "id": 2186766317, "lang": "en", "listed_count": 5, "location": "Florida ", "name": "\u271datiana", "profile_background_color": "C0DEED", "profile_background_image_url": "http://abs.twimg.com/images/themes/theme1/bg.png", "profile_banner_url": "https://pbs.twimg.com/profile_banners/2186766317/1465481330", "profile_image_url": "http://pbs.twimg.com/profile_images/740910215881707520/wxI7_Ylz_normal.jpg", "profile_link_color": "0084B4", "profile_sidebar_fill_color": "DDEEF6", "profile_text_color": "333333", "screen_name": "Totttt_35", "statuses_count": 27255}, "user_mentions": [{"id": 2481242240, "name": "dante lee \u271e", "screen_name": "whoknowsdante"}]}
 </pre>
 </div>
 </div>
@@ -1266,7 +1286,7 @@ h6:hover .anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><br><br><br><br /></br></br></br></p>
+<p><br><br><br><br/></br></br></br></p>
 <h2 id="Try-and-Explore:">Try and Explore:<a class="anchor-link" href="#Try-and-Explore:">¶</a></h2><ol>
 <li><p>Try set up a streaming for twitter using the geolocations as the query paramter.</p>
 </li>
@@ -1275,7 +1295,7 @@ h6:hover .anchor-link {
 </ol>
 <p><strong>references</strong></p>
 <ol>
-<li>For referecne twitter has an excellent documentation of <a href="https://dev.twitter.com/streaming/overview/request-parameters#locations">twitter API</a>. <br /></li>
+<li>For referecne twitter has an excellent documentation of <a href="https://dev.twitter.com/streaming/overview/request-parameters#locations">twitter API</a>. <br/></li>
 <li>For references to <a href="http://python-twitter.readthedocs.io/en/latest/">python-twitter library</a>. You can use any library to try this. </li>
 </ol>
 <p>Now that we have all this JSON data from twitter stored in a file, let's take a quick peak at what is JSON and how we can parse this data using python <a href=""></a></p>
@@ -1320,6 +1340,19 @@ h6:hover .anchor-link {
 
 
 
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'chandansblog';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>
+        Please enable JavaScript to view comments.
+
+</noscript>
 </article>
 
     <footer>
@@ -1336,10 +1369,10 @@ h6:hover .anchor-link {
 {
   "@context" : "http://schema.org",
   "@type" : "Blog",
-  "name": " Text-Mining Tutorial ",
+  "name": " Chandan 's Blog ",
   "url" : ".",
-  "image": "",
-  "description": ""
+  "image": "https://s.gravatar.com/avatar/1ffef3b08b2d7091ed88bcd36cb2030f?s=80",
+  "description": "chandan u's Thoughts and Writings"
 }
 </script>
 </body>

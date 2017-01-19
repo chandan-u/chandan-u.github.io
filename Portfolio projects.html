@@ -38,7 +38,7 @@
 <meta property="og:url" content="."/>
 <meta property="og:image" content="https://s.gravatar.com/avatar/1ffef3b08b2d7091ed88bcd36cb2030f?s=80">
 
-  <title>Chandan 's Blog &ndash; Text mining Tutorial</title>
+  <title>Chandan 's Blog &ndash; Portfolio</title>
 </head>
 <body>
   <aside>
@@ -52,9 +52,9 @@
       <nav>
         <ul class="list">
           <li><a href="./about.html#about">About me</a></li>
+          <li><a href="./Portfolio projects.html#Portfolio projects">Portfolio</a></li>
           <li><a href="./Text Mining Blog.html#Text Mining Blog">Text mining Tutorial</a></li>
 
-          <li><a href="http://hit9.github.io/GhResume/?chandan-u" target="_blank">portfolio</a></li>
         </ul>
       </nav>
 
@@ -79,7 +79,7 @@
 
 <article>
   <header>
-    <h1 id="Text Mining Blog">Text mining Tutorial</h1>
+    <h1 id="Portfolio projects">Portfolio</h1>
   </header>
   <div>
     <style type="text/css">/*!
@@ -1053,53 +1053,17 @@ h6:hover .anchor-link {
 .ansi-white-intense-bg { background-color: #A1A6B2; }
 
 .ansi-bold { font-weight: bold; }
-</style>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Introduction:">Introduction:<a class="anchor-link" href="#Introduction:">¶</a></h2><p>This entire tutorial on text mining uses <a href="www.python.org">python</a> for implementation and also some linux command line functions. You need not know either of them before hand as they are explained as part of the tutorial. But if you already know, then things will be even more easy for you.</p>
-<p>In this tutorial you will be learning what is text mining about through an example. The example works around the twitter data. Twitter is an extensively used social media platform that uses short text messages. We will be extracting data from this platform and work with it through out the chapter.</p>
-<p>Though we will be working on twitter data in this tutorial you can apply the same concepts to any other textual datasets out there.</p>
-<h2 id="Text-mining:">Text mining:<a class="anchor-link" href="#Text-mining:">¶</a></h2><p>This very moment you are reading this sentence , huge amounts  of textual data are being posted on the web. Some of this content are short textual messages sometimes combined with other sorts of media such as images or videos, there are also blogs written by people on different topics expressing their views or opinons on them, there are reviews or comments often expressed by people on movies, books, restaurents, products etc  and also the books themselves(either fiction or non-fiction). All this data is lying out there, sometimes easily accessible and some times not, but if left untouched it is simply a waste and otherwise might give you something insightful if you start working with it.</p>
-<p>The goal of text mining is to obtain quality information from text data. In above paragraph I have listed some text resources that are present on the world wide web. But  there are certain chal lenges that lie in the way of obtaining this qualitative information.</p>
-<p>Text mining starts generaly with the process of information retrieval. We need to identify the source of data and then collect from this source. General sources are web: blogs, social media platforms, reviews and comments etc. Once we collect the data, we need to clean the noise in it, such as the removal of duplicate data entries, unwanted information such as url's, image links etc.  There are number of steps invovled in denoising the data and this dependes on the kind of data that you have at hand. Once we clean the text data, we can apply natural language processing techniques such as parsing, pos tagging etc.</p>
-<p>The whole idea is to convert something not so structured into something meaningful and structured. Once we have such a structured output, we can perform various tasks such as:</p>
-<ul>
-<li>Sentiment analysis, </li>
-<li>Topic detection</li>
-<li>Document Summarization</li>
-<li>entitiy relational Modelling</li>
-<li>pattern recognition</li>
-<li>predictive analytics</li>
-<li>text categorization etc...</li>
-</ul>
-<p>In this tutorial we will be covering some primary concepts in sentiment analysis. The above mentioned tasks are extremely usefull for gaining insights into textual data.</p>
-<h2 id="Contents:">Contents:<a class="anchor-link" href="#Contents:">¶</a></h2><ol>
-<li><a href="regular-expressions.html">Regular Expressions</a></li>
-<li><p><a href="command-line-utitlies.html">Command line text Processing</a></p>
-</li>
-<li><p><a href="python-setup.html">Python: installation and, pip</a></p>
-</li>
-<li><p><a href="python-quicky.html">Playing with python</a></p>
-</li>
-<li><p><a href="grabbing-tweets.html">Extracting data from   twitter</a></p>
-</li>
-<li><p><a href="json.html">A quicky on JSON</a></p>
-</li>
-<li><p><a href="cleaning-tweets.html">Cleaning the tweets</a></p>
-</li>
-<li><p><a href="setniment-analysis.html">Sentiment Analysis</a></p>
-</li>
-<li><p><a href="TBD">Topic detection</a></p>
-</li>
-<li><p><a href="projects.html">A Project</a></p>
-</li>
-</ol>
-</div>
-</div>
-</div>
+</style>{% if GITHUB_USER %}
+    <h1>Projects</h1>
+    {% for project in github_projects %}
+        <h2>{{ project.name }} <sup>({{ project.language }})</sup></h2>
+<p>{{ project.description }}</p>
+<p>
+<a href="{{ project.homepage }}">Homepage</a>
+<a href="{{ project.github_url }}">GitHub</a>
+</p>
+    {% endfor %}
+{% endif %}
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In [ ]:</div>

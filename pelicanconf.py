@@ -34,7 +34,7 @@ AUTHOR_FEED_RSS = None
 
 MAIN_MENU = True
 #
-#LINKS = (('', 'http://chandan-u.com'),)
+LINKS = (('portfolio', 'http://hit9.github.io/GhResume/?chandan-u'),)
 
 
 

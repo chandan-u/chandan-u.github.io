@@ -38,8 +38,7 @@
 <meta property="og:url" content="."/>
 <meta property="og:image" content="https://s.gravatar.com/avatar/1ffef3b08b2d7091ed88bcd36cb2030f?s=80">
 
-  <title>Chandan 's Blog &ndash;     Archives
-</title>
+  <title>Chandan 's Blog &ndash; Portfolio</title>
 </head>
 <body>
   <aside>
@@ -53,9 +52,9 @@
       <nav>
         <ul class="list">
           <li><a href="./about.html#about">About me</a></li>
+          <li><a href="./portfolio.html#portfolio">Portfolio</a></li>
           <li><a href="./Text Mining Blog.html#Text Mining Blog">Text mining Tutorial</a></li>
 
-          <li><a href="http://hit9.github.io/GhResume/?chandan-u" target="_blank">portfolio</a></li>
         </ul>
       </nav>
 
@@ -80,30 +79,19 @@
 
 <article>
   <header>
-    <h1>    Archives
-</h1>
+    <h1 id="portfolio">Portfolio</h1>
   </header>
   <div>
-    <dl>
-      <dt>August 15, 2016</dt>
-      <dd><a href="./cleaning-tweets.html">Cleaning the tweets</a></dd>
-      <dt>August 15, 2016</dt>
-      <dd><a href="./command-line-utitlies.html">Command Line Utilities for text processing</a></dd>
-      <dt>August 15, 2016</dt>
-      <dd><a href="./grabbing-tweets.html">Grabbing twitter Data</a></dd>
-      <dt>August 15, 2016</dt>
-      <dd><a href="./json.html">A quicky on JSON</a></dd>
-      <dt>August 15, 2016</dt>
-      <dd><a href="./projects.html">projects</a></dd>
-      <dt>August 15, 2016</dt>
-      <dd><a href="./python-quicky.html">Python quicky</a></dd>
-      <dt>August 15, 2016</dt>
-      <dd><a href="./python-setup.html">python setup and package installation</a></dd>
-      <dt>August 15, 2016</dt>
-      <dd><a href="./regular-expressions.html">Regular expressions tutorial</a></dd>
-      <dt>August 15, 2016</dt>
-      <dd><a href="./setniment-analysis.html">Sentiment Analysis an intro</a></dd>
-    </dl>
+    <p _="%" endif="">{% if GITHUB_USER %}
+    <h1>Projects</h1>
+    {% for project in github_projects %}
+        <h2>{{ project.name }} <sup>({{ project.language }})</sup></h2>
+<p>{{ project.description }}</p>
+<p>
+<a href="{{ project.homepage }}">Homepage</a>
+<a href="{{ project.github_url }}">GitHub</a>
+</p>
+    {% endfor %}</p>
   </div>
 </article>
 

@@ -4,9 +4,10 @@
 <head>
   <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,400italic' rel='stylesheet' type='text/css'>
 
-    <link rel="stylesheet" type="text/css" href="./theme/stylesheet/style.min.css">
+    <link rel="stylesheet/less" type="text/css" href="./theme/stylesheet/style.less">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/2.5.1/less.min.js" type="text/javascript"></script>
 
-  <link rel="stylesheet" type="text/css" href="./theme/pygments/github.min.css">
+  <link rel="stylesheet" type="text/css" href="./theme/pygments/monokai.min.css">
   <link rel="stylesheet" type="text/css" href="./theme/font-awesome/css/font-awesome.min.css">
 
 
@@ -17,13 +18,20 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="HandheldFriendly" content="True" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="robots" content="" />
+  <meta name="robots" content="index, follow" />
 
+    <!-- Chrome, Firefox OS and Opera -->
+    <meta name="theme-color" content="#333333">
+    <!-- Windows Phone -->
+    <meta name="msapplication-navbutton-color" content="#333333">
+    <!-- iOS Safari -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
 <meta name="author" content="Chandan u" />
 <meta name="description" content="The noise in the data:¶Once you have obtained the data that we want, the next major step is to pre-process this data. Most of the textual data that we get from social media has a lot of noise. We cannot use this data stright awawy. We need to remove this noise before we try to get any meaningful insights from this data and do some magic with it. The noise can be due to the usage of colloqual language, encoding issues etc." />
 <meta name="keywords" content="Text-mining, twitter">
-<meta property="og:site_name" content="Text-Mining Tutorial"/>
+<meta property="og:site_name" content="Chandan 's Blog"/>
 <meta property="og:title" content="Cleaning the tweets"/>
 <meta property="og:description" content="The noise in the data:¶Once you have obtained the data that we want, the next major step is to pre-process this data. Most of the textual data that we get from social media has a lot of noise. We cannot use this data stright awawy. We need to remove this noise before we try to get any meaningful insights from this data and do some magic with it. The noise can be due to the usage of colloqual language, encoding issues etc."/>
 <meta property="og:locale" content="en_US"/>
@@ -35,22 +43,23 @@
 <meta property="article:section" content="misc"/>
 <meta property="article:tag" content="Text-mining"/>
 <meta property="article:tag" content="twitter"/>
-<meta property="og:image" content="">
+<meta property="og:image" content="https://s.gravatar.com/avatar/1ffef3b08b2d7091ed88bcd36cb2030f?s=80">
 
-  <title>Text-Mining Tutorial &ndash; Cleaning the tweets</title>
+  <title>Chandan 's Blog &ndash; Cleaning the tweets</title>
 </head>
 <body>
   <aside>
     <div>
       <a href=".">
-        <img src="./theme/img/profile.png" alt="" title="">
+        <img src="https://s.gravatar.com/avatar/1ffef3b08b2d7091ed88bcd36cb2030f?s=80" alt="chandan u" title="chandan u">
       </a>
-      <h1><a href="."></a></h1>
+      <h1><a href=".">chandan u</a></h1>
 
-
+<p>Data science - Student</p>
       <nav>
         <ul class="list">
           <li><a href="./about.html#about">About me</a></li>
+          <li><a href="./Portfolio projects.html#Portfolio projects">Portfolio</a></li>
           <li><a href="./Text Mining Blog.html#Text Mining Blog">Text mining Tutorial</a></li>
 
         </ul>
@@ -64,14 +73,25 @@
     </div>
   </aside>
   <main>
+    <nav>
+      <a href=".">    Home
+</a>
+
+      <a href="/archives.html">Archives</a>
+      <a href="/categories.html">Categories</a>
+      <a href="/tags.html">Tags</a>
+
+
+    </nav>
 
 <article>
   <header>
     <h1 id="cleaning-tweets">Cleaning the tweets</h1>
     <p>
-          Posted on Mon 15 August 2016 in <a href="./category/misc.html">misc</a>
+          Posted on August 15, 2016 in <a href="./category/misc.html">misc</a>
 
 
+        &#8226; 13 min read
     </p>
   </header>
   <div>
@@ -1059,7 +1079,7 @@ h6:hover .anchor-link {
 <p>Consier the following tweet:</p>
 <blockquote><p><strong><em>"@user</em>@34 Life is great <code>&amp;</code> I like it sooooooooo much. It's whatis life. #life #great#like <a href="http://lifeisgreat.com">http://lifeisgreat.com</a> "_</strong></p>
 </blockquote>
-<h3 id="HTML-parsing:">HTML parsing:<a class="anchor-link" href="#HTML-parsing:">¶</a></h3><p>Some times tweets have html elements such as &lt;, &gt;, &amp.; To convert this html elements into readble format we need to use HTML parser:</p>
+<h3 id="HTML-parsing:">HTML parsing:<a class="anchor-link" href="#HTML-parsing:">¶</a></h3><p>Some times tweets have html elements such as &lt;, &gt;, &amp;amp.; To convert this html elements into readble format we need to use HTML parser:</p>
 </div>
 </div>
 </div>
@@ -1082,7 +1102,7 @@ h6:hover .anchor-link {
 <div class="output">
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>@user_@34 Life is great & I like it sooooooooo much. It's whatis life. #life #great#like http://lifeisgreat.com .
+<pre>@user_@34 Life is great &amp; I like it sooooooooo much. It's whatis life. #life #great#like http://lifeisgreat.com .
 </pre>
 </div>
 </div>
@@ -1094,7 +1114,7 @@ h6:hover .anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="URL&#x27;s:">URL's:<a class="anchor-link" href="#URL&#x27;s:">¶</a></h3><p>Urls can be removed using the regular expressions</p>
+<h3 id="URL's:">URL's:<a class="anchor-link" href="#URL's:">¶</a></h3><p>Urls can be removed using the regular expressions</p>
 </div>
 </div>
 </div>
@@ -1116,7 +1136,7 @@ h6:hover .anchor-link {
 <div class="output">
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>@user_@34 Life is great & I like it sooooooooo much. It's whatis life. #life #great#like  .
+<pre>@user_@34 Life is great &amp; I like it sooooooooo much. It's whatis life. #life #great#like  .
 </pre>
 </div>
 </div>
@@ -1150,7 +1170,7 @@ h6:hover .anchor-link {
 <div class="output">
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre> Life is great & I like it sooooooooo much. It's whatis life. #life #great#like  .
+<pre> Life is great &amp; I like it sooooooooo much. It's whatis life. #life #great#like  .
 </pre>
 </div>
 </div>
@@ -1183,7 +1203,7 @@ h6:hover .anchor-link {
 <div class="output">
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre> Life is great & I like it so much. It's whatis life. #life #great#like  .
+<pre> Life is great &amp; I like it so much. It's whatis life. #life #great#like  .
 </pre>
 </div>
 </div>
@@ -1246,6 +1266,19 @@ h6:hover .anchor-link {
 
 
 
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'chandansblog';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>
+        Please enable JavaScript to view comments.
+
+</noscript>
 </article>
 
     <footer>
@@ -1262,10 +1295,10 @@ h6:hover .anchor-link {
 {
   "@context" : "http://schema.org",
   "@type" : "Blog",
-  "name": " Text-Mining Tutorial ",
+  "name": " Chandan 's Blog ",
   "url" : ".",
-  "image": "",
-  "description": ""
+  "image": "https://s.gravatar.com/avatar/1ffef3b08b2d7091ed88bcd36cb2030f?s=80",
+  "description": "chandan u's Thoughts and Writings"
 }
 </script>
 </body>

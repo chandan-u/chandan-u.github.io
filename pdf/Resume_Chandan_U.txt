@@ -1,0 +1,94 @@
+
+ADDRESS:
+--------
+2677 E 7th ST Apt D, Bloomington, IN 47408
+
+Linkedin: https://www.linkedin.com/in/chandanu/
+Github: https://github.com/chandan-u
+Blog: http://chandan-u.github.io
+
+
+EDUCATION
+---------
+
+INDIANA UNIVERSITY, BLOOMINGTON, IN  - December 2017    
+Master of Science in Data Science (GPA:3.38)
+
+GITAM UNIVERSITY, INDIA - April 2012      
+Bachelor of Technology in Computer Science (GPA:7.61)
+
+EXPERIENCE
+----------
+
+1. RESEARCH ASSISTANT AND DATA SCIENTIST, UNIVERSITY OF PENNSYLVANIA - MAY 2016 - OCTOBER 2016
+
+	a. Conducted research with Professor Muhammad Abdul Mageed (http://mageed.arts.ubc.ca/) in modelling human emotions through data science. (http://www.wwbp.org/)
+	b.  Responsible for collecting relevant data from various sources such as twitter, LiveJournal, databases etc. and merge different data sets into a centralize database/file. (Data acquisition and ETL)
+	c. Worked on English as well as Arabic data sets (middle east).  Performed data cleaning tasks on either of them. 
+	d. Performed data analysis on the language used in social media using LIWC, word cloud’s, topic analysis etc.
+	e. Built Machine learning models on language used in the social media to predict emotions. (SVM, Convolution neural networks etc.)
+	f.Gained Proficiency in Python, Pandas, R, scikit-learn, LIWC, NLTK, TwitterAPI, keras, Text-mining
+
+2. INSTRUCTOR, INDIANA UNIVERSITY - MAY 2016 - DEC 2016
+	
+    a. Text-mining course : Developed an online course on text-mining (I 590) for the Indiana University School of Informatics and Computing. This courses lays the foundations that are required to learn text-mining. 
+    Syllabus: http://chandan-u.github.io/Text Mining Blog.html
+
+3. SOFTWARE DEVELOPMENT ENGINEER, HCL TECHNOLOGIES INDIA - JULY 2012 - OCTOBER 2015
+
+    a. Web developer: Developed Information visualization and Responsive Design Apps using HTML5, Bootstrap, JQuery, AngularJS, CSS3 and D3.js and, explore new technologies as part of mobility team. 
+    b. Middleware developer: Implemented backend integration for T-Mobile - MetroPCS merger and T-Mobile LETO launch using TIBCO BW, Oracle Fusion, web services, RESTFUL and XML technologies. 
+    c. Value addition: Automated existing tasks using python and groovy scripting which led to process improvements. 
+
+Skills:
+-------
+Languages:   R, Python [5+ years], C, JavaScript, C++
+Big Data Tools: Apache spark, numpy, keras, scikit-learn, shiny, ggplot, leaflet, RStudio, Pandas Microsoft Excel, Sparql, sci2, Tableau, NLTK, sql
+
+DB: mongoDB, MySQL
+
+Web Technologies: Django, Flask, SOA, REST, Web services(SOAP), HTML, CSS, jQuery, bootstrap, d3, socket.io, SoapUI
+
+Other Tools: Git, TIBCO BW, Oracle Fusion Middleware, UNIX/LINUX
+
+Courses: Machine Learning, Data mining, Statistics, Information Visualization, Data Semantics, Artificial Intelligence, Sentiment Analysis, Design and Analysis of Algorithms, Spark, Tableau
+
+
+Academic Projects:
+------------------
+1. Client project: Scientometric Analysis of Interpreting Journals (Python, R, leaflet, shiny, google geocoding API)
+    
+    a. Collected data and analyzed trends in the domain of interpreting studies using visualizations such as word clouds, co-authorship networks, topic burst analysis over time, geospatial analysis of trends etc.
+    b. Project Website: https://chandan-u.shinyapps.io/scientometric_analysis/
+
+2. Occupancy Detection using Room Attributes (Python, NumPy, Keras)
+    a. Implemented a prediction model to detect room occupancy which uses room attributes such as temperature, humidity etc. (A classification problem)
+    b. The source code and the analysis of the results is present here: https://github.com/chandan-u/Occupancy-Detection-Prediction-models
+
+3. Storytelling through data (R, tidyr, ggplot2, plotly)
+    a. Safety and Neighborhoods: SFO, Wrote a story using San Francisco crime data to explain which neighborhood is safe in San Francisco. Used various visualizations and data analysis techniques.
+
+4. Graph Search based Recommendation System (Python).
+    a. Implemented a movie recommendation system that uses graph traversal techniques such as BSF etc. instead of traditional Machine learning algorithms. 
+    b. Used collaborative filtering and content based filtering techniques over MovieLens dataset.
+    c. The source code and analysis can be found here: https://github.com/chandan-u/graph-based-recommendation-system
+
+5. Semantic Web (Apache Jena, SPARQL, RDF)
+    a. Created an application that reads and visualizes RDF dataset of Indiana University's Researchers. 
+    b. Making smart inferences from the RDF data, using Jena and Sparql.
+
+6. SUSY Data Set: A classification problem (Python, NumPy)
+    a. Implemented various machine learning algorithms from scratch such as Neural Networks, Naïve Bayes, Logistic Regression, Linear Regression with and without regularization, Radial Basis function network etc. and applied them on SUSY Data Set. 
+    b. Code: https://github.com/chandan-u/Machine-learning-Algorithms
+
+7. Facial Sentiment Analysis (Python, NumPy, Theano, Keras)
+    a. Implemented convolution neural networks for predicting sentiments in facial images. 
+    b. The source code can be found here: https://github.com/chandan-u/FacialSentimentAnalysis
+    c. It was a classification problem for predicting six emotions. The dataset was taken from kaggle.
+
+
+Publications:
+-------------
+1. The 28th Modern Artificial Intelligence and Cognitive Science Conference(Accepted): 
+    Building Customized Text Mining Tools via Shiny Framework: The Future of Data Visualization. Authors: Olga Scrivner, Vinita Chakilam, Jivitesh Poojary, Nilima Sahoo, Stephan De Spiegeleire and Chandan Uppuluri.
+

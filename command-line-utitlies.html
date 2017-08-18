@@ -7,7 +7,7 @@
     <link rel="stylesheet/less" type="text/css" href="./theme/stylesheet/style.less">
     <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/2.5.1/less.min.js" type="text/javascript"></script>
 
-  <link rel="stylesheet" type="text/css" href="./theme/pygments/monokai.min.css">
+  <link rel="stylesheet" type="text/css" href="./theme/pygments/github.min.css">
   <link rel="stylesheet" type="text/css" href="./theme/font-awesome/css/font-awesome.min.css">
 
 
@@ -45,6 +45,7 @@
 <meta property="og:image" content="https://s.gravatar.com/avatar/1ffef3b08b2d7091ed88bcd36cb2030f?s=80">
 
   <title>Chandan 's Blog &ndash; Command Line Utilities for text processing</title>
+
 </head>
 <body>
   <aside>
@@ -70,8 +71,11 @@
         <li><a class="sc-google" href="https://plus.google.com/u/0/112461392309064088729" target="_blank"><i class="fa fa-google"></i></a></li>
       </ul>
     </div>
+
+
   </aside>
   <main>
+
     <nav>
       <a href=".">    Home
 </a>
@@ -83,16 +87,17 @@
 
     </nav>
 
-<article>
+<article class="single">
   <header>
     <h1 id="command-line-utitlies">Command Line Utilities for text processing</h1>
     <p>
           Posted on August 15, 2016 in <a href="./category/misc.html">misc</a>
 
 
-        &#8226; 14 min read
     </p>
   </header>
+
+
   <div>
     <style type="text/css">/*!
 *
@@ -1097,23 +1102,23 @@ h6:hover .anchor-link {
 <ol>
 <li>An example to get number of  lines:</li>
 </ol>
-<pre><code>$wc -l <filename>
-20</filename></code></pre>
+<pre><span class="code-line"><code>$wc -l <filename></span>
+<span class="code-line">20</filename></code></pre>
 <ol>
 <li>An example to get number of words:</li>
 </ol>
-<pre><code>$wc -w <filename>
-60</filename></code></pre>
+<pre><span class="code-line"><code>$wc -w <filename></span>
+<span class="code-line">60</filename></code></pre>
 <ol>
 <li>An example to get number of characters:
-<pre><code>$wc -c <filename>
-233</filename></code></pre>
+<pre><span class="code-line"><code>$wc -c <filename></span>
+<span class="code-line">233</filename></code></pre>
 </li>
 </ol>
 <h2 id="head:">head:<a class="anchor-link" href="#head:">¶</a></h2><p>Head is used to ouput the first "n" lines from a file. If the number is not specified it outputs the first ten lines. The header can be used to see a sample of the entire data set or it can be used to output partial data set that can be further used for processing.</p>
-<pre><code>$head -n <filename></filename></code></pre>
+<pre><span class="code-line"><code>$head -n <filename></filename></code></pre>
 <h2 id="sort">sort<a class="anchor-link" href="#sort">¶</a></h2><p>As the name implies it sorts the lines of text files and prints it out to standard output. You can also sort the file backwords or forwards or based on character position.</p>
-<pre><code>$sort [options] <filename></filename></code></pre>
+<pre><span class="code-line"><code>$sort [options] <filename></filename></code></pre>
 <h2 id="uniq">uniq<a class="anchor-link" href="#uniq">¶</a></h2><p>The uniq command is used to remove duplicate lines in from a sorted text file. Or count the occurance of duplicates.</p>
 <blockquote><p>NOTE: The file should be sorted before applying the uniq command. Thats why uniq is always used in combination with the sort command. In unix commands can be pipelined.</p>
 </blockquote>
@@ -1125,52 +1130,52 @@ h6:hover .anchor-link {
  This line occurs three times.
  This line occurs three times.</p>
 <p>When you use the uniq command on this file, this is how output looks like:</p>
-<pre><code>  $ uniq -c foo.txt
-    1 This line occurs only once.
-    2 This line occurs twice.
-    3 This line occurs three times.</code></pre>
+<pre><span class="code-line"><code>  $ uniq -c foo.txt</span>
+<span class="code-line">    1 This line occurs only once.</span>
+<span class="code-line">    2 This line occurs twice.</span>
+<span class="code-line">    3 This line occurs three times.</code></pre>
 <blockquote><p><strong>NOTE</strong>: The -c option that is used above implies to print the occurance of duplicates as well. The numbers that you see in the output are each the count of the occurance of the line in the entire file. If you dont specify -c it will just output the uniq lines.</p>
 </blockquote>
 <h2 id="paste-&amp;-join">paste &amp; join<a class="anchor-link" href="#paste-&amp;-join">¶</a></h2><p>Paste is used to merge two files as shown below. <em>items</em> and <em>prices</em> are two text files and have we merge them using paste command:</p>
-<pre><code>$ cat items
- alphabet blocks
- building blocks
- cables
-
-$ cat prices
- $1.00/dozen
- $2.50 ea.
- $3.75</code></pre>
+<pre><span class="code-line"><code>$ cat items</span>
+<span class="code-line"> alphabet blocks</span>
+<span class="code-line"> building blocks</span>
+<span class="code-line"> cables</span>
+<span class="code-line"></span>
+<span class="code-line">$ cat prices</span>
+<span class="code-line"> $1.00/dozen</span>
+<span class="code-line"> $2.50 ea.</span>
+<span class="code-line"> $3.75</code></pre>
 <p>The paste Command output:</p>
-<pre><code>$ paste items prices
- alphabet blocks $1.00/dozen
- building blocks $2.50 ea.
- cables  $3.75</code></pre>
+<pre><span class="code-line"><code>$ paste items prices</span>
+<span class="code-line"> alphabet blocks $1.00/dozen</span>
+<span class="code-line"> building blocks $2.50 ea.</span>
+<span class="code-line"> cables  $3.75</code></pre>
 <p>If you observe the files are merged at line level i.e each line of the first file is merged with the corresponding line in the second file.</p>
 <p>The join command is an homework for you to explore.</p>
 <h2 id="split">split<a class="anchor-link" href="#split">¶</a></h2><p>Imagine you have a very large data file and you want to split this file into equal chunks into different files. Split is the command you are looking for.</p>
-<pre><code>  $ split --number="&lt; give the number of files or chunks to split here&gt;"  <filename></filename></code></pre>
+<pre><span class="code-line"><code>  $ split --number="&lt; give the number of files or chunks to split here&gt;"  <filename></filename></code></pre>
 <blockquote><p>split can be used in many other ways. You can split based on number of lines. The coolest future is you can split by specifying the size ( in terms of memory such as bytes ). For any case the output is stored in files with prefix  'X' such as xaa, xab etc. You can change the prefix by giving optional parameter.</p>
 </blockquote>
 <h2 id="grep">grep<a class="anchor-link" href="#grep">¶</a></h2><p>Grep is a utility that searches any number of input files for a given pattern or pattenrs and outputs only those lines which match the pattern. It searches line by line, and if a line matches any one of the patterns it spits it out. What makes grep even more powerfull is you can use basic regular expressions along with simple patters.</p>
 <h4 id="How-do-you-use-grep:">How do you use grep:<a class="anchor-link" href="#How-do-you-use-grep:">¶</a></h4><ol>
 <li><p>Lets say you want to search all the occurances of the word  <em>mining</em> in a file named <em>tutorial.txt</em> :</p>
-<pre><code>  $ grep "mining" tutorial.txt</code></pre>
+<pre><span class="code-line"><code>  $ grep "mining" tutorial.txt</code></pre>
 <p>The above command outputs all the lines that have the pattern "mining" in the file tutorial.txt. But this includes anything that matches "mining" such as "text-mining", "coal-mining", "sdfs<strong>mining</strong>sdfd" and also the mining.</p>
 </li>
 <li><p>If you just want the pattern to match whole words then this -w is the option to be used:</p>
-<pre><code>  $ grep -w "mining" tutorial.txt</code></pre>
+<pre><span class="code-line"><code>  $ grep -w "mining" tutorial.txt</code></pre>
 </li>
 <li><p>The same can be applied for phrases as well . After all a phrase is a set of characters.</p>
-<pre><code>  $ grep -w " is a good boy" tutorial.txt</code></pre>
+<pre><span class="code-line"><code>  $ grep -w " is a good boy" tutorial.txt</code></pre>
 <p>It will output all the lines that have the phrase "<em>is a good boy</em>".</p>
 </li>
 </ol>
 <h4 id="Regular-expressions">Regular expressions<a class="anchor-link" href="#Regular-expressions">¶</a></h4><p>You can also use regular expressions along with grep. This makes it much more powerfull in terms of pattern search. Its like Tony Stark wearing the iron man suit.</p>
-<pre><code>  $ grep '^hello' tutorial.txt</code></pre>
+<pre><span class="code-line"><code>  $ grep '^hello' tutorial.txt</code></pre>
 <p>This outputs all those those lines that start with the characters "<em>hello</em>". If you notice we have used the '^' a metacharacter which represents the start of a line in regular expressions language. For more  on regular expressions please refer  the regular expressions chapter.</p>
 <h4 id="Inverse-search:">Inverse search:<a class="anchor-link" href="#Inverse-search:">¶</a></h4><p>It's not always that you will be searching for lines in a text that match a pattern. There are also instances when  you must search for lines that do not match a pattern. You can do this with grep.</p>
-<pre><code>  $ grep -v "^hello" tutorial.txt</code></pre>
+<pre><span class="code-line"><code>  $ grep -v "^hello" tutorial.txt</code></pre>
 <p>The option '-v' is to be supplied for this functionaliy.</p>
 </div>
 </div>
@@ -1184,14 +1189,14 @@ $ cat prices
 <h2 id="Things-to-try:">Things to try:<a class="anchor-link" href="#Things-to-try:">¶</a></h2><ol>
 <li>Create a file and save the following text in the file as such:</li>
 </ol>
-<div class="highlight"><pre><span></span>Ironman is cool.
-Ironman is smart
-Ironman is intelligent.
-Ironman is good.
-Ironman is strong.
-Everyday is a new day
-Ironman is goood
-Ironman is smarter
+<div class="highlight"><pre><span class="code-line"><span></span>Ironman is cool.</span>
+<span class="code-line">Ironman is smart</span>
+<span class="code-line">Ironman is intelligent.</span>
+<span class="code-line">Ironman is good.</span>
+<span class="code-line">Ironman is strong.</span>
+<span class="code-line">Everyday is a new day</span>
+<span class="code-line">Ironman is goood</span>
+<span class="code-line">Ironman is smarter</span>
 </pre></div>
 <ol>
 <li><p>Find the number of lines in the file (use wc)</p>
@@ -1249,9 +1254,10 @@ Ironman is smarter
 
 
 
+
 <div id="disqus_thread"></div>
 <script type="text/javascript">
-    var disqus_shortname = 'chandansblog';
+    var disqus_shortname = 'chandan-u-github-io';
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
         dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';

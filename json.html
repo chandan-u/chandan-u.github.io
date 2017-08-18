@@ -7,7 +7,7 @@
     <link rel="stylesheet/less" type="text/css" href="./theme/stylesheet/style.less">
     <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/2.5.1/less.min.js" type="text/javascript"></script>
 
-  <link rel="stylesheet" type="text/css" href="./theme/pygments/monokai.min.css">
+  <link rel="stylesheet" type="text/css" href="./theme/pygments/github.min.css">
   <link rel="stylesheet" type="text/css" href="./theme/font-awesome/css/font-awesome.min.css">
 
 
@@ -46,6 +46,7 @@
 <meta property="og:image" content="https://s.gravatar.com/avatar/1ffef3b08b2d7091ed88bcd36cb2030f?s=80">
 
   <title>Chandan 's Blog &ndash; A quicky on JSON</title>
+
 </head>
 <body>
   <aside>
@@ -71,8 +72,11 @@
         <li><a class="sc-google" href="https://plus.google.com/u/0/112461392309064088729" target="_blank"><i class="fa fa-google"></i></a></li>
       </ul>
     </div>
+
+
   </aside>
   <main>
+
     <nav>
       <a href=".">    Home
 </a>
@@ -84,16 +88,17 @@
 
     </nav>
 
-<article>
+<article class="single">
   <header>
     <h1 id="json">A quicky on JSON</h1>
     <p>
           Posted on August 15, 2016 in <a href="./category/misc.html">misc</a>
 
 
-        &#8226; 12 min read
     </p>
   </header>
+
+
   <div>
     <style type="text/css">/*!
 *
@@ -1074,34 +1079,34 @@ h6:hover .anchor-link {
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="JSON">JSON<a class="anchor-link" href="#JSON">¶</a></h2><p>JSON is a data format that is used for storing or exchanging information and exchanging information. But JSON is human readable and easy to parse. And most importantly it is structured.</p>
 <p>A simple example of json:</p>
-<div class="highlight"><pre><span></span><span class="p">{</span>
-  <span class="nt">"name"</span><span class="p">:</span> <span class="s2">"jason"</span><span class="p">,</span>
-  <span class="nt">"age"</span><span class="p">:</span> <span class="mi">24</span><span class="p">,</span>
-  <span class="nt">"gender"</span><span class="p">:</span><span class="s2">"male"</span>
-<span class="p">}</span>
+<div class="highlight"><pre><span class="code-line"><span></span><span class="p">{</span></span>
+<span class="code-line">  <span class="nt">"name"</span><span class="p">:</span> <span class="s2">"jason"</span><span class="p">,</span></span>
+<span class="code-line">  <span class="nt">"age"</span><span class="p">:</span> <span class="mi">24</span><span class="p">,</span></span>
+<span class="code-line">  <span class="nt">"gender"</span><span class="p">:</span><span class="s2">"male"</span></span>
+<span class="code-line"><span class="p">}</span></span>
 </pre></div>
 <p>Fundamentally a json can be built using two things:</p>
 <h3 id="Key-Value-pairs:">Key Value pairs:<a class="anchor-link" href="#Key-Value-pairs:">¶</a></h3><p>You can also call them as property value pairs. Imagine you are collecting data for a classroom. Then your data should store values of properties related to the classroom or students. Some of properties you can consider are "student_id", "name", "class" etc. The json for it would look something like this:</p>
-<div class="highlight"><pre><span></span><span class="p">{</span>
-  <span class="nt">"student_id"</span><span class="p">:</span> <span class="s2">"514300234324"</span><span class="p">,</span>
-  <span class="nt">"name"</span><span class="p">:</span><span class="s2">"bran"</span><span class="p">,</span>
-  <span class="nt">"class"</span><span class="p">:</span><span class="s2">"12"</span>
-<span class="p">}</span>
+<div class="highlight"><pre><span class="code-line"><span></span><span class="p">{</span></span>
+<span class="code-line">  <span class="nt">"student_id"</span><span class="p">:</span> <span class="s2">"514300234324"</span><span class="p">,</span></span>
+<span class="code-line">  <span class="nt">"name"</span><span class="p">:</span><span class="s2">"bran"</span><span class="p">,</span></span>
+<span class="code-line">  <span class="nt">"class"</span><span class="p">:</span><span class="s2">"12"</span></span>
+<span class="code-line"><span class="p">}</span></span>
 </pre></div>
 <h3 id="list-:">list :<a class="anchor-link" href="#list-:">¶</a></h3><p>Some times the value of a property can be a list of values ( not just one value). The below example shows that:</p>
-<div class="highlight"><pre><span></span><span class="p">{</span>
-  <span class="nt">"hero"</span><span class="p">:</span> <span class="s2">"ironman"</span><span class="p">,</span>
-  <span class="nt">"powers"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"cool"</span><span class="p">,</span> <span class="s2">"ironSuit"</span><span class="p">,</span> <span class="s2">"intellignet"</span><span class="p">]</span>
-<span class="p">}</span>
+<div class="highlight"><pre><span class="code-line"><span></span><span class="p">{</span></span>
+<span class="code-line">  <span class="nt">"hero"</span><span class="p">:</span> <span class="s2">"ironman"</span><span class="p">,</span></span>
+<span class="code-line">  <span class="nt">"powers"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"cool"</span><span class="p">,</span> <span class="s2">"ironSuit"</span><span class="p">,</span> <span class="s2">"intellignet"</span><span class="p">]</span></span>
+<span class="code-line"><span class="p">}</span></span>
 </pre></div>
 <h3 id="nested-JSON:">nested JSON:<a class="anchor-link" href="#nested-JSON:">¶</a></h3><p>A JSON object inside another JSON:</p>
-<div class="highlight"><pre><span></span><span class="p">{</span>
-   <span class="nt">"id"</span> <span class="p">:</span> <span class="s2">"1234"</span><span class="p">,</span>
-   <span class="nt">"name"</span><span class="p">:</span> <span class="p">{</span>
-             <span class="nt">"firstName"</span><span class="p">:</span> <span class="s2">"jason"</span><span class="p">,</span>
-             <span class="nt">"lastName"</span><span class="p">:</span> <span class="s2">"b"</span>
-         <span class="p">}</span>
-<span class="p">}</span>
+<div class="highlight"><pre><span class="code-line"><span></span><span class="p">{</span></span>
+<span class="code-line">   <span class="nt">"id"</span> <span class="p">:</span> <span class="s2">"1234"</span><span class="p">,</span></span>
+<span class="code-line">   <span class="nt">"name"</span><span class="p">:</span> <span class="p">{</span></span>
+<span class="code-line">             <span class="nt">"firstName"</span><span class="p">:</span> <span class="s2">"jason"</span><span class="p">,</span></span>
+<span class="code-line">             <span class="nt">"lastName"</span><span class="p">:</span> <span class="s2">"b"</span></span>
+<span class="code-line">         <span class="p">}</span></span>
+<span class="code-line"><span class="p">}</span></span>
 </pre></div>
 <h2 id="JSON-library">JSON library<a class="anchor-link" href="#JSON-library">¶</a></h2><p>As you can see any of the above examples are easily readable. Similarly they are also easily parsable. To parse JOSN data in python we shall use the <strong><em>json</em></strong> library.</p>
 <p>The <strong><em>json</em></strong> library parses the JSON data from either the files or the  strings. It converts the JSON data into a python dictionary and viceversa.</p>
@@ -1114,7 +1119,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [50]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="n">json_string</span> <span class="o">=</span> <span class="s1">'{ "name": "brian", "age": 24, "gender":"male", "skills": ["programming", "musician"]}'</span>
+<div class=" highlight hl-ipython2"><pre><span class="code-line"><span></span><span class="n">json_string</span> <span class="o">=</span> <span class="s1">'{ "name": "brian", "age": 24, "gender":"male", "skills": ["programming", "musician"]}'</span></span>
 </pre></div>
 </div>
 </div>
@@ -1134,8 +1139,8 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [53]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="kn">import</span> <span class="nn">json</span>
-<span class="n">json_obj</span><span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">json_string</span><span class="p">)</span>
+<div class=" highlight hl-ipython2"><pre><span class="code-line"><span></span><span class="kn">import</span> <span class="nn">json</span></span>
+<span class="code-line"><span class="n">json_obj</span><span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">json_string</span><span class="p">)</span></span>
 </pre></div>
 </div>
 </div>
@@ -1155,10 +1160,10 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [54]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="k">print</span> <span class="n">json_obj</span><span class="p">[</span><span class="s2">"name"</span><span class="p">]</span>
-<span class="k">print</span> <span class="n">json_obj</span><span class="p">[</span><span class="s2">"age"</span><span class="p">]</span>
-<span class="k">print</span> <span class="n">json_obj</span><span class="p">[</span><span class="s2">"gender"</span><span class="p">]</span>
-<span class="k">print</span> <span class="n">json_obj</span><span class="p">[</span><span class="s2">"skills"</span><span class="p">]</span>
+<div class=" highlight hl-ipython2"><pre><span class="code-line"><span></span><span class="k">print</span> <span class="n">json_obj</span><span class="p">[</span><span class="s2">"name"</span><span class="p">]</span></span>
+<span class="code-line"><span class="k">print</span> <span class="n">json_obj</span><span class="p">[</span><span class="s2">"age"</span><span class="p">]</span></span>
+<span class="code-line"><span class="k">print</span> <span class="n">json_obj</span><span class="p">[</span><span class="s2">"gender"</span><span class="p">]</span></span>
+<span class="code-line"><span class="k">print</span> <span class="n">json_obj</span><span class="p">[</span><span class="s2">"skills"</span><span class="p">]</span></span>
 </pre></div>
 </div>
 </div>
@@ -1167,10 +1172,10 @@ h6:hover .anchor-link {
 <div class="output">
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>brian
-24
-male
-[u'programming', u'musician']
+<pre><span class="code-line">brian</span>
+<span class="code-line">24</span>
+<span class="code-line">male</span>
+<span class="code-line">[u'programming', u'musician']</span>
 </pre>
 </div>
 </div>
@@ -1184,12 +1189,12 @@ If we remember, in the last chapter we have saved the all the twitter streaming 
 <div class="prompt input_prompt">In [75]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="n">data</span><span class="o">=</span><span class="p">[]</span>
-<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">'./streamingData.json'</span><span class="p">,</span> <span class="s1">'r'</span><span class="p">)</span> <span class="k">as</span> <span class="n">jsonFile</span><span class="p">:</span>
-    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">jsonFile</span><span class="p">:</span>
-        <span class="n">data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">line</span><span class="p">))</span>
-        
-<span class="k">print</span> <span class="s2">"Total number of tweets loaded: "</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<div class=" highlight hl-ipython2"><pre><span class="code-line"><span></span><span class="n">data</span><span class="o">=</span><span class="p">[]</span></span>
+<span class="code-line"><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">'./streamingData.json'</span><span class="p">,</span> <span class="s1">'r'</span><span class="p">)</span> <span class="k">as</span> <span class="n">jsonFile</span><span class="p">:</span></span>
+<span class="code-line">    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">jsonFile</span><span class="p">:</span></span>
+<span class="code-line">        <span class="n">data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">line</span><span class="p">))</span></span>
+<span class="code-line">        </span>
+<span class="code-line"><span class="k">print</span> <span class="s2">"Total number of tweets loaded: "</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span></span>
 </pre></div>
 </div>
 </div>
@@ -1198,7 +1203,7 @@ If we remember, in the last chapter we have saved the all the twitter streaming 
 <div class="output">
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Total number of tweets loaded:  5662
+<pre><span class="code-line">Total number of tweets loaded:  5662</span>
 </pre>
 </div>
 </div>
@@ -1219,8 +1224,8 @@ If we remember, in the last chapter we have saved the all the twitter streaming 
 <div class="prompt input_prompt">In [83]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="k">print</span> <span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>   <span class="c1"># properties</span>
-<span class="k">print</span> <span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">"text"</span><span class="p">]</span>  <span class="c1"># how to access the  tweet message itself</span>
+<div class=" highlight hl-ipython2"><pre><span class="code-line"><span></span><span class="k">print</span> <span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>   <span class="c1"># properties</span></span>
+<span class="code-line"><span class="k">print</span> <span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">"text"</span><span class="p">]</span>  <span class="c1"># how to access the  tweet message itself</span></span>
 </pre></div>
 </div>
 </div>
@@ -1229,10 +1234,10 @@ If we remember, in the last chapter we have saved the all the twitter streaming 
 <div class="output">
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[u'contributors', u'truncated', u'text', u'is_quote_status', u'in_reply_to_status_id', u'id', u'favorite_count', u'source', u'retweeted', u'coordinates', u'timestamp_ms', u'entities', u'in_reply_to_screen_name', u'in_reply_to_user_id', u'retweet_count', u'id_str', u'favorited', u'user', u'geo', u'in_reply_to_user_id_str', u'lang', u'created_at', u'filter_level', u'in_reply_to_status_id_str', u'place']
-#BaşbakanaSoruyorum atılan her iki twitten biri
-Engelli Öğretmenlere ait, sn @handefrt nasıl
-görmüyorsun bu. #EngelliOgretmenAlimiOlacakmi"
+<pre><span class="code-line">[u'contributors', u'truncated', u'text', u'is_quote_status', u'in_reply_to_status_id', u'id', u'favorite_count', u'source', u'retweeted', u'coordinates', u'timestamp_ms', u'entities', u'in_reply_to_screen_name', u'in_reply_to_user_id', u'retweet_count', u'id_str', u'favorited', u'user', u'geo', u'in_reply_to_user_id_str', u'lang', u'created_at', u'filter_level', u'in_reply_to_status_id_str', u'place']</span>
+<span class="code-line">#BaşbakanaSoruyorum atılan her iki twitten biri</span>
+<span class="code-line">Engelli Öğretmenlere ait, sn @handefrt nasıl</span>
+<span class="code-line">görmüyorsun bu. #EngelliOgretmenAlimiOlacakmi"</span>
 </pre>
 </div>
 </div>
@@ -1253,13 +1258,13 @@ görmüyorsun bu. #EngelliOgretmenAlimiOlacakmi"
 <div class="prompt input_prompt">In [94]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="n">tweets</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
-    <span class="k">if</span> <span class="s2">"text"</span> <span class="ow">in</span> <span class="n">item</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
-        <span class="n">tweet</span> <span class="o">=</span> <span class="n">item</span><span class="p">[</span><span class="s2">"text"</span><span class="p">]</span>
-        <span class="n">tweets</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tweet</span><span class="p">)</span>
-    
-<span class="k">print</span> <span class="s2">"total no of tweets extracted from json: "</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">tweets</span><span class="p">)</span>
+<div class=" highlight hl-ipython2"><pre><span class="code-line"><span></span><span class="n">tweets</span> <span class="o">=</span> <span class="p">[]</span></span>
+<span class="code-line"><span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span></span>
+<span class="code-line">    <span class="k">if</span> <span class="s2">"text"</span> <span class="ow">in</span> <span class="n">item</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span></span>
+<span class="code-line">        <span class="n">tweet</span> <span class="o">=</span> <span class="n">item</span><span class="p">[</span><span class="s2">"text"</span><span class="p">]</span></span>
+<span class="code-line">        <span class="n">tweets</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tweet</span><span class="p">)</span></span>
+<span class="code-line">    </span>
+<span class="code-line"><span class="k">print</span> <span class="s2">"total no of tweets extracted from json: "</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">tweets</span><span class="p">)</span></span>
 </pre></div>
 </div>
 </div>
@@ -1268,7 +1273,7 @@ görmüyorsun bu. #EngelliOgretmenAlimiOlacakmi"
 <div class="output">
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>total no of tweets extracted from json:  5230
+<pre><span class="code-line">total no of tweets extracted from json:  5230</span>
 </pre>
 </div>
 </div>
@@ -1296,7 +1301,7 @@ görmüyorsun bu. #EngelliOgretmenAlimiOlacakmi"
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span> 
+<div class=" highlight hl-ipython2"><pre><span class="code-line"><span></span> </span>
 </pre></div>
 </div>
 </div>
@@ -1340,9 +1345,10 @@ görmüyorsun bu. #EngelliOgretmenAlimiOlacakmi"
 
 
 
+
 <div id="disqus_thread"></div>
 <script type="text/javascript">
-    var disqus_shortname = 'chandansblog';
+    var disqus_shortname = 'chandan-u-github-io';
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
         dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';

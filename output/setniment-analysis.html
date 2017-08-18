@@ -7,7 +7,7 @@
     <link rel="stylesheet/less" type="text/css" href="./theme/stylesheet/style.less">
     <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/2.5.1/less.min.js" type="text/javascript"></script>
 
-  <link rel="stylesheet" type="text/css" href="./theme/pygments/monokai.min.css">
+  <link rel="stylesheet" type="text/css" href="./theme/pygments/github.min.css">
   <link rel="stylesheet" type="text/css" href="./theme/font-awesome/css/font-awesome.min.css">
 
 
@@ -47,6 +47,7 @@
 <meta property="og:image" content="https://s.gravatar.com/avatar/1ffef3b08b2d7091ed88bcd36cb2030f?s=80">
 
   <title>Chandan 's Blog &ndash; Sentiment Analysis an intro</title>
+
 </head>
 <body>
   <aside>
@@ -72,8 +73,11 @@
         <li><a class="sc-google" href="https://plus.google.com/u/0/112461392309064088729" target="_blank"><i class="fa fa-google"></i></a></li>
       </ul>
     </div>
+
+
   </aside>
   <main>
+
     <nav>
       <a href=".">    Home
 </a>
@@ -85,16 +89,17 @@
 
     </nav>
 
-<article>
+<article class="single">
   <header>
     <h1 id="setniment-analysis">Sentiment Analysis an intro</h1>
     <p>
           Posted on August 15, 2016 in <a href="./category/misc.html">misc</a>
 
 
-        &#8226; 15 min read
     </p>
   </header>
+
+
   <div>
     <style type="text/css">/*!
 *
@@ -1090,7 +1095,7 @@ h6:hover .anchor-link {
 <h2 id="LEXICON-Based-approach:">LEXICON Based approach:<a class="anchor-link" href="#LEXICON-Based-approach:">¶</a></h2><p>A lexicon is nothing but a dictionary. The Lexicon based approach is the simplest baseline approach that is used for sentiment analysis of a corpus (A courps is  thing that has text such as blogs, documents, books, tweets etc). In this approach, as the name implies, we have a dictionary of words and each word has a  predefined score which we call the polarity of the word. We use the polarity of induvidual words in a document or sentence to determine weather the it is expressing positive or negitive or netural opinion.</p>
 <p>Lucky us there are some publicly available lexicons at our disposal. "SentiWordNet" is one such lexicon specifically meant for opinion mining. And to make things even more easy python's natural language tool kit (nltk) offers  functionality to use the SentiWordNet lexicon.</p>
 <p>You can instsall nltk using pip:</p>
-<pre><code>    pip install nltk</code></pre>
+<pre><span class="code-line"><code>    pip install nltk</code></pre>
 <p>You can import the nltk package in python as shown below:</p>
 </div>
 </div>
@@ -1100,7 +1105,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [1]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="kn">import</span> <span class="nn">nltk</span>
+<div class=" highlight hl-ipython2"><pre><span class="code-line"><span></span><span class="kn">import</span> <span class="nn">nltk</span></span>
 </pre></div>
 </div>
 </div>
@@ -1120,9 +1125,9 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [2]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># download sentiwordnet lexicon and import it</span>
-<span class="n">nltk</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="s1">'sentiwordnet'</span><span class="p">)</span>
-<span class="kn">from</span> <span class="nn">nltk.corpus</span> <span class="kn">import</span> <span class="n">sentiwordnet</span> <span class="k">as</span> <span class="n">swn</span> 
+<div class=" highlight hl-ipython2"><pre><span class="code-line"><span></span><span class="c1"># download sentiwordnet lexicon and import it</span></span>
+<span class="code-line"><span class="n">nltk</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="s1">'sentiwordnet'</span><span class="p">)</span></span>
+<span class="code-line"><span class="kn">from</span> <span class="nn">nltk.corpus</span> <span class="kn">import</span> <span class="n">sentiwordnet</span> <span class="k">as</span> <span class="n">swn</span> </span>
 </pre></div>
 </div>
 </div>
@@ -1131,9 +1136,9 @@ h6:hover .anchor-link {
 <div class="output">
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[nltk_data] Downloading package sentiwordnet to
-[nltk_data]     /Users/chandanuppuluri/nltk_data...
-[nltk_data]   Unzipping corpora/sentiwordnet.zip.
+<pre><span class="code-line">[nltk_data] Downloading package sentiwordnet to</span>
+<span class="code-line">[nltk_data]     /Users/chandanuppuluri/nltk_data...</span>
+<span class="code-line">[nltk_data]   Unzipping corpora/sentiwordnet.zip.</span>
 </pre>
 </div>
 </div>
@@ -1154,8 +1159,8 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [3]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="k">print</span> <span class="s2">"pos score: "</span><span class="p">,</span> <span class="n">swn</span><span class="o">.</span><span class="n">senti_synsests</span><span class="p">(</span><span class="s2">"happy"</span><span class="p">,</span> <span class="s1">'a'</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">pos_score</span><span class="p">()</span>
-<span class="k">print</span> <span class="s2">"neg score: "</span><span class="p">,</span> <span class="n">swn</span><span class="o">.</span><span class="n">senti_synsets</span><span class="p">(</span><span class="s2">"happy"</span><span class="p">,</span> <span class="s1">'a'</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">neg_score</span><span class="p">()</span>
+<div class=" highlight hl-ipython2"><pre><span class="code-line"><span></span><span class="k">print</span> <span class="s2">"pos score: "</span><span class="p">,</span> <span class="n">swn</span><span class="o">.</span><span class="n">senti_synsests</span><span class="p">(</span><span class="s2">"happy"</span><span class="p">,</span> <span class="s1">'a'</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">pos_score</span><span class="p">()</span></span>
+<span class="code-line"><span class="k">print</span> <span class="s2">"neg score: "</span><span class="p">,</span> <span class="n">swn</span><span class="o">.</span><span class="n">senti_synsets</span><span class="p">(</span><span class="s2">"happy"</span><span class="p">,</span> <span class="s1">'a'</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">neg_score</span><span class="p">()</span></span>
 </pre></div>
 </div>
 </div>
@@ -1164,8 +1169,8 @@ h6:hover .anchor-link {
 <div class="output">
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>pos score:  0.875
-neg score:  0.0
+<pre><span class="code-line">pos score:  0.875</span>
+<span class="code-line">neg score:  0.0</span>
 </pre>
 </div>
 </div>
@@ -1186,7 +1191,7 @@ neg score:  0.0
 <div class="prompt input_prompt">In [12]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="k">print</span> <span class="s2">"neutral score: "</span><span class="p">,</span> <span class="n">swn</span><span class="o">.</span><span class="n">senti_synsets</span><span class="p">(</span><span class="s2">"happy"</span><span class="p">,</span> <span class="s1">'a'</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">obj_score</span><span class="p">()</span>
+<div class=" highlight hl-ipython2"><pre><span class="code-line"><span></span><span class="k">print</span> <span class="s2">"neutral score: "</span><span class="p">,</span> <span class="n">swn</span><span class="o">.</span><span class="n">senti_synsets</span><span class="p">(</span><span class="s2">"happy"</span><span class="p">,</span> <span class="s1">'a'</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">obj_score</span><span class="p">()</span></span>
 </pre></div>
 </div>
 </div>
@@ -1195,8 +1200,8 @@ neg score:  0.0
 <div class="output">
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre> neutral score:  0.125
-[SentiSynset('happy.a.01'), SentiSynset('felicitous.s.02'), SentiSynset('glad.s.02'), SentiSynset('happy.s.04')]
+<pre><span class="code-line"> neutral score:  0.125</span>
+<span class="code-line">[SentiSynset('happy.a.01'), SentiSynset('felicitous.s.02'), SentiSynset('glad.s.02'), SentiSynset('happy.s.04')]</span>
 </pre>
 </div>
 </div>
@@ -1224,9 +1229,9 @@ neg score:  0.0
 <div class="prompt input_prompt">In [16]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="k">print</span> <span class="n">swn</span><span class="o">.</span><span class="n">senti_synsets</span><span class="p">(</span><span class="s2">"i"</span><span class="p">,</span> <span class="s1">'n'</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
-<span class="k">print</span> <span class="n">swn</span><span class="o">.</span><span class="n">senti_synsets</span><span class="p">(</span><span class="s2">"am"</span><span class="p">,</span> <span class="s1">'v'</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
-<span class="k">print</span> <span class="n">swn</span><span class="o">.</span><span class="n">senti_synsets</span><span class="p">(</span><span class="s2">"happy"</span><span class="p">,</span><span class="s2">"a"</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<div class=" highlight hl-ipython2"><pre><span class="code-line"><span></span><span class="k">print</span> <span class="n">swn</span><span class="o">.</span><span class="n">senti_synsets</span><span class="p">(</span><span class="s2">"i"</span><span class="p">,</span> <span class="s1">'n'</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span></span>
+<span class="code-line"><span class="k">print</span> <span class="n">swn</span><span class="o">.</span><span class="n">senti_synsets</span><span class="p">(</span><span class="s2">"am"</span><span class="p">,</span> <span class="s1">'v'</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span></span>
+<span class="code-line"><span class="k">print</span> <span class="n">swn</span><span class="o">.</span><span class="n">senti_synsets</span><span class="p">(</span><span class="s2">"happy"</span><span class="p">,</span><span class="s2">"a"</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span></span>
 </pre></div>
 </div>
 </div>
@@ -1235,10 +1240,10 @@ neg score:  0.0
 <div class="output">
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre><iodine.n.01: negscore="0.0" posscore="0.0">
-<be.v.01: negscore="0.125" posscore="0.25">
-<happy.a.01: negscore="0.0" posscore="0.875">
-</happy.a.01:></be.v.01:></iodine.n.01:></pre>
+<pre><span class="code-line"><iodine.n.01: negscore="0.0" posscore="0.0"></span>
+<span class="code-line"><be.v.01: negscore="0.125" posscore="0.25"></span>
+<span class="code-line"><happy.a.01: negscore="0.0" posscore="0.875"></span>
+<span class="code-line"></happy.a.01:></be.v.01:></iodine.n.01:></pre>
 </div>
 </div>
 </div>
@@ -1263,8 +1268,8 @@ neg score:  0.0
 <div class="prompt input_prompt">In [30]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="n">tokens</span> <span class="o">=</span> <span class="n">nltk</span><span class="o">.</span><span class="n">tokenize</span><span class="o">.</span><span class="n">word_tokenize</span><span class="p">(</span><span class="s2">"i am happy"</span><span class="p">)</span>  <span class="c1"># returns a list of the words in the sentence.</span>
-<span class="k">print</span> <span class="s2">"tokens: "</span><span class="p">,</span> <span class="n">tokens</span>
+<div class=" highlight hl-ipython2"><pre><span class="code-line"><span></span><span class="n">tokens</span> <span class="o">=</span> <span class="n">nltk</span><span class="o">.</span><span class="n">tokenize</span><span class="o">.</span><span class="n">word_tokenize</span><span class="p">(</span><span class="s2">"i am happy"</span><span class="p">)</span>  <span class="c1"># returns a list of the words in the sentence.</span></span>
+<span class="code-line"><span class="k">print</span> <span class="s2">"tokens: "</span><span class="p">,</span> <span class="n">tokens</span></span>
 </pre></div>
 </div>
 </div>
@@ -1273,7 +1278,7 @@ neg score:  0.0
 <div class="output">
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>tokens:  ['i', 'am', 'happy']
+<pre><span class="code-line">tokens:  ['i', 'am', 'happy']</span>
 </pre>
 </div>
 </div>
@@ -1296,8 +1301,8 @@ neg score:  0.0
 <div class="prompt input_prompt">In [29]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="kn">from</span> <span class="nn">nltk.tag</span> <span class="kn">import</span> <span class="n">pos_tag</span>
-<span class="n">pos_tag</span><span class="p">(</span><span class="n">tokens</span><span class="p">)</span>
+<div class=" highlight hl-ipython2"><pre><span class="code-line"><span></span><span class="kn">from</span> <span class="nn">nltk.tag</span> <span class="kn">import</span> <span class="n">pos_tag</span></span>
+<span class="code-line"><span class="n">pos_tag</span><span class="p">(</span><span class="n">tokens</span><span class="p">)</span></span>
 </pre></div>
 </div>
 </div>
@@ -1306,7 +1311,7 @@ neg score:  0.0
 <div class="output">
 <div class="output_area"><div class="prompt output_prompt">Out[29]:</div>
 <div class="output_text output_subarea output_execute_result">
-<pre>[('i', 'NN'), ('am', 'VBP'), ('happy', 'JJ')]</pre>
+<pre><span class="code-line">[('i', 'NN'), ('am', 'VBP'), ('happy', 'JJ')]</pre>
 </div>
 </div>
 </div>
@@ -1335,9 +1340,9 @@ neg score:  0.0
 <div class="prompt input_prompt">In [34]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="k">print</span> <span class="n">swn</span><span class="o">.</span><span class="n">senti_synsets</span><span class="p">(</span><span class="s2">"i"</span><span class="p">,</span> <span class="s1">'n'</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
-<span class="k">print</span> <span class="n">swn</span><span class="o">.</span><span class="n">senti_synsets</span><span class="p">(</span><span class="s2">"am"</span><span class="p">,</span> <span class="s1">'v'</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
-<span class="k">print</span> <span class="n">swn</span><span class="o">.</span><span class="n">senti_synsets</span><span class="p">(</span><span class="s2">"happy"</span><span class="p">,</span><span class="s2">"a"</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<div class=" highlight hl-ipython2"><pre><span class="code-line"><span></span><span class="k">print</span> <span class="n">swn</span><span class="o">.</span><span class="n">senti_synsets</span><span class="p">(</span><span class="s2">"i"</span><span class="p">,</span> <span class="s1">'n'</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span></span>
+<span class="code-line"><span class="k">print</span> <span class="n">swn</span><span class="o">.</span><span class="n">senti_synsets</span><span class="p">(</span><span class="s2">"am"</span><span class="p">,</span> <span class="s1">'v'</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span></span>
+<span class="code-line"><span class="k">print</span> <span class="n">swn</span><span class="o">.</span><span class="n">senti_synsets</span><span class="p">(</span><span class="s2">"happy"</span><span class="p">,</span><span class="s2">"a"</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span></span>
 </pre></div>
 </div>
 </div>
@@ -1346,10 +1351,10 @@ neg score:  0.0
 <div class="output">
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre><iodine.n.01: negscore="0.0" posscore="0.0">
-<be.v.01: negscore="0.125" posscore="0.25">
-<happy.a.01: negscore="0.0" posscore="0.875">
-</happy.a.01:></be.v.01:></iodine.n.01:></pre>
+<pre><span class="code-line"><iodine.n.01: negscore="0.0" posscore="0.0"></span>
+<span class="code-line"><be.v.01: negscore="0.125" posscore="0.25"></span>
+<span class="code-line"><happy.a.01: negscore="0.0" posscore="0.875"></span>
+<span class="code-line"></happy.a.01:></be.v.01:></iodine.n.01:></pre>
 </div>
 </div>
 </div>
@@ -1380,16 +1385,16 @@ neg score:  0.0
 <div class="prompt input_prompt">In [38]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="kn">from</span> <span class="nn">nltk.corpus</span> <span class="kn">import</span> <span class="n">stopwords</span>   <span class="c1"># import stopwords </span>
-
-<span class="n">stop</span> <span class="o">=</span> <span class="n">stopwords</span><span class="o">.</span><span class="n">words</span><span class="p">(</span><span class="s1">'english'</span><span class="p">)</span>   <span class="c1"># initialize english stopwords</span>
-
-<span class="n">new_sentence</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">tokens</span><span class="p">:</span>
-    <span class="k">if</span> <span class="n">word</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">stop</span><span class="p">:</span>
-        <span class="n">new_sentence</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">word</span><span class="p">)</span>
-
-<span class="k">print</span> <span class="s2">"The sentence has been reduced from :"</span><span class="p">,</span> <span class="n">sentence</span><span class="p">,</span> <span class="s2">" : to : "</span><span class="p">,</span> <span class="n">new_sentence</span> 
+<div class=" highlight hl-ipython2"><pre><span class="code-line"><span></span><span class="kn">from</span> <span class="nn">nltk.corpus</span> <span class="kn">import</span> <span class="n">stopwords</span>   <span class="c1"># import stopwords </span></span>
+<span class="code-line"></span>
+<span class="code-line"><span class="n">stop</span> <span class="o">=</span> <span class="n">stopwords</span><span class="o">.</span><span class="n">words</span><span class="p">(</span><span class="s1">'english'</span><span class="p">)</span>   <span class="c1"># initialize english stopwords</span></span>
+<span class="code-line"></span>
+<span class="code-line"><span class="n">new_sentence</span> <span class="o">=</span> <span class="p">[]</span></span>
+<span class="code-line"><span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">tokens</span><span class="p">:</span></span>
+<span class="code-line">    <span class="k">if</span> <span class="n">word</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">stop</span><span class="p">:</span></span>
+<span class="code-line">        <span class="n">new_sentence</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">word</span><span class="p">)</span></span>
+<span class="code-line"></span>
+<span class="code-line"><span class="k">print</span> <span class="s2">"The sentence has been reduced from :"</span><span class="p">,</span> <span class="n">sentence</span><span class="p">,</span> <span class="s2">" : to : "</span><span class="p">,</span> <span class="n">new_sentence</span> </span>
 </pre></div>
 </div>
 </div>
@@ -1398,7 +1403,7 @@ neg score:  0.0
 <div class="output">
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>The sentence has been reduced from : I am happy  : to :  ['happy']
+<pre><span class="code-line">The sentence has been reduced from : I am happy  : to :  ['happy']</span>
 </pre>
 </div>
 </div>
@@ -1468,9 +1473,10 @@ b. There might be words that are not present in the sentiwordnet lexicon. The pr
 
 
 
+
 <div id="disqus_thread"></div>
 <script type="text/javascript">
-    var disqus_shortname = 'chandansblog';
+    var disqus_shortname = 'chandan-u-github-io';
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
         dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';

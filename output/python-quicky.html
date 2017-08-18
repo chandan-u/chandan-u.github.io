@@ -7,7 +7,7 @@
     <link rel="stylesheet/less" type="text/css" href="./theme/stylesheet/style.less">
     <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/2.5.1/less.min.js" type="text/javascript"></script>
 
-  <link rel="stylesheet" type="text/css" href="./theme/pygments/monokai.min.css">
+  <link rel="stylesheet" type="text/css" href="./theme/pygments/github.min.css">
   <link rel="stylesheet" type="text/css" href="./theme/font-awesome/css/font-awesome.min.css">
 
 
@@ -46,6 +46,7 @@
 <meta property="og:image" content="https://s.gravatar.com/avatar/1ffef3b08b2d7091ed88bcd36cb2030f?s=80">
 
   <title>Chandan 's Blog &ndash; Python quicky</title>
+
 </head>
 <body>
   <aside>
@@ -71,8 +72,11 @@
         <li><a class="sc-google" href="https://plus.google.com/u/0/112461392309064088729" target="_blank"><i class="fa fa-google"></i></a></li>
       </ul>
     </div>
+
+
   </aside>
   <main>
+
     <nav>
       <a href=".">    Home
 </a>
@@ -84,16 +88,17 @@
 
     </nav>
 
-<article>
+<article class="single">
   <header>
     <h1 id="python-quicky">Python quicky</h1>
     <p>
           Posted on August 15, 2016 in <a href="./category/misc.html">misc</a>
 
 
-        &#8226; 13 min read
     </p>
   </header>
+
+
   <div>
     <style type="text/css">/*!
 *
@@ -1093,14 +1098,14 @@ In python you can easily initialize variables ( numbers and strings) as shown be
 <div class="prompt input_prompt">In [152]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># consider two variables a, b</span>
-<span class="n">a</span> <span class="o">=</span>  <span class="mi">1</span>
-<span class="n">b</span> <span class="o">=</span>  <span class="s2">"I love programming"</span>
-
-<span class="c1"># playing with numbers</span>
-<span class="k">print</span> <span class="n">a</span> <span class="o">*</span> <span class="mi">5</span>
-<span class="c1"># printing the strindg</span>
-<span class="k">print</span> <span class="n">b</span>
+<div class=" highlight hl-ipython2"><pre><span class="code-line"><span></span><span class="c1"># consider two variables a, b</span></span>
+<span class="code-line"><span class="n">a</span> <span class="o">=</span>  <span class="mi">1</span></span>
+<span class="code-line"><span class="n">b</span> <span class="o">=</span>  <span class="s2">"I love programming"</span></span>
+<span class="code-line"></span>
+<span class="code-line"><span class="c1"># playing with numbers</span></span>
+<span class="code-line"><span class="k">print</span> <span class="n">a</span> <span class="o">*</span> <span class="mi">5</span></span>
+<span class="code-line"><span class="c1"># printing the strindg</span></span>
+<span class="code-line"><span class="k">print</span> <span class="n">b</span></span>
 </pre></div>
 </div>
 </div>
@@ -1109,8 +1114,8 @@ In python you can easily initialize variables ( numbers and strings) as shown be
 <div class="output">
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>5
-I am no
+<pre><span class="code-line">5</span>
+<span class="code-line">I am no</span>
 </pre>
 </div>
 </div>
@@ -1122,9 +1127,9 @@ I am no
 <div class="prompt input_prompt">In [153]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># In above example a * 5 gvies the value of 5, but to remember this value we have to store:</span>
-<span class="n">c</span> <span class="o">=</span> <span class="n">a</span> <span class="o">*</span> <span class="mi">5</span>
-<span class="k">print</span> <span class="n">c</span>
+<div class=" highlight hl-ipython2"><pre><span class="code-line"><span></span><span class="c1"># In above example a * 5 gvies the value of 5, but to remember this value we have to store:</span></span>
+<span class="code-line"><span class="n">c</span> <span class="o">=</span> <span class="n">a</span> <span class="o">*</span> <span class="mi">5</span></span>
+<span class="code-line"><span class="k">print</span> <span class="n">c</span></span>
 </pre></div>
 </div>
 </div>
@@ -1133,7 +1138,7 @@ I am no
 <div class="output">
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>5
+<pre><span class="code-line">5</span>
 </pre>
 </div>
 </div>
@@ -1154,7 +1159,7 @@ I am no
 <div class="prompt input_prompt">In [154]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="k">print</span> <span class="n">b</span><span class="p">,</span> <span class="n">a</span> 
+<div class=" highlight hl-ipython2"><pre><span class="code-line"><span></span><span class="k">print</span> <span class="n">b</span><span class="p">,</span> <span class="n">a</span> </span>
 </pre></div>
 </div>
 </div>
@@ -1163,7 +1168,7 @@ I am no
 <div class="output">
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>I am no 1
+<pre><span class="code-line">I am no 1</span>
 </pre>
 </div>
 </div>
@@ -1175,8 +1180,8 @@ I am no
 <div class="prompt input_prompt">In [168]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># print can be also used to output strings , not just variables:</span>
-<span class="k">print</span> <span class="s2">"life is good"</span><span class="p">,</span> <span class="s2">"also great!"</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">a</span> 
+<div class=" highlight hl-ipython2"><pre><span class="code-line"><span></span><span class="c1"># print can be also used to output strings , not just variables:</span></span>
+<span class="code-line"><span class="k">print</span> <span class="s2">"life is good"</span><span class="p">,</span> <span class="s2">"also great!"</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">a</span> </span>
 </pre></div>
 </div>
 </div>
@@ -1185,7 +1190,7 @@ I am no
 <div class="output">
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>life is good also great! I am no 1
+<pre><span class="code-line">life is good also great! I am no 1</span>
 </pre>
 </div>
 </div>
@@ -1221,8 +1226,8 @@ I am no
 <div class="prompt input_prompt">In [156]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># Example String assigned to variable s:</span>
-<span class="n">s</span> <span class="o">=</span> <span class="s2">"life is GREAT."</span>
+<div class=" highlight hl-ipython2"><pre><span class="code-line"><span></span><span class="c1"># Example String assigned to variable s:</span></span>
+<span class="code-line"><span class="n">s</span> <span class="o">=</span> <span class="s2">"life is GREAT."</span></span>
 </pre></div>
 </div>
 </div>
@@ -1242,7 +1247,7 @@ I am no
 <div class="prompt input_prompt">In [157]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="k">print</span> <span class="n">s</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+<div class=" highlight hl-ipython2"><pre><span class="code-line"><span></span><span class="k">print</span> <span class="n">s</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span></span>
 </pre></div>
 </div>
 </div>
@@ -1251,7 +1256,7 @@ I am no
 <div class="output">
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>life is great.
+<pre><span class="code-line">life is great.</span>
 </pre>
 </div>
 </div>
@@ -1272,7 +1277,7 @@ I am no
 <div class="prompt input_prompt">In [158]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="k">print</span> <span class="n">s</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
+<div class=" highlight hl-ipython2"><pre><span class="code-line"><span></span><span class="k">print</span> <span class="n">s</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span></span>
 </pre></div>
 </div>
 </div>
@@ -1281,7 +1286,7 @@ I am no
 <div class="output">
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>LIFE IS GREAT.
+<pre><span class="code-line">LIFE IS GREAT.</span>
 </pre>
 </div>
 </div>
@@ -1302,7 +1307,7 @@ I am no
 <div class="prompt input_prompt">In [159]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="k">print</span> <span class="n">s</span><span class="o">.</span><span class="n">capitalize</span><span class="p">()</span>
+<div class=" highlight hl-ipython2"><pre><span class="code-line"><span></span><span class="k">print</span> <span class="n">s</span><span class="o">.</span><span class="n">capitalize</span><span class="p">()</span></span>
 </pre></div>
 </div>
 </div>
@@ -1311,7 +1316,7 @@ I am no
 <div class="output">
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Life is great.
+<pre><span class="code-line">Life is great.</span>
 </pre>
 </div>
 </div>
@@ -1333,9 +1338,9 @@ In the below example we are counting the occurances of sub string "life" in the 
 <div class="prompt input_prompt">In [160]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="k">print</span> <span class="n">s</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s2">"life"</span><span class="p">)</span>
-<span class="k">print</span> <span class="n">s</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s2">"file"</span><span class="p">)</span>
-<span class="k">print</span> <span class="n">s</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s2">"i"</span><span class="p">)</span>
+<div class=" highlight hl-ipython2"><pre><span class="code-line"><span></span><span class="k">print</span> <span class="n">s</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s2">"life"</span><span class="p">)</span></span>
+<span class="code-line"><span class="k">print</span> <span class="n">s</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s2">"file"</span><span class="p">)</span></span>
+<span class="code-line"><span class="k">print</span> <span class="n">s</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s2">"i"</span><span class="p">)</span></span>
 </pre></div>
 </div>
 </div>
@@ -1344,9 +1349,9 @@ In the below example we are counting the occurances of sub string "life" in the 
 <div class="output">
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>1
-0
-2
+<pre><span class="code-line">1</span>
+<span class="code-line">0</span>
+<span class="code-line">2</span>
 </pre>
 </div>
 </div>
@@ -1368,8 +1373,8 @@ In the below example we are counting the occurances of sub string "life" in the 
 <div class="prompt input_prompt">In [161]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="k">print</span> <span class="n">s</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
-<span class="k">print</span> <span class="n">s</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">"i"</span><span class="p">)</span>
+<div class=" highlight hl-ipython2"><pre><span class="code-line"><span></span><span class="k">print</span> <span class="n">s</span><span class="o">.</span><span class="n">split</span><span class="p">()</span></span>
+<span class="code-line"><span class="k">print</span> <span class="n">s</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">"i"</span><span class="p">)</span></span>
 </pre></div>
 </div>
 </div>
@@ -1378,8 +1383,8 @@ In the below example we are counting the occurances of sub string "life" in the 
 <div class="output">
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>['life', 'is', 'GREAT.']
-['l', 'fe ', 's GREAT.']
+<pre><span class="code-line">['life', 'is', 'GREAT.']</span>
+<span class="code-line">['l', 'fe ', 's GREAT.']</span>
 </pre>
 </div>
 </div>
@@ -1400,8 +1405,8 @@ In the below example we are counting the occurances of sub string "life" in the 
 <div class="prompt input_prompt">In [162]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="k">print</span> <span class="n">s</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>      <span class="c1"># As no spaces in the original string , there is nothing to strip</span>
-<span class="k">print</span> <span class="n">s</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s1">'l.'</span><span class="p">)</span>  <span class="c1"># This removes the '.' and 'l' if it occurs either at beginning or end of the sentence.</span>
+<div class=" highlight hl-ipython2"><pre><span class="code-line"><span></span><span class="k">print</span> <span class="n">s</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>      <span class="c1"># As no spaces in the original string , there is nothing to strip</span></span>
+<span class="code-line"><span class="k">print</span> <span class="n">s</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s1">'l.'</span><span class="p">)</span>  <span class="c1"># This removes the '.' and 'l' if it occurs either at beginning or end of the sentence.</span></span>
 </pre></div>
 </div>
 </div>
@@ -1410,8 +1415,8 @@ In the below example we are counting the occurances of sub string "life" in the 
 <div class="output">
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>life is GREAT.
-ife is GREAT
+<pre><span class="code-line">life is GREAT.</span>
+<span class="code-line">ife is GREAT</span>
 </pre>
 </div>
 </div>
@@ -1433,12 +1438,12 @@ ife is GREAT
 <div class="prompt input_prompt">In [163]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># Notice the character between the quotes '_' or ' '.</span>
-<span class="k">print</span> <span class="s1">' '</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="s1">'hello'</span><span class="p">,</span> <span class="s2">"there!"</span><span class="p">,</span> <span class="s2">"this"</span><span class="p">,</span> <span class="s2">"is"</span><span class="p">,</span> <span class="s2">"list"</span><span class="p">])</span>
-<span class="k">print</span> <span class="s1">'_'</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="s2">"hello"</span><span class="p">,</span> <span class="s2">"there!"</span><span class="p">,</span> <span class="s2">"this"</span><span class="p">,</span> <span class="s2">"is"</span><span class="p">,</span> <span class="s2">"list"</span><span class="p">])</span>
-
-<span class="c1"># if no character is given: it would join the words in list without spaces</span>
-<span class="k">print</span> <span class="s1">''</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="s1">'hello'</span><span class="p">,</span> <span class="s2">"there!"</span><span class="p">,</span> <span class="s2">"this"</span><span class="p">,</span> <span class="s2">"is"</span><span class="p">,</span> <span class="s2">"list"</span><span class="p">])</span>
+<div class=" highlight hl-ipython2"><pre><span class="code-line"><span></span><span class="c1"># Notice the character between the quotes '_' or ' '.</span></span>
+<span class="code-line"><span class="k">print</span> <span class="s1">' '</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="s1">'hello'</span><span class="p">,</span> <span class="s2">"there!"</span><span class="p">,</span> <span class="s2">"this"</span><span class="p">,</span> <span class="s2">"is"</span><span class="p">,</span> <span class="s2">"list"</span><span class="p">])</span></span>
+<span class="code-line"><span class="k">print</span> <span class="s1">'_'</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="s2">"hello"</span><span class="p">,</span> <span class="s2">"there!"</span><span class="p">,</span> <span class="s2">"this"</span><span class="p">,</span> <span class="s2">"is"</span><span class="p">,</span> <span class="s2">"list"</span><span class="p">])</span></span>
+<span class="code-line"></span>
+<span class="code-line"><span class="c1"># if no character is given: it would join the words in list without spaces</span></span>
+<span class="code-line"><span class="k">print</span> <span class="s1">''</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="s1">'hello'</span><span class="p">,</span> <span class="s2">"there!"</span><span class="p">,</span> <span class="s2">"this"</span><span class="p">,</span> <span class="s2">"is"</span><span class="p">,</span> <span class="s2">"list"</span><span class="p">])</span></span>
 </pre></div>
 </div>
 </div>
@@ -1447,9 +1452,9 @@ ife is GREAT
 <div class="output">
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>hello there! this is list
-hello_there!_this_is_list
-hellothere!thisislist
+<pre><span class="code-line">hello there! this is list</span>
+<span class="code-line">hello_there!_this_is_list</span>
+<span class="code-line">hellothere!thisislist</span>
 </pre>
 </div>
 </div>
@@ -1470,12 +1475,12 @@ hellothere!thisislist
 <div class="prompt input_prompt">In [164]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># join</span>
-<span class="n">example</span> <span class="o">=</span> <span class="s1">' '</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="s1">'hello'</span><span class="p">,</span> <span class="s2">"there!"</span><span class="p">,</span> <span class="s2">"this"</span><span class="p">,</span> <span class="s2">"is"</span><span class="p">,</span> <span class="s2">"list"</span><span class="p">])</span>     
-<span class="k">print</span> <span class="n">example</span> 
-
-<span class="c1"># split</span>
-<span class="k">print</span> <span class="n">example</span><span class="o">.</span><span class="n">split</span><span class="p">()</span> 
+<div class=" highlight hl-ipython2"><pre><span class="code-line"><span></span><span class="c1"># join</span></span>
+<span class="code-line"><span class="n">example</span> <span class="o">=</span> <span class="s1">' '</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="s1">'hello'</span><span class="p">,</span> <span class="s2">"there!"</span><span class="p">,</span> <span class="s2">"this"</span><span class="p">,</span> <span class="s2">"is"</span><span class="p">,</span> <span class="s2">"list"</span><span class="p">])</span>     </span>
+<span class="code-line"><span class="k">print</span> <span class="n">example</span> </span>
+<span class="code-line"></span>
+<span class="code-line"><span class="c1"># split</span></span>
+<span class="code-line"><span class="k">print</span> <span class="n">example</span><span class="o">.</span><span class="n">split</span><span class="p">()</span> </span>
 </pre></div>
 </div>
 </div>
@@ -1484,8 +1489,8 @@ hellothere!thisislist
 <div class="output">
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>hello there! this is list
-['hello', 'there!', 'this', 'is', 'list']
+<pre><span class="code-line">hello there! this is list</span>
+<span class="code-line">['hello', 'there!', 'this', 'is', 'list']</span>
 </pre>
 </div>
 </div>
@@ -1506,9 +1511,9 @@ hellothere!thisislist
 <div class="prompt input_prompt">In [165]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># index gives the position of a substring (this is given as argument) within a string</span>
-<span class="k">print</span> <span class="s2">"string s: "</span><span class="p">,</span> <span class="n">s</span>
-<span class="k">print</span> <span class="s2">"position of substring 'is':"</span><span class="p">,</span> <span class="n">s</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s1">'is'</span><span class="p">)</span>
+<div class=" highlight hl-ipython2"><pre><span class="code-line"><span></span><span class="c1"># index gives the position of a substring (this is given as argument) within a string</span></span>
+<span class="code-line"><span class="k">print</span> <span class="s2">"string s: "</span><span class="p">,</span> <span class="n">s</span></span>
+<span class="code-line"><span class="k">print</span> <span class="s2">"position of substring 'is':"</span><span class="p">,</span> <span class="n">s</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s1">'is'</span><span class="p">)</span></span>
 </pre></div>
 </div>
 </div>
@@ -1517,8 +1522,8 @@ hellothere!thisislist
 <div class="output">
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>string s:  life is GREAT.
-position of substring 'is': 5
+<pre><span class="code-line">string s:  life is GREAT.</span>
+<span class="code-line">position of substring 'is': 5</span>
 </pre>
 </div>
 </div>
@@ -1539,9 +1544,9 @@ position of substring 'is': 5
 <div class="prompt input_prompt">In [166]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># replace removes all the occurances of a substring and replaces with a given characters.</span>
-<span class="c1"># s.replace(old, new)</span>
-<span class="n">s</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">"is"</span><span class="p">,</span> <span class="s2">"is always"</span><span class="p">)</span>
+<div class=" highlight hl-ipython2"><pre><span class="code-line"><span></span><span class="c1"># replace removes all the occurances of a substring and replaces with a given characters.</span></span>
+<span class="code-line"><span class="c1"># s.replace(old, new)</span></span>
+<span class="code-line"><span class="n">s</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">"is"</span><span class="p">,</span> <span class="s2">"is always"</span><span class="p">)</span></span>
 </pre></div>
 </div>
 </div>
@@ -1550,7 +1555,7 @@ position of substring 'is': 5
 <div class="output">
 <div class="output_area"><div class="prompt output_prompt">Out[166]:</div>
 <div class="output_text output_subarea output_execute_result">
-<pre>'life is always GREAT.'</pre>
+<pre><span class="code-line">'life is always GREAT.'</pre>
 </div>
 </div>
 </div>
@@ -1594,9 +1599,10 @@ position of substring 'is': 5
 
 
 
+
 <div id="disqus_thread"></div>
 <script type="text/javascript">
-    var disqus_shortname = 'chandansblog';
+    var disqus_shortname = 'chandan-u-github-io';
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
         dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';

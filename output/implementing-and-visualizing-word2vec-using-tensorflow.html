@@ -7,7 +7,7 @@
     <link rel="stylesheet/less" type="text/css" href="./theme/stylesheet/style.less">
     <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/2.5.1/less.min.js" type="text/javascript"></script>
 
-  <link rel="stylesheet" type="text/css" href="./theme/pygments/monokai.min.css">
+  <link rel="stylesheet" type="text/css" href="./theme/pygments/github.min.css">
   <link rel="stylesheet" type="text/css" href="./theme/font-awesome/css/font-awesome.min.css">
 
 
@@ -49,6 +49,7 @@
 <meta property="og:image" content="https://s.gravatar.com/avatar/1ffef3b08b2d7091ed88bcd36cb2030f?s=80">
 
   <title>Chandan 's Blog &ndash; Implementing and visualizing word2Vec using Tensorflow</title>
+
 </head>
 <body>
   <aside>
@@ -74,8 +75,11 @@
         <li><a class="sc-google" href="https://plus.google.com/u/0/112461392309064088729" target="_blank"><i class="fa fa-google"></i></a></li>
       </ul>
     </div>
+
+
   </aside>
   <main>
+
     <nav>
       <a href=".">    Home
 </a>
@@ -87,16 +91,17 @@
 
     </nav>
 
-<article>
+<article class="single">
   <header>
     <h1 id="implementing-and-visualizing-word2vec-using-tensorflow">Implementing and visualizing word2Vec using Tensorflow</h1>
     <p>
           Posted on August 15, 2017 in <a href="./category/misc.html">misc</a>
 
 
-        &#8226; 245 min read
     </p>
   </header>
+
+
   <div>
     <style type="text/css">/*!
 *
@@ -1084,13 +1089,13 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [62]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
-<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"../datasets/posts.csv"</span> <span class="p">)</span>
-
-<span class="k">print</span> <span class="n">data</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
-
-<span class="c1"># lets use sample data</span>
-<span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">100</span><span class="p">,:]</span>
+<div class=" highlight hl-ipython2"><pre><span class="code-line"><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span></span>
+<span class="code-line"><span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"../datasets/posts.csv"</span> <span class="p">)</span></span>
+<span class="code-line"></span>
+<span class="code-line"><span class="k">print</span> <span class="n">data</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span></span>
+<span class="code-line"></span>
+<span class="code-line"><span class="c1"># lets use sample data</span></span>
+<span class="code-line"><span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">100</span><span class="p">,:]</span></span>
 </pre></div>
 </div>
 </div>
@@ -1099,20 +1104,20 @@ h6:hover .anchor-link {
 <div class="output">
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>                  Title                 Date       Author Categories  \
-0  isight vs. firewire   Jan 30 2004 12:00AM  sean bonner              
-1            idvd help   Jan 30 2004 12:00AM  sean bonner              
-2    macintosh stories   Jan 30 2004 12:00AM  sean bonner              
-
-                                                Post Post_Length  \
-0   macfixit has just posted a little  troublesho...         427   
-1   james over at macmerc has just posted a super...         311   
-2   folklore.org is collecting stories and anecdo...         272   
-
-  No_of_outlinks No_of_inlinks No_of_comments  
-0              2             0              0  
-1              3             0             12  
-2              3             0              0  
+<pre><span class="code-line">                  Title                 Date       Author Categories  \</span>
+<span class="code-line">0  isight vs. firewire   Jan 30 2004 12:00AM  sean bonner              </span>
+<span class="code-line">1            idvd help   Jan 30 2004 12:00AM  sean bonner              </span>
+<span class="code-line">2    macintosh stories   Jan 30 2004 12:00AM  sean bonner              </span>
+<span class="code-line"></span>
+<span class="code-line">                                                Post Post_Length  \</span>
+<span class="code-line">0   macfixit has just posted a little  troublesho...         427   </span>
+<span class="code-line">1   james over at macmerc has just posted a super...         311   </span>
+<span class="code-line">2   folklore.org is collecting stories and anecdo...         272   </span>
+<span class="code-line"></span>
+<span class="code-line">  No_of_outlinks No_of_inlinks No_of_comments  </span>
+<span class="code-line">0              2             0              0  </span>
+<span class="code-line">1              3             0             12  </span>
+<span class="code-line">2              3             0              0  </span>
 </pre>
 </div>
 </div>
@@ -1139,15 +1144,15 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [63]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="n">word_tuples</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="k">def</span> <span class="nf">genTuples</span><span class="p">(</span><span class="n">tokens</span><span class="p">,</span> <span class="n">window_size</span> <span class="o">=</span> <span class="mi">2</span><span class="p">):</span>
-    <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">token</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">tokens</span><span class="p">):</span>
-        <span class="n">start</span> <span class="o">=</span> <span class="n">index</span><span class="o">-</span><span class="n">window_size</span>
-        <span class="n">end</span> <span class="o">=</span> <span class="n">index</span><span class="o">+</span><span class="n">window_size</span><span class="o">+</span><span class="mi">1</span> <span class="k">if</span> <span class="n">index</span><span class="o">+</span><span class="n">window_size</span><span class="o">+</span><span class="mi">1</span> <span class="o">&lt;=</span> <span class="nb">len</span><span class="p">(</span><span class="n">tokens</span><span class="p">)</span>  <span class="k">else</span> <span class="nb">len</span><span class="p">(</span><span class="n">tokens</span><span class="p">)</span>
-        <span class="k">for</span> <span class="n">neighbor</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">):</span>
-            <span class="k">if</span><span class="p">(</span><span class="n">neighbor</span><span class="o">!=</span> <span class="n">index</span> <span class="ow">and</span> <span class="n">neighbor</span><span class="o">&gt;=</span><span class="mi">0</span><span class="p">):</span>
-                <span class="n">word_tuples</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">token</span><span class="p">,</span> <span class="n">tokens</span><span class="p">[</span><span class="n">neighbor</span><span class="p">]))</span>
-    <span class="k">return</span>
+<div class=" highlight hl-ipython2"><pre><span class="code-line"><span></span><span class="n">word_tuples</span> <span class="o">=</span> <span class="p">[]</span></span>
+<span class="code-line"><span class="k">def</span> <span class="nf">genTuples</span><span class="p">(</span><span class="n">tokens</span><span class="p">,</span> <span class="n">window_size</span> <span class="o">=</span> <span class="mi">2</span><span class="p">):</span></span>
+<span class="code-line">    <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">token</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">tokens</span><span class="p">):</span></span>
+<span class="code-line">        <span class="n">start</span> <span class="o">=</span> <span class="n">index</span><span class="o">-</span><span class="n">window_size</span></span>
+<span class="code-line">        <span class="n">end</span> <span class="o">=</span> <span class="n">index</span><span class="o">+</span><span class="n">window_size</span><span class="o">+</span><span class="mi">1</span> <span class="k">if</span> <span class="n">index</span><span class="o">+</span><span class="n">window_size</span><span class="o">+</span><span class="mi">1</span> <span class="o">&lt;=</span> <span class="nb">len</span><span class="p">(</span><span class="n">tokens</span><span class="p">)</span>  <span class="k">else</span> <span class="nb">len</span><span class="p">(</span><span class="n">tokens</span><span class="p">)</span></span>
+<span class="code-line">        <span class="k">for</span> <span class="n">neighbor</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">):</span></span>
+<span class="code-line">            <span class="k">if</span><span class="p">(</span><span class="n">neighbor</span><span class="o">!=</span> <span class="n">index</span> <span class="ow">and</span> <span class="n">neighbor</span><span class="o">&gt;=</span><span class="mi">0</span><span class="p">):</span></span>
+<span class="code-line">                <span class="n">word_tuples</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">token</span><span class="p">,</span> <span class="n">tokens</span><span class="p">[</span><span class="n">neighbor</span><span class="p">]))</span></span>
+<span class="code-line">    <span class="k">return</span></span>
 </pre></div>
 </div>
 </div>
@@ -1167,80 +1172,80 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [64]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># create a dict of unigrams and assign an id</span>
-<span class="n">word_index</span> <span class="o">=</span> <span class="p">{}</span>
-<span class="n">token_unique_id</span><span class="o">=</span><span class="mi">0</span>
-
-
-<span class="c1"># tokenize : sentence level(.) and word level(" ")    </span>
-<span class="kn">from</span> <span class="nn">nltk.tokenize</span> <span class="kn">import</span> <span class="n">sent_tokenize</span>    
-<span class="kn">from</span> <span class="nn">nltk.tokenize</span> <span class="kn">import</span> <span class="n">word_tokenize</span>
-<span class="kn">from</span> <span class="nn">nltk.corpus</span> <span class="kn">import</span> <span class="n">stopwords</span>
-<span class="n">stop_words</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">stopwords</span><span class="o">.</span><span class="n">words</span><span class="p">(</span><span class="s1">'english'</span><span class="p">))</span>
-
-<span class="kn">import</span> <span class="nn">re</span>
-<span class="kn">import</span> <span class="nn">string</span>
-<span class="n">regex</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s1">'[</span><span class="si">%s</span><span class="s1">]'</span> <span class="o">%</span> <span class="n">re</span><span class="o">.</span><span class="n">escape</span><span class="p">(</span><span class="n">string</span><span class="o">.</span><span class="n">punctuation</span><span class="p">))</span>
-
-
-<span class="c1"># tokenize docs and skip unecessary words</span>
-<span class="n">tokenized_docs</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="n">exceptions</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="k">for</span> <span class="n">doc</span> <span class="ow">in</span> <span class="n">data</span><span class="p">[</span><span class="s2">"Post"</span><span class="p">]:</span>    
-    <span class="k">try</span><span class="p">:</span>
-        <span class="k">for</span> <span class="n">sentence</span> <span class="ow">in</span> <span class="n">sent_tokenize</span><span class="p">(</span><span class="n">doc</span><span class="p">):</span>
-            <span class="c1">#tokenized_docs.append(map(str.lower, filter(lambda word: word not in stop_words  ,word_tokenize(sentence))))</span>
-            
-            <span class="c1"># lower strings</span>
-            <span class="n">tokens</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="o">.</span><span class="n">lower</span><span class="p">,</span> <span class="n">word_tokenize</span><span class="p">(</span><span class="n">sentence</span><span class="p">))</span>
-            
-            <span class="c1"># remove stopwords</span>
-            <span class="n">tokens</span> <span class="o">=</span> <span class="nb">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">word</span><span class="p">:</span> <span class="n">word</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">stop_words</span><span class="p">,</span> <span class="n">tokens</span><span class="p">)</span>
-            
-            <span class="c1">#remove punctuation</span>
-            <span class="n">tokens</span> <span class="o">=</span>  <span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">token</span><span class="p">:</span><span class="n">regex</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s1">''</span><span class="p">,</span> <span class="n">token</span><span class="p">),</span> <span class="n">tokens</span><span class="p">)</span>  
-            
-            <span class="c1">#filter empty strings</span>
-            <span class="n">tokens</span> <span class="o">=</span> <span class="nb">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">token</span><span class="p">:</span> <span class="n">token</span> <span class="o">!=</span> <span class="s1">''</span><span class="p">,</span> <span class="n">tokens</span> <span class="p">)</span>
-            
-            
-            <span class="c1">#tokenized_docs</span>
-            <span class="n">tokenized_docs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tokens</span><span class="p">)</span>  
-            
-            <span class="c1"># create unique id for new tokens:</span>
-            <span class="k">for</span> <span class="n">token</span> <span class="ow">in</span> <span class="n">tokens</span><span class="p">:</span>
-                <span class="k">if</span> <span class="n">token</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">word_index</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
-                    <span class="n">token_unique_id</span> <span class="o">+=</span><span class="mi">1</span>
-                    <span class="n">word_index</span><span class="p">[</span><span class="n">token</span><span class="p">]</span> <span class="o">=</span> <span class="n">token_unique_id</span>  
-            
-            <span class="c1"># create word tuples for the sentence: default window size:2</span>
-            <span class="n">genTuples</span><span class="p">(</span><span class="n">tokens</span><span class="p">,</span> <span class="n">window_size</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-    <span class="k">except</span> <span class="p">:</span>        
-        <span class="n">exceptions</span><span class="o">=</span><span class="n">exceptions</span> <span class="o">+</span> <span class="mi">1</span>
-        <span class="k">continue</span>
-<span class="k">print</span> <span class="s2">"exception occured :"</span><span class="p">,</span> <span class="n">exceptions</span>  
-
-
-<span class="c1"># remove punctuations in words using regular expressions package re:</span>
-
-
-<span class="c1"># for sentence_index, tokens in enumerate(tokenized_docs):</span>
-<span class="c1">#     new_tokens = []</span>
-<span class="c1">#     for token in tokens:</span>
-<span class="c1">#         new_token = regex.sub('', token)       </span>
-<span class="c1">#         if not new_token == '':</span>
-<span class="c1">#             if new_token not in word_index.keys():</span>
-<span class="c1">#                 token_unique_id +=1</span>
-<span class="c1">#                 word_index[new_token] = token_unique_id</span>
-<span class="c1">#             new_tokens.append(new_token)</span>
-<span class="c1">#     tokenized_docs[sentence_index] = new_tokens</span>
-
-<span class="c1"># create word_tuple features (x,y)</span>
-
-
-<span class="c1">#map(genTuples, tokenized_docs) </span>
-<span class="k">print</span> <span class="s2">"total word tuples generated: "</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">word_tuples</span><span class="p">)</span>
-<span class="k">print</span> <span class="n">word_tuples</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">],</span> <span class="s2">"..."</span>               
+<div class=" highlight hl-ipython2"><pre><span class="code-line"><span></span><span class="c1"># create a dict of unigrams and assign an id</span></span>
+<span class="code-line"><span class="n">word_index</span> <span class="o">=</span> <span class="p">{}</span></span>
+<span class="code-line"><span class="n">token_unique_id</span><span class="o">=</span><span class="mi">0</span></span>
+<span class="code-line"></span>
+<span class="code-line"></span>
+<span class="code-line"><span class="c1"># tokenize : sentence level(.) and word level(" ")    </span></span>
+<span class="code-line"><span class="kn">from</span> <span class="nn">nltk.tokenize</span> <span class="kn">import</span> <span class="n">sent_tokenize</span>    </span>
+<span class="code-line"><span class="kn">from</span> <span class="nn">nltk.tokenize</span> <span class="kn">import</span> <span class="n">word_tokenize</span></span>
+<span class="code-line"><span class="kn">from</span> <span class="nn">nltk.corpus</span> <span class="kn">import</span> <span class="n">stopwords</span></span>
+<span class="code-line"><span class="n">stop_words</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">stopwords</span><span class="o">.</span><span class="n">words</span><span class="p">(</span><span class="s1">'english'</span><span class="p">))</span></span>
+<span class="code-line"></span>
+<span class="code-line"><span class="kn">import</span> <span class="nn">re</span></span>
+<span class="code-line"><span class="kn">import</span> <span class="nn">string</span></span>
+<span class="code-line"><span class="n">regex</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s1">'[</span><span class="si">%s</span><span class="s1">]'</span> <span class="o">%</span> <span class="n">re</span><span class="o">.</span><span class="n">escape</span><span class="p">(</span><span class="n">string</span><span class="o">.</span><span class="n">punctuation</span><span class="p">))</span></span>
+<span class="code-line"></span>
+<span class="code-line"></span>
+<span class="code-line"><span class="c1"># tokenize docs and skip unecessary words</span></span>
+<span class="code-line"><span class="n">tokenized_docs</span> <span class="o">=</span> <span class="p">[]</span></span>
+<span class="code-line"><span class="n">exceptions</span> <span class="o">=</span> <span class="mi">0</span></span>
+<span class="code-line"><span class="k">for</span> <span class="n">doc</span> <span class="ow">in</span> <span class="n">data</span><span class="p">[</span><span class="s2">"Post"</span><span class="p">]:</span>    </span>
+<span class="code-line">    <span class="k">try</span><span class="p">:</span></span>
+<span class="code-line">        <span class="k">for</span> <span class="n">sentence</span> <span class="ow">in</span> <span class="n">sent_tokenize</span><span class="p">(</span><span class="n">doc</span><span class="p">):</span></span>
+<span class="code-line">            <span class="c1">#tokenized_docs.append(map(str.lower, filter(lambda word: word not in stop_words  ,word_tokenize(sentence))))</span></span>
+<span class="code-line">            </span>
+<span class="code-line">            <span class="c1"># lower strings</span></span>
+<span class="code-line">            <span class="n">tokens</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="o">.</span><span class="n">lower</span><span class="p">,</span> <span class="n">word_tokenize</span><span class="p">(</span><span class="n">sentence</span><span class="p">))</span></span>
+<span class="code-line">            </span>
+<span class="code-line">            <span class="c1"># remove stopwords</span></span>
+<span class="code-line">            <span class="n">tokens</span> <span class="o">=</span> <span class="nb">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">word</span><span class="p">:</span> <span class="n">word</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">stop_words</span><span class="p">,</span> <span class="n">tokens</span><span class="p">)</span></span>
+<span class="code-line">            </span>
+<span class="code-line">            <span class="c1">#remove punctuation</span></span>
+<span class="code-line">            <span class="n">tokens</span> <span class="o">=</span>  <span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">token</span><span class="p">:</span><span class="n">regex</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s1">''</span><span class="p">,</span> <span class="n">token</span><span class="p">),</span> <span class="n">tokens</span><span class="p">)</span>  </span>
+<span class="code-line">            </span>
+<span class="code-line">            <span class="c1">#filter empty strings</span></span>
+<span class="code-line">            <span class="n">tokens</span> <span class="o">=</span> <span class="nb">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">token</span><span class="p">:</span> <span class="n">token</span> <span class="o">!=</span> <span class="s1">''</span><span class="p">,</span> <span class="n">tokens</span> <span class="p">)</span></span>
+<span class="code-line">            </span>
+<span class="code-line">            </span>
+<span class="code-line">            <span class="c1">#tokenized_docs</span></span>
+<span class="code-line">            <span class="n">tokenized_docs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tokens</span><span class="p">)</span>  </span>
+<span class="code-line">            </span>
+<span class="code-line">            <span class="c1"># create unique id for new tokens:</span></span>
+<span class="code-line">            <span class="k">for</span> <span class="n">token</span> <span class="ow">in</span> <span class="n">tokens</span><span class="p">:</span></span>
+<span class="code-line">                <span class="k">if</span> <span class="n">token</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">word_index</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span></span>
+<span class="code-line">                    <span class="n">token_unique_id</span> <span class="o">+=</span><span class="mi">1</span></span>
+<span class="code-line">                    <span class="n">word_index</span><span class="p">[</span><span class="n">token</span><span class="p">]</span> <span class="o">=</span> <span class="n">token_unique_id</span>  </span>
+<span class="code-line">            </span>
+<span class="code-line">            <span class="c1"># create word tuples for the sentence: default window size:2</span></span>
+<span class="code-line">            <span class="n">genTuples</span><span class="p">(</span><span class="n">tokens</span><span class="p">,</span> <span class="n">window_size</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span></span>
+<span class="code-line">    <span class="k">except</span> <span class="p">:</span>        </span>
+<span class="code-line">        <span class="n">exceptions</span><span class="o">=</span><span class="n">exceptions</span> <span class="o">+</span> <span class="mi">1</span></span>
+<span class="code-line">        <span class="k">continue</span></span>
+<span class="code-line"><span class="k">print</span> <span class="s2">"exception occured :"</span><span class="p">,</span> <span class="n">exceptions</span>  </span>
+<span class="code-line"></span>
+<span class="code-line"></span>
+<span class="code-line"><span class="c1"># remove punctuations in words using regular expressions package re:</span></span>
+<span class="code-line"></span>
+<span class="code-line"></span>
+<span class="code-line"><span class="c1"># for sentence_index, tokens in enumerate(tokenized_docs):</span></span>
+<span class="code-line"><span class="c1">#     new_tokens = []</span></span>
+<span class="code-line"><span class="c1">#     for token in tokens:</span></span>
+<span class="code-line"><span class="c1">#         new_token = regex.sub('', token)       </span></span>
+<span class="code-line"><span class="c1">#         if not new_token == '':</span></span>
+<span class="code-line"><span class="c1">#             if new_token not in word_index.keys():</span></span>
+<span class="code-line"><span class="c1">#                 token_unique_id +=1</span></span>
+<span class="code-line"><span class="c1">#                 word_index[new_token] = token_unique_id</span></span>
+<span class="code-line"><span class="c1">#             new_tokens.append(new_token)</span></span>
+<span class="code-line"><span class="c1">#     tokenized_docs[sentence_index] = new_tokens</span></span>
+<span class="code-line"></span>
+<span class="code-line"><span class="c1"># create word_tuple features (x,y)</span></span>
+<span class="code-line"></span>
+<span class="code-line"></span>
+<span class="code-line"><span class="c1">#map(genTuples, tokenized_docs) </span></span>
+<span class="code-line"><span class="k">print</span> <span class="s2">"total word tuples generated: "</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">word_tuples</span><span class="p">)</span></span>
+<span class="code-line"><span class="k">print</span> <span class="n">word_tuples</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">],</span> <span class="s2">"..."</span>               </span>
 </pre></div>
 </div>
 </div>
@@ -1249,9 +1254,9 @@ h6:hover .anchor-link {
 <div class="output">
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>exception occured : 0
-total word tuples generated:  22004
-[('macfixit', 'posted'), ('macfixit', 'little'), ('posted', 'macfixit')] ...
+<pre><span class="code-line">exception occured : 0</span>
+<span class="code-line">total word tuples generated:  22004</span>
+<span class="code-line">[('macfixit', 'posted'), ('macfixit', 'little'), ('posted', 'macfixit')] ...</span>
 </pre>
 </div>
 </div>
@@ -1287,92 +1292,92 @@ total word tuples generated:  22004
 <div class="prompt input_prompt">In [65]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="kn">import</span> <span class="nn">tensorflow</span> <span class="kn">as</span> <span class="nn">tf</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-
-<span class="k">def</span> <span class="nf">feedForward</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">W1</span><span class="p">,</span> <span class="n">W2</span><span class="p">):</span>
-    <span class="sd">"""</span>
-<span class="sd">       compute the forward propgation of the network and,</span>
-<span class="sd">       return the ouput of the network</span>
-<span class="sd">    """</span>
-    
-    <span class="n">h1</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">W1</span><span class="p">)</span>
-    
-    <span class="n">h2</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">h1</span><span class="p">,</span> <span class="n">W2</span><span class="p">)</span>
-    
-    <span class="k">return</span> <span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">softmax</span><span class="p">(</span><span class="n">h2</span><span class="p">)</span>
-    
-    
-<span class="k">def</span> <span class="nf">word2Vec</span><span class="p">(</span><span class="n">word_tuples</span><span class="p">,</span> <span class="n">word_index</span><span class="p">,</span> <span class="n">hidden_dim</span> <span class="o">=</span> <span class="mi">300</span><span class="p">):</span>  
-    
-    <span class="n">input_dim</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">word_index</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
-    <span class="n">out_dim</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">word_index</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
-    
-    <span class="k">print</span> <span class="s2">"input dim: "</span><span class="p">,</span> <span class="n">input_dim</span>
-    <span class="k">print</span> <span class="s2">"output dim:"</span><span class="p">,</span> <span class="n">out_dim</span>
-    
-    
-    <span class="c1"># placeholders for the graph</span>
-    <span class="n">X</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">placeholder</span><span class="p">(</span><span class="s2">"float"</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span> <span class="p">[</span><span class="bp">None</span><span class="p">,</span> <span class="n">input_dim</span><span class="p">])</span>
-    <span class="n">Y</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">placeholder</span><span class="p">(</span><span class="s2">"float"</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span> <span class="p">[</span><span class="bp">None</span><span class="p">,</span> <span class="n">out_dim</span><span class="p">])</span>
-    
-    
-    
-    <span class="c1"># Trainable variables of the graph</span>
-    <span class="c1"># initialize weights for the synapses between input and hidden layer:</span>
-    <span class="c1"># d * k dimensions for d dimensional input and k hidden neurons</span>
-    
-    <span class="n">w1</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">random_normal</span><span class="p">(</span><span class="n">shape</span> <span class="o">=</span> <span class="p">[</span><span class="n">input_dim</span><span class="p">,</span> <span class="n">hidden_dim</span><span class="p">]))</span>
-    <span class="n">w2</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">random_normal</span><span class="p">(</span><span class="n">shape</span> <span class="o">=</span> <span class="p">[</span><span class="n">hidden_dim</span><span class="p">,</span> <span class="n">out_dim</span><span class="p">]))</span>
-    
-    
-    <span class="c1"># feedForward: mat mul of X*w1*w2    </span>
-    <span class="n">output</span> <span class="o">=</span> <span class="n">feedForward</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">w1</span><span class="p">,</span> <span class="n">w2</span><span class="p">)</span>
-
-    
-    <span class="c1"># COST FUNCTION/ LOSS</span>
-    
-    <span class="n">loss</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">reduce_mean</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">softmax_cross_entropy_with_logits</span><span class="p">(</span><span class="n">labels</span><span class="o">=</span><span class="n">Y</span><span class="p">,</span> <span class="n">logits</span><span class="o">=</span><span class="n">output</span><span class="p">))</span>
-    
-    <span class="c1"># OPTIMIZER/gradient to update weights:</span>
-    <span class="n">optimizer</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">train</span><span class="o">.</span><span class="n">GradientDescentOptimizer</span><span class="p">(</span><span class="mf">0.05</span><span class="p">)</span>
-    <span class="n">train</span> <span class="o">=</span> <span class="n">optimizer</span><span class="o">.</span><span class="n">minimize</span><span class="p">(</span><span class="n">loss</span><span class="p">)</span>
-    
-
-    <span class="c1"># run sgd </span>
-    <span class="n">sess</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">Session</span><span class="p">()</span>
-    <span class="n">init</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">global_variables_initializer</span><span class="p">()</span>
-    <span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">init</span><span class="p">)</span>  <span class="c1"># all variables:weights will be reset to default/original</span>
-    
-    
-    <span class="c1"># for each epoch:</span>
-    <span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">):</span>
-        
-        <span class="c1"># iterate for each example: </span>
-        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">word_tuples</span><span class="p">)):</span>
-            
-            <span class="c1"># encode the word_tuple with vectors using the above id(one hot encoding):</span>
-            <span class="n">x</span><span class="p">,</span><span class="n">y</span> <span class="o">=</span> <span class="n">word_tuples</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
-            <span class="n">x_id</span> <span class="o">=</span> <span class="n">word_index</span><span class="p">[</span><span class="n">x</span><span class="p">]</span>
-            <span class="n">y_id</span> <span class="o">=</span> <span class="n">word_index</span><span class="p">[</span><span class="n">y</span><span class="p">]</span>
-            
-            <span class="n">train_x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">input_dim</span><span class="p">))</span>
-            <span class="n">train_y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">out_dim</span><span class="p">))</span>
-            <span class="n">train_x</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">x_id</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
-            <span class="n">train_y</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">y_id</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
-            
-            <span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">train</span><span class="p">,</span> <span class="p">{</span><span class="n">X</span><span class="p">:</span> <span class="n">train_x</span><span class="p">,</span> <span class="n">Y</span><span class="p">:</span> <span class="n">train_y</span><span class="p">})</span>
-            
-            
-        
-        <span class="c1"># accuracy/loss for each epoch:</span>
-        <span class="k">print</span> <span class="s2">"Epoch :"</span><span class="p">,</span> <span class="n">epoch</span><span class="p">,</span> <span class="s2">" loss is"</span><span class="p">,</span>
-        <span class="c1">#print(tf.reduce_mean(sess.run(loss, {X: train_x, Y: train_y})))</span>
-        <span class="nb">sum</span>  <span class="o">=</span> <span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">loss</span><span class="p">,</span> <span class="p">{</span><span class="n">X</span><span class="p">:</span> <span class="n">train_x</span><span class="p">,</span> <span class="n">Y</span><span class="p">:</span> <span class="n">train_y</span><span class="p">})</span>
-        <span class="k">print</span> <span class="nb">sum</span>
-    <span class="n">weights</span> <span class="o">=</span> <span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">w1</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">weights</span>
-        
+<div class=" highlight hl-ipython2"><pre><span class="code-line"><span></span><span class="kn">import</span> <span class="nn">tensorflow</span> <span class="kn">as</span> <span class="nn">tf</span></span>
+<span class="code-line"><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span></span>
+<span class="code-line"></span>
+<span class="code-line"><span class="k">def</span> <span class="nf">feedForward</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">W1</span><span class="p">,</span> <span class="n">W2</span><span class="p">):</span></span>
+<span class="code-line">    <span class="sd">"""</span></span>
+<span class="code-line"><span class="sd">       compute the forward propgation of the network and,</span></span>
+<span class="code-line"><span class="sd">       return the ouput of the network</span></span>
+<span class="code-line"><span class="sd">    """</span></span>
+<span class="code-line">    </span>
+<span class="code-line">    <span class="n">h1</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">W1</span><span class="p">)</span></span>
+<span class="code-line">    </span>
+<span class="code-line">    <span class="n">h2</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">h1</span><span class="p">,</span> <span class="n">W2</span><span class="p">)</span></span>
+<span class="code-line">    </span>
+<span class="code-line">    <span class="k">return</span> <span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">softmax</span><span class="p">(</span><span class="n">h2</span><span class="p">)</span></span>
+<span class="code-line">    </span>
+<span class="code-line">    </span>
+<span class="code-line"><span class="k">def</span> <span class="nf">word2Vec</span><span class="p">(</span><span class="n">word_tuples</span><span class="p">,</span> <span class="n">word_index</span><span class="p">,</span> <span class="n">hidden_dim</span> <span class="o">=</span> <span class="mi">300</span><span class="p">):</span>  </span>
+<span class="code-line">    </span>
+<span class="code-line">    <span class="n">input_dim</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">word_index</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span></span>
+<span class="code-line">    <span class="n">out_dim</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">word_index</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span></span>
+<span class="code-line">    </span>
+<span class="code-line">    <span class="k">print</span> <span class="s2">"input dim: "</span><span class="p">,</span> <span class="n">input_dim</span></span>
+<span class="code-line">    <span class="k">print</span> <span class="s2">"output dim:"</span><span class="p">,</span> <span class="n">out_dim</span></span>
+<span class="code-line">    </span>
+<span class="code-line">    </span>
+<span class="code-line">    <span class="c1"># placeholders for the graph</span></span>
+<span class="code-line">    <span class="n">X</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">placeholder</span><span class="p">(</span><span class="s2">"float"</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span> <span class="p">[</span><span class="bp">None</span><span class="p">,</span> <span class="n">input_dim</span><span class="p">])</span></span>
+<span class="code-line">    <span class="n">Y</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">placeholder</span><span class="p">(</span><span class="s2">"float"</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span> <span class="p">[</span><span class="bp">None</span><span class="p">,</span> <span class="n">out_dim</span><span class="p">])</span></span>
+<span class="code-line">    </span>
+<span class="code-line">    </span>
+<span class="code-line">    </span>
+<span class="code-line">    <span class="c1"># Trainable variables of the graph</span></span>
+<span class="code-line">    <span class="c1"># initialize weights for the synapses between input and hidden layer:</span></span>
+<span class="code-line">    <span class="c1"># d * k dimensions for d dimensional input and k hidden neurons</span></span>
+<span class="code-line">    </span>
+<span class="code-line">    <span class="n">w1</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">random_normal</span><span class="p">(</span><span class="n">shape</span> <span class="o">=</span> <span class="p">[</span><span class="n">input_dim</span><span class="p">,</span> <span class="n">hidden_dim</span><span class="p">]))</span></span>
+<span class="code-line">    <span class="n">w2</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">random_normal</span><span class="p">(</span><span class="n">shape</span> <span class="o">=</span> <span class="p">[</span><span class="n">hidden_dim</span><span class="p">,</span> <span class="n">out_dim</span><span class="p">]))</span></span>
+<span class="code-line">    </span>
+<span class="code-line">    </span>
+<span class="code-line">    <span class="c1"># feedForward: mat mul of X*w1*w2    </span></span>
+<span class="code-line">    <span class="n">output</span> <span class="o">=</span> <span class="n">feedForward</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">w1</span><span class="p">,</span> <span class="n">w2</span><span class="p">)</span></span>
+<span class="code-line"></span>
+<span class="code-line">    </span>
+<span class="code-line">    <span class="c1"># COST FUNCTION/ LOSS</span></span>
+<span class="code-line">    </span>
+<span class="code-line">    <span class="n">loss</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">reduce_mean</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">softmax_cross_entropy_with_logits</span><span class="p">(</span><span class="n">labels</span><span class="o">=</span><span class="n">Y</span><span class="p">,</span> <span class="n">logits</span><span class="o">=</span><span class="n">output</span><span class="p">))</span></span>
+<span class="code-line">    </span>
+<span class="code-line">    <span class="c1"># OPTIMIZER/gradient to update weights:</span></span>
+<span class="code-line">    <span class="n">optimizer</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">train</span><span class="o">.</span><span class="n">GradientDescentOptimizer</span><span class="p">(</span><span class="mf">0.05</span><span class="p">)</span></span>
+<span class="code-line">    <span class="n">train</span> <span class="o">=</span> <span class="n">optimizer</span><span class="o">.</span><span class="n">minimize</span><span class="p">(</span><span class="n">loss</span><span class="p">)</span></span>
+<span class="code-line">    </span>
+<span class="code-line"></span>
+<span class="code-line">    <span class="c1"># run sgd </span></span>
+<span class="code-line">    <span class="n">sess</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">Session</span><span class="p">()</span></span>
+<span class="code-line">    <span class="n">init</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">global_variables_initializer</span><span class="p">()</span></span>
+<span class="code-line">    <span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">init</span><span class="p">)</span>  <span class="c1"># all variables:weights will be reset to default/original</span></span>
+<span class="code-line">    </span>
+<span class="code-line">    </span>
+<span class="code-line">    <span class="c1"># for each epoch:</span></span>
+<span class="code-line">    <span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">):</span></span>
+<span class="code-line">        </span>
+<span class="code-line">        <span class="c1"># iterate for each example: </span></span>
+<span class="code-line">        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">word_tuples</span><span class="p">)):</span></span>
+<span class="code-line">            </span>
+<span class="code-line">            <span class="c1"># encode the word_tuple with vectors using the above id(one hot encoding):</span></span>
+<span class="code-line">            <span class="n">x</span><span class="p">,</span><span class="n">y</span> <span class="o">=</span> <span class="n">word_tuples</span><span class="p">[</span><span class="n">i</span><span class="p">]</span></span>
+<span class="code-line">            <span class="n">x_id</span> <span class="o">=</span> <span class="n">word_index</span><span class="p">[</span><span class="n">x</span><span class="p">]</span></span>
+<span class="code-line">            <span class="n">y_id</span> <span class="o">=</span> <span class="n">word_index</span><span class="p">[</span><span class="n">y</span><span class="p">]</span></span>
+<span class="code-line">            </span>
+<span class="code-line">            <span class="n">train_x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">input_dim</span><span class="p">))</span></span>
+<span class="code-line">            <span class="n">train_y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">out_dim</span><span class="p">))</span></span>
+<span class="code-line">            <span class="n">train_x</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">x_id</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span></span>
+<span class="code-line">            <span class="n">train_y</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">y_id</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span></span>
+<span class="code-line">            </span>
+<span class="code-line">            <span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">train</span><span class="p">,</span> <span class="p">{</span><span class="n">X</span><span class="p">:</span> <span class="n">train_x</span><span class="p">,</span> <span class="n">Y</span><span class="p">:</span> <span class="n">train_y</span><span class="p">})</span></span>
+<span class="code-line">            </span>
+<span class="code-line">            </span>
+<span class="code-line">        </span>
+<span class="code-line">        <span class="c1"># accuracy/loss for each epoch:</span></span>
+<span class="code-line">        <span class="k">print</span> <span class="s2">"Epoch :"</span><span class="p">,</span> <span class="n">epoch</span><span class="p">,</span> <span class="s2">" loss is"</span><span class="p">,</span></span>
+<span class="code-line">        <span class="c1">#print(tf.reduce_mean(sess.run(loss, {X: train_x, Y: train_y})))</span></span>
+<span class="code-line">        <span class="nb">sum</span>  <span class="o">=</span> <span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">loss</span><span class="p">,</span> <span class="p">{</span><span class="n">X</span><span class="p">:</span> <span class="n">train_x</span><span class="p">,</span> <span class="n">Y</span><span class="p">:</span> <span class="n">train_y</span><span class="p">})</span></span>
+<span class="code-line">        <span class="k">print</span> <span class="nb">sum</span></span>
+<span class="code-line">    <span class="n">weights</span> <span class="o">=</span> <span class="n">sess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">w1</span><span class="p">)</span></span>
+<span class="code-line">    <span class="k">return</span> <span class="n">weights</span></span>
+<span class="code-line">        </span>
 </pre></div>
 </div>
 </div>
@@ -1383,7 +1388,7 @@ total word tuples generated:  22004
 <div class="prompt input_prompt">In [66]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="n">word_weights</span> <span class="o">=</span> <span class="n">word2Vec</span><span class="p">(</span><span class="n">word_tuples</span><span class="p">,</span> <span class="n">word_index</span><span class="p">,</span> <span class="n">hidden_dim</span> <span class="o">=</span> <span class="mi">100</span><span class="p">)</span>
+<div class=" highlight hl-ipython2"><pre><span class="code-line"><span></span><span class="n">word_weights</span> <span class="o">=</span> <span class="n">word2Vec</span><span class="p">(</span><span class="n">word_tuples</span><span class="p">,</span> <span class="n">word_index</span><span class="p">,</span> <span class="n">hidden_dim</span> <span class="o">=</span> <span class="mi">100</span><span class="p">)</span></span>
 </pre></div>
 </div>
 </div>
@@ -1392,9 +1397,9 @@ total word tuples generated:  22004
 <div class="output">
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>input dim:  2775
-output dim: 2775
-Epoch : 1  loss is 7.92903
+<pre><span class="code-line">input dim:  2775</span>
+<span class="code-line">output dim: 2775</span>
+<span class="code-line">Epoch : 1  loss is 7.92903</span>
 </pre>
 </div>
 </div>
@@ -1406,8 +1411,8 @@ Epoch : 1  loss is 7.92903
 <div class="prompt input_prompt">In [67]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># shape of the learnt weights</span>
-<span class="n">word_weights</span><span class="o">.</span><span class="n">shape</span>
+<div class=" highlight hl-ipython2"><pre><span class="code-line"><span></span><span class="c1"># shape of the learnt weights</span></span>
+<span class="code-line"><span class="n">word_weights</span><span class="o">.</span><span class="n">shape</span></span>
 </pre></div>
 </div>
 </div>
@@ -1416,7 +1421,7 @@ Epoch : 1  loss is 7.92903
 <div class="output">
 <div class="output_area"><div class="prompt output_prompt">Out[67]:</div>
 <div class="output_text output_subarea output_execute_result">
-<pre>(2775, 100)</pre>
+<pre><span class="code-line">(2775, 100)</pre>
 </div>
 </div>
 </div>
@@ -1436,38 +1441,38 @@ Epoch : 1  loss is 7.92903
 <div class="prompt input_prompt">In [75]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># plot using plotly-offline to display in notebooks</span>
-<span class="kn">import</span> <span class="nn">plotly.graph_objs</span> <span class="kn">as</span> <span class="nn">go</span>
-<span class="kn">from</span> <span class="nn">plotly.offline</span> <span class="kn">import</span> <span class="n">download_plotlyjs</span><span class="p">,</span> <span class="n">init_notebook_mode</span><span class="p">,</span> <span class="n">plot</span><span class="p">,</span> <span class="n">iplot</span>
-
-<span class="kn">from</span> <span class="nn">sklearn.manifold</span> <span class="kn">import</span> <span class="n">TSNE</span>
-
-<span class="c1"># to display plotly images in notebook enable this</span>
-<span class="n">init_notebook_mode</span><span class="p">(</span><span class="n">connected</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-
-<span class="c1"># reduce to 2D</span>
-<span class="n">tsne</span> <span class="o">=</span> <span class="n">TSNE</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-
-<span class="c1"># transform the generated word2vec vectors</span>
-<span class="n">X_tsne</span> <span class="o">=</span> <span class="n">tsne</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">word_weights</span><span class="p">)</span>
-
-<span class="n">N</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">word_weights</span><span class="p">)</span>
-<span class="n">random_x</span> <span class="o">=</span> <span class="n">X_tsne</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span>
-<span class="n">random_y</span> <span class="o">=</span> <span class="n">X_tsne</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span>
-
-
-<span class="c1"># Plot and embed in ipython notebook!</span>
-<span class="c1">#iplot({ 'data': [{"x": list(X_tsne[:, 0]), "y": list(X_tsne[:, 1])}] })</span>
-<span class="c1">#iplot({ 'data': [{"x": list(X_tsne[:, 0]), "y": list(X_tsne[:, 1])}] })</span>
-
-<span class="c1"># labels:</span>
-
-<span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="n">word</span> <span class="k">for</span> <span class="n">word</span><span class="p">,</span><span class="n">_</span> <span class="ow">in</span> <span class="n">word_tuples</span><span class="p">]</span>
-
-
-
-<span class="n">iplot</span><span class="p">([</span><span class="n">go</span><span class="o">.</span><span class="n">Scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">X_tsne</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]),</span> <span class="n">y</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">X_tsne</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]),</span> <span class="n">text</span><span class="o">=</span> <span class="n">labels</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">'markers'</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="n">go</span><span class="o">.</span><span class="n">Marker</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">'red'</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">opacity</span><span class="o">=</span><span class="mf">0.3</span><span class="p">))])</span>
-<span class="c1"># or plot with: plot_url = py.plot(data, filename='basic-line')</span>
+<div class=" highlight hl-ipython2"><pre><span class="code-line"><span></span><span class="c1"># plot using plotly-offline to display in notebooks</span></span>
+<span class="code-line"><span class="kn">import</span> <span class="nn">plotly.graph_objs</span> <span class="kn">as</span> <span class="nn">go</span></span>
+<span class="code-line"><span class="kn">from</span> <span class="nn">plotly.offline</span> <span class="kn">import</span> <span class="n">download_plotlyjs</span><span class="p">,</span> <span class="n">init_notebook_mode</span><span class="p">,</span> <span class="n">plot</span><span class="p">,</span> <span class="n">iplot</span></span>
+<span class="code-line"></span>
+<span class="code-line"><span class="kn">from</span> <span class="nn">sklearn.manifold</span> <span class="kn">import</span> <span class="n">TSNE</span></span>
+<span class="code-line"></span>
+<span class="code-line"><span class="c1"># to display plotly images in notebook enable this</span></span>
+<span class="code-line"><span class="n">init_notebook_mode</span><span class="p">(</span><span class="n">connected</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span></span>
+<span class="code-line"></span>
+<span class="code-line"><span class="c1"># reduce to 2D</span></span>
+<span class="code-line"><span class="n">tsne</span> <span class="o">=</span> <span class="n">TSNE</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span></span>
+<span class="code-line"></span>
+<span class="code-line"><span class="c1"># transform the generated word2vec vectors</span></span>
+<span class="code-line"><span class="n">X_tsne</span> <span class="o">=</span> <span class="n">tsne</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">word_weights</span><span class="p">)</span></span>
+<span class="code-line"></span>
+<span class="code-line"><span class="n">N</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">word_weights</span><span class="p">)</span></span>
+<span class="code-line"><span class="n">random_x</span> <span class="o">=</span> <span class="n">X_tsne</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span></span>
+<span class="code-line"><span class="n">random_y</span> <span class="o">=</span> <span class="n">X_tsne</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span></span>
+<span class="code-line"></span>
+<span class="code-line"></span>
+<span class="code-line"><span class="c1"># Plot and embed in ipython notebook!</span></span>
+<span class="code-line"><span class="c1">#iplot({ 'data': [{"x": list(X_tsne[:, 0]), "y": list(X_tsne[:, 1])}] })</span></span>
+<span class="code-line"><span class="c1">#iplot({ 'data': [{"x": list(X_tsne[:, 0]), "y": list(X_tsne[:, 1])}] })</span></span>
+<span class="code-line"></span>
+<span class="code-line"><span class="c1"># labels:</span></span>
+<span class="code-line"></span>
+<span class="code-line"><span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="n">word</span> <span class="k">for</span> <span class="n">word</span><span class="p">,</span><span class="n">_</span> <span class="ow">in</span> <span class="n">word_tuples</span><span class="p">]</span></span>
+<span class="code-line"></span>
+<span class="code-line"></span>
+<span class="code-line"></span>
+<span class="code-line"><span class="n">iplot</span><span class="p">([</span><span class="n">go</span><span class="o">.</span><span class="n">Scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">X_tsne</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]),</span> <span class="n">y</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">X_tsne</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]),</span> <span class="n">text</span><span class="o">=</span> <span class="n">labels</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">'markers'</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="n">go</span><span class="o">.</span><span class="n">Marker</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">'red'</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">opacity</span><span class="o">=</span><span class="mf">0.3</span><span class="p">))])</span></span>
+<span class="code-line"><span class="c1"># or plot with: plot_url = py.plot(data, filename='basic-line')</span></span>
 </pre></div>
 </div>
 </div>
@@ -1492,38 +1497,38 @@ Epoch : 1  loss is 7.92903
 <div class="prompt input_prompt">In [77]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># plot using plotly-offline to display in notebooks</span>
-<span class="kn">import</span> <span class="nn">plotly.graph_objs</span> <span class="kn">as</span> <span class="nn">go</span>
-<span class="kn">from</span> <span class="nn">plotly.offline</span> <span class="kn">import</span> <span class="n">download_plotlyjs</span><span class="p">,</span> <span class="n">init_notebook_mode</span><span class="p">,</span> <span class="n">plot</span><span class="p">,</span> <span class="n">iplot</span>
-
-<span class="kn">from</span> <span class="nn">sklearn.manifold</span> <span class="kn">import</span> <span class="n">TSNE</span>
-
-<span class="c1"># to display plotly images in notebook enable this</span>
-<span class="n">init_notebook_mode</span><span class="p">(</span><span class="n">connected</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-
-<span class="c1"># reduce to 2D</span>
-<span class="n">tsne</span> <span class="o">=</span> <span class="n">TSNE</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
-
-<span class="c1"># transform the generated word2vec vectors</span>
-<span class="n">X_tsne</span> <span class="o">=</span> <span class="n">tsne</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">word_weights</span><span class="p">)</span>
-
-<span class="n">N</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">word_weights</span><span class="p">)</span>
-<span class="n">random_x</span> <span class="o">=</span> <span class="n">X_tsne</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span>
-<span class="n">random_y</span> <span class="o">=</span> <span class="n">X_tsne</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span>
-
-
-<span class="c1"># Plot and embed in ipython notebook!</span>
-<span class="c1">#iplot({ 'data': [{"x": list(X_tsne[:, 0]), "y": list(X_tsne[:, 1])}] })</span>
-<span class="c1">#iplot({ 'data': [{"x": list(X_tsne[:, 0]), "y": list(X_tsne[:, 1])}] })</span>
-
-<span class="c1"># labels:</span>
-
-<span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="n">word</span> <span class="k">for</span> <span class="n">word</span><span class="p">,</span><span class="n">_</span> <span class="ow">in</span> <span class="n">word_tuples</span><span class="p">]</span>
-
-
-
-<span class="n">iplot</span><span class="p">([</span><span class="n">go</span><span class="o">.</span><span class="n">Scatter3d</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">X_tsne</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]),</span> <span class="n">y</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">X_tsne</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]),</span> <span class="n">z</span><span class="o">=</span><span class="n">X_tsne</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">],</span> <span class="n">text</span><span class="o">=</span> <span class="n">labels</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">'markers'</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="n">go</span><span class="o">.</span><span class="n">Marker</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">'red'</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">opacity</span><span class="o">=</span><span class="mf">0.3</span><span class="p">))])</span>
-<span class="c1"># or plot with: plot_url = py.plot(data, filename='basic-line')</span>
+<div class=" highlight hl-ipython2"><pre><span class="code-line"><span></span><span class="c1"># plot using plotly-offline to display in notebooks</span></span>
+<span class="code-line"><span class="kn">import</span> <span class="nn">plotly.graph_objs</span> <span class="kn">as</span> <span class="nn">go</span></span>
+<span class="code-line"><span class="kn">from</span> <span class="nn">plotly.offline</span> <span class="kn">import</span> <span class="n">download_plotlyjs</span><span class="p">,</span> <span class="n">init_notebook_mode</span><span class="p">,</span> <span class="n">plot</span><span class="p">,</span> <span class="n">iplot</span></span>
+<span class="code-line"></span>
+<span class="code-line"><span class="kn">from</span> <span class="nn">sklearn.manifold</span> <span class="kn">import</span> <span class="n">TSNE</span></span>
+<span class="code-line"></span>
+<span class="code-line"><span class="c1"># to display plotly images in notebook enable this</span></span>
+<span class="code-line"><span class="n">init_notebook_mode</span><span class="p">(</span><span class="n">connected</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span></span>
+<span class="code-line"></span>
+<span class="code-line"><span class="c1"># reduce to 2D</span></span>
+<span class="code-line"><span class="n">tsne</span> <span class="o">=</span> <span class="n">TSNE</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span></span>
+<span class="code-line"></span>
+<span class="code-line"><span class="c1"># transform the generated word2vec vectors</span></span>
+<span class="code-line"><span class="n">X_tsne</span> <span class="o">=</span> <span class="n">tsne</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">word_weights</span><span class="p">)</span></span>
+<span class="code-line"></span>
+<span class="code-line"><span class="n">N</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">word_weights</span><span class="p">)</span></span>
+<span class="code-line"><span class="n">random_x</span> <span class="o">=</span> <span class="n">X_tsne</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span></span>
+<span class="code-line"><span class="n">random_y</span> <span class="o">=</span> <span class="n">X_tsne</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span></span>
+<span class="code-line"></span>
+<span class="code-line"></span>
+<span class="code-line"><span class="c1"># Plot and embed in ipython notebook!</span></span>
+<span class="code-line"><span class="c1">#iplot({ 'data': [{"x": list(X_tsne[:, 0]), "y": list(X_tsne[:, 1])}] })</span></span>
+<span class="code-line"><span class="c1">#iplot({ 'data': [{"x": list(X_tsne[:, 0]), "y": list(X_tsne[:, 1])}] })</span></span>
+<span class="code-line"></span>
+<span class="code-line"><span class="c1"># labels:</span></span>
+<span class="code-line"></span>
+<span class="code-line"><span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="n">word</span> <span class="k">for</span> <span class="n">word</span><span class="p">,</span><span class="n">_</span> <span class="ow">in</span> <span class="n">word_tuples</span><span class="p">]</span></span>
+<span class="code-line"></span>
+<span class="code-line"></span>
+<span class="code-line"></span>
+<span class="code-line"><span class="n">iplot</span><span class="p">([</span><span class="n">go</span><span class="o">.</span><span class="n">Scatter3d</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">X_tsne</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]),</span> <span class="n">y</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">X_tsne</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]),</span> <span class="n">z</span><span class="o">=</span><span class="n">X_tsne</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">],</span> <span class="n">text</span><span class="o">=</span> <span class="n">labels</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">'markers'</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="n">go</span><span class="o">.</span><span class="n">Marker</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">'red'</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">opacity</span><span class="o">=</span><span class="mf">0.3</span><span class="p">))])</span></span>
+<span class="code-line"><span class="c1"># or plot with: plot_url = py.plot(data, filename='basic-line')</span></span>
 </pre></div>
 </div>
 </div>
@@ -1584,9 +1589,10 @@ Epoch : 1  loss is 7.92903
 
 
 
+
 <div id="disqus_thread"></div>
 <script type="text/javascript">
-    var disqus_shortname = 'chandansblog';
+    var disqus_shortname = 'chandan-u-github-io';
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
         dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';

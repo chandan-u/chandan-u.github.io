@@ -11,7 +11,7 @@ SITEDESCRIPTION = '%s\'s Thoughts and Writings' % AUTHOR
 SITELOGO = "https://s.gravatar.com/avatar/1ffef3b08b2d7091ed88bcd36cb2030f?s=80"
 
 BROWSER_COLOR = '#333333'
-PYGMENTS_STYLE = 'monokai'
+#PYGMENTS_STYLE = 'monokai'
 ROBOTS = 'index, follow'
 
 PATH = 'content'
@@ -72,7 +72,7 @@ PAGE_URL = '{slug}.html'
 MARKUP = ('md', 'ipynb')
 
 PLUGIN_PATH = './plugins'
-PLUGINS = ['ipynb.markup', 'sitemap', 'post_stats', 'better_code_samples', "deadlinks", "pelican_githubprojects", "neighbors", "tag_cloud", "share_post", "footer_insert"]
+PLUGINS = [ "better_code_samples",'better_codeblock_line_numbering','ipynb.markup', "deadlinks",  "tag_cloud"]
 
 
 
@@ -105,9 +105,9 @@ IGNORE_FILES= ['.ipynb_checkpoints']
 
 
 
-DISQUS_SITENAME = "chandansblog"
+DISQUS_SITENAME = "chandan-u-github-io"
 
-STATIC_PATHS = ['images', 'extra', 'pdf']
+STATIC_PATHS = ["css", 'images', 'extra', 'pdf']
 USE_LESS = True
 
 

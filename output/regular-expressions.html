@@ -7,7 +7,7 @@
     <link rel="stylesheet/less" type="text/css" href="./theme/stylesheet/style.less">
     <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/2.5.1/less.min.js" type="text/javascript"></script>
 
-  <link rel="stylesheet" type="text/css" href="./theme/pygments/monokai.min.css">
+  <link rel="stylesheet" type="text/css" href="./theme/pygments/github.min.css">
   <link rel="stylesheet" type="text/css" href="./theme/font-awesome/css/font-awesome.min.css">
 
 
@@ -46,6 +46,7 @@
 <meta property="og:image" content="https://s.gravatar.com/avatar/1ffef3b08b2d7091ed88bcd36cb2030f?s=80">
 
   <title>Chandan 's Blog &ndash; Regular expressions tutorial</title>
+
 </head>
 <body>
   <aside>
@@ -71,8 +72,11 @@
         <li><a class="sc-google" href="https://plus.google.com/u/0/112461392309064088729" target="_blank"><i class="fa fa-google"></i></a></li>
       </ul>
     </div>
+
+
   </aside>
   <main>
+
     <nav>
       <a href=".">    Home
 </a>
@@ -84,16 +88,17 @@
 
     </nav>
 
-<article>
+<article class="single">
   <header>
     <h1 id="regular-expressions">Regular expressions tutorial</h1>
     <p>
           Posted on August 15, 2016 in <a href="./category/misc.html">misc</a>
 
 
-        &#8226; 17 min read
     </p>
   </header>
+
+
   <div>
     <style type="text/css">/*!
 *
@@ -1121,25 +1126,25 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [4]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># <!-- collapse=True --></span>
-<span class="kn">from</span> <span class="nn">IPython.html</span> <span class="kn">import</span> <span class="n">widgets</span>
-<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display</span>
-<span class="n">radio</span><span class="o">=</span><span class="n">widgets</span><span class="o">.</span><span class="n">RadioButtons</span><span class="p">(</span>
-    <span class="n">description</span><span class="o">=</span><span class="s1">'Select a pattern that is most common:'</span><span class="p">,</span>
-    <span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="s1">'d12'</span><span class="p">,</span> <span class="s1">'d123'</span><span class="p">,</span> <span class="s1">'123'</span><span class="p">],</span>
-    <span class="p">)</span>
-<span class="n">button</span><span class="o">=</span><span class="n">widgets</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s2">"submit!"</span><span class="p">)</span>
-
-<span class="k">def</span> <span class="nf">msg</span><span class="p">(</span><span class="n">b</span><span class="p">):</span>
-    <span class="n">selected</span> <span class="o">=</span> <span class="n">radio</span><span class="o">.</span><span class="n">value</span>
-    <span class="k">if</span> <span class="n">selected</span> <span class="o">==</span> <span class="s1">'123'</span><span class="p">:</span>
-        <span class="k">print</span> <span class="s2">"Exactly: 123 is the most common pattern among the three strings"</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="k">print</span> <span class="s2">"close...But not the right one!"</span>
-        
-<span class="n">display</span><span class="p">(</span><span class="n">radio</span><span class="p">)</span>
-<span class="n">display</span><span class="p">(</span><span class="n">button</span><span class="p">)</span>
-<span class="n">button</span><span class="o">.</span><span class="n">on_click</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+<div class=" highlight hl-ipython2"><pre><span class="code-line"><span></span><span class="c1"># <!-- collapse=True --></span></span>
+<span class="code-line"><span class="kn">from</span> <span class="nn">IPython.html</span> <span class="kn">import</span> <span class="n">widgets</span></span>
+<span class="code-line"><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display</span></span>
+<span class="code-line"><span class="n">radio</span><span class="o">=</span><span class="n">widgets</span><span class="o">.</span><span class="n">RadioButtons</span><span class="p">(</span></span>
+<span class="code-line">    <span class="n">description</span><span class="o">=</span><span class="s1">'Select a pattern that is most common:'</span><span class="p">,</span></span>
+<span class="code-line">    <span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="s1">'d12'</span><span class="p">,</span> <span class="s1">'d123'</span><span class="p">,</span> <span class="s1">'123'</span><span class="p">],</span></span>
+<span class="code-line">    <span class="p">)</span></span>
+<span class="code-line"><span class="n">button</span><span class="o">=</span><span class="n">widgets</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s2">"submit!"</span><span class="p">)</span></span>
+<span class="code-line"></span>
+<span class="code-line"><span class="k">def</span> <span class="nf">msg</span><span class="p">(</span><span class="n">b</span><span class="p">):</span></span>
+<span class="code-line">    <span class="n">selected</span> <span class="o">=</span> <span class="n">radio</span><span class="o">.</span><span class="n">value</span></span>
+<span class="code-line">    <span class="k">if</span> <span class="n">selected</span> <span class="o">==</span> <span class="s1">'123'</span><span class="p">:</span></span>
+<span class="code-line">        <span class="k">print</span> <span class="s2">"Exactly: 123 is the most common pattern among the three strings"</span></span>
+<span class="code-line">    <span class="k">else</span><span class="p">:</span></span>
+<span class="code-line">        <span class="k">print</span> <span class="s2">"close...But not the right one!"</span></span>
+<span class="code-line">        </span>
+<span class="code-line"><span class="n">display</span><span class="p">(</span><span class="n">radio</span><span class="p">)</span></span>
+<span class="code-line"><span class="n">display</span><span class="p">(</span><span class="n">button</span><span class="p">)</span></span>
+<span class="code-line"><span class="n">button</span><span class="o">.</span><span class="n">on_click</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span></span>
 </pre></div>
 </div>
 </div>
@@ -1150,7 +1155,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span> 
+<div class=" highlight hl-ipython2"><pre><span class="code-line"><span></span> </span>
 </pre></div>
 </div>
 </div>
@@ -1175,27 +1180,27 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [5]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># <!-- collapse=True --></span>
-<span class="kn">from</span> <span class="nn">IPython.html</span> <span class="kn">import</span> <span class="n">widgets</span>
-<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display</span>
-<span class="n">radio</span><span class="o">=</span><span class="n">widgets</span><span class="o">.</span><span class="n">RadioButtons</span><span class="p">(</span>
-    <span class="n">description</span><span class="o">=</span><span class="s1">'Select a pattern that is most common:'</span><span class="p">,</span>
-    <span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="s1">'Is'</span><span class="p">,</span> <span class="s1">'is'</span><span class="p">,</span> <span class="s1">'?'</span><span class="p">],</span>
-    <span class="p">)</span>
-<span class="n">button</span><span class="o">=</span><span class="n">widgets</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s2">"submit!"</span><span class="p">)</span>
-
-<span class="k">def</span> <span class="nf">msg</span><span class="p">(</span><span class="n">b</span><span class="p">):</span>
-    <span class="n">selected</span> <span class="o">=</span> <span class="n">radio</span><span class="o">.</span><span class="n">value</span>
-    <span class="k">if</span> <span class="n">selected</span> <span class="o">==</span> <span class="s1">'?'</span><span class="p">:</span>
-        <span class="k">print</span> <span class="s2">"Exactly: '?' is the most uncommon pattern among the three strings."</span>
-        <span class="k">print</span>  <span class="s2">"Also if you observe the three strings are very similar."</span> 
-        <span class="k">print</span> <span class="s2">"Even 'Is' can be uncommon pattern if you consider case sensitivity which is upercase and lowercase characters"</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="k">print</span> <span class="s2">"close...But not the right one!"</span>
-        
-<span class="n">display</span><span class="p">(</span><span class="n">radio</span><span class="p">)</span>
-<span class="n">display</span><span class="p">(</span><span class="n">button</span><span class="p">)</span>
-<span class="n">button</span><span class="o">.</span><span class="n">on_click</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+<div class=" highlight hl-ipython2"><pre><span class="code-line"><span></span><span class="c1"># <!-- collapse=True --></span></span>
+<span class="code-line"><span class="kn">from</span> <span class="nn">IPython.html</span> <span class="kn">import</span> <span class="n">widgets</span></span>
+<span class="code-line"><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display</span></span>
+<span class="code-line"><span class="n">radio</span><span class="o">=</span><span class="n">widgets</span><span class="o">.</span><span class="n">RadioButtons</span><span class="p">(</span></span>
+<span class="code-line">    <span class="n">description</span><span class="o">=</span><span class="s1">'Select a pattern that is most common:'</span><span class="p">,</span></span>
+<span class="code-line">    <span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="s1">'Is'</span><span class="p">,</span> <span class="s1">'is'</span><span class="p">,</span> <span class="s1">'?'</span><span class="p">],</span></span>
+<span class="code-line">    <span class="p">)</span></span>
+<span class="code-line"><span class="n">button</span><span class="o">=</span><span class="n">widgets</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s2">"submit!"</span><span class="p">)</span></span>
+<span class="code-line"></span>
+<span class="code-line"><span class="k">def</span> <span class="nf">msg</span><span class="p">(</span><span class="n">b</span><span class="p">):</span></span>
+<span class="code-line">    <span class="n">selected</span> <span class="o">=</span> <span class="n">radio</span><span class="o">.</span><span class="n">value</span></span>
+<span class="code-line">    <span class="k">if</span> <span class="n">selected</span> <span class="o">==</span> <span class="s1">'?'</span><span class="p">:</span></span>
+<span class="code-line">        <span class="k">print</span> <span class="s2">"Exactly: '?' is the most uncommon pattern among the three strings."</span></span>
+<span class="code-line">        <span class="k">print</span>  <span class="s2">"Also if you observe the three strings are very similar."</span> </span>
+<span class="code-line">        <span class="k">print</span> <span class="s2">"Even 'Is' can be uncommon pattern if you consider case sensitivity which is upercase and lowercase characters"</span></span>
+<span class="code-line">    <span class="k">else</span><span class="p">:</span></span>
+<span class="code-line">        <span class="k">print</span> <span class="s2">"close...But not the right one!"</span></span>
+<span class="code-line">        </span>
+<span class="code-line"><span class="n">display</span><span class="p">(</span><span class="n">radio</span><span class="p">)</span></span>
+<span class="code-line"><span class="n">display</span><span class="p">(</span><span class="n">button</span><span class="p">)</span></span>
+<span class="code-line"><span class="n">button</span><span class="o">.</span><span class="n">on_click</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span></span>
 </pre></div>
 </div>
 </div>
@@ -1220,58 +1225,58 @@ h6:hover .anchor-link {
 <h2 id="Metacharacters:">Metacharacters:<a class="anchor-link" href="#Metacharacters:">¶</a></h2><p>Metcharacters are characters that are reserved for specific functionality and these are the main building blocks for regular expressions. The following are the varous METACHARACTERS that we use. They may not make much sense when you read each of them the first time . But upon combining metacharacteres with the literals we can create powerfull pattern matching regular expressions which make more sense( and this is someting we are going to do in the following sections).</p>
 <p>Imagine you have ten or more sentences and let's call them the target strings. With regular expressions we try to extract those strings that have a desired pattern which we are looking for from these target strings:</p>
 <h3 id="Positioning-Metacharactrs:">Positioning Metacharactrs:<a class="anchor-link" href="#Positioning-Metacharactrs:">¶</a></h3><h4 id="^">^<a class="anchor-link" href="#^">¶</a></h4><p>The  claret '^' represents the start or beggining of a string:</p>
-<pre><code>The expression '^hello' matches all those lines that start with the word hello such as _"hello world"_, _"helloooo there"_. It can also be explained as the regular expression looks for the characters: "hello" at the beginning of a any target string. 
-
-
-</code></pre>
+<pre><span class="code-line"><code>The expression '^hello' matches all those lines that start with the word hello such as _"hello world"_, _"helloooo there"_. It can also be explained as the regular expression looks for the characters: "hello" at the beginning of a any target string. </span>
+<span class="code-line"></span>
+<span class="code-line"></span>
+<span class="code-line"></code></pre>
 <h4 id="\$">\$<a class="anchor-link" href="#\$">¶</a></h4><p>Simlarly, the '\$' dollar symbol signifies the end of the target string:
     The expression 'end$' matches only those strings among the target strings, which have the word 'end' at the end of the string ( or sentence). For example:</p>
-<pre><code>    1. "this is the sentence end"
-    2. "thisisthesentenceend" etc ...
-
-
-</code></pre>
+<pre><span class="code-line"><code>    1. "this is the sentence end"</span>
+<span class="code-line">    2. "thisisthesentenceend" etc ...</span>
+<span class="code-line"></span>
+<span class="code-line"></span>
+<span class="code-line"></code></pre>
 <h4 id="."><strong>.</strong><a class="anchor-link" href="#.">¶</a></h4><p>The '.' or period means any character in it's position. For Example:</p>
-<pre><code>1.  ".en" can represent "ben", "ten", "den" etc. The period can be repaced with any character. It matches all those strings that have that pattern.  
-
-
-</code></pre>
+<pre><span class="code-line"><code>1.  ".en" can represent "ben", "ten", "den" etc. The period can be repaced with any character. It matches all those strings that have that pattern.  </span>
+<span class="code-line"></span>
+<span class="code-line"></span>
+<span class="code-line"></code></pre>
 <h3 id="Some-more-Metacharacters:">Some more Metacharacters:<a class="anchor-link" href="#Some-more-Metacharacters:">¶</a></h3><h4 id="[-]">[ ]<a class="anchor-link" href="#[-]">¶</a></h4><p>The brackets mean to match any one ( and only one) of the characters that is specified inside them.</p>
 <p>An example usage:</p>
-<pre><code>[abcd] :- this means match any character of a,b,c,d
-[12av] :- this means match any character of 1,2,a,v
-[avAV] :- this means match any caharater of a,v,A,V [ notice the lowercase and uppercase.]
-
-
-
-</code></pre>
+<pre><span class="code-line"><code>[abcd] :- this means match any character of a,b,c,d</span>
+<span class="code-line">[12av] :- this means match any character of 1,2,a,v</span>
+<span class="code-line">[avAV] :- this means match any caharater of a,v,A,V [ notice the lowercase and uppercase.]</span>
+<span class="code-line"></span>
+<span class="code-line"></span>
+<span class="code-line"></span>
+<span class="code-line"></code></pre>
 <h4 id="-">-<a class="anchor-link" href="#-">¶</a></h4><p>The '-' or iphen helps you to signify a range of characters or numbers at once. For example in the previeous examples we have listed each character that we want to match inside the brackets. But if we need to list out all the characters from '<em>a</em>' to '<em>z</em>' then using iphen or '-' we simply write it as "<strong>[a-z]</strong>"</p>
-<pre><code>[a-z] Matches all characters that are between a-z including the '_a_' and '_z_'
-[0-9] Matches all characters that are between numbers 0 to 9 including the 0 and 9.
-[A-Z] Matches all the uppercase charachters from A to Z
-[0-9a-zA-z] Matches all the alphanumeric characters
-
-
-
-
-</code></pre>
+<pre><span class="code-line"><code>[a-z] Matches all characters that are between a-z including the '_a_' and '_z_'</span>
+<span class="code-line">[0-9] Matches all characters that are between numbers 0 to 9 including the 0 and 9.</span>
+<span class="code-line">[A-Z] Matches all the uppercase charachters from A to Z</span>
+<span class="code-line">[0-9a-zA-z] Matches all the alphanumeric characters</span>
+<span class="code-line"></span>
+<span class="code-line"></span>
+<span class="code-line"></span>
+<span class="code-line"></span>
+<span class="code-line"></code></pre>
 <h4 id="\d">\d<a class="anchor-link" href="#\d">¶</a></h4><p>This represents any digit. It's simpler to use compared to [0-9] specification:</p>
-<pre><code>"password\d\d\d"  matches: "password123", "password234", "password000" etc , you can substitute any number in its place;
-
-
-</code></pre>
+<pre><span class="code-line"><code>"password\d\d\d"  matches: "password123", "password234", "password000" etc , you can substitute any number in its place;</span>
+<span class="code-line"></span>
+<span class="code-line"></span>
+<span class="code-line"></code></pre>
 <h4 id="\D">\D<a class="anchor-link" href="#\D">¶</a></h4><p>This is opposite to \d. It means anything other than a digit (non-numeric characters):</p>
-<pre><code>"\Da\D" matches: "dad", "mad", "cat", even words that dont have any meaning such as "lal", "fal" etc. "\D" can be substituted with any non-numeric character. It need not be just alphabets. It can also match space, tab etc;
-
-</code></pre>
+<pre><span class="code-line"><code>"\Da\D" matches: "dad", "mad", "cat", even words that dont have any meaning such as "lal", "fal" etc. "\D" can be substituted with any non-numeric character. It need not be just alphabets. It can also match space, tab etc;</span>
+<span class="code-line"></span>
+<span class="code-line"></code></pre>
 <h4 id="\w">\w<a class="anchor-link" href="#\w">¶</a></h4><p>This represents any alphanumeric character, similar to [0-9a-zA-Z]</p>
-<pre><code>'\w\w\w' matches: "abc", "a12", "123", "z1z" etc. It just matches anything which is either a number or a alhpabet.
-
-</code></pre>
+<pre><span class="code-line"><code>'\w\w\w' matches: "abc", "a12", "123", "z1z" etc. It just matches anything which is either a number or a alhpabet.</span>
+<span class="code-line"></span>
+<span class="code-line"></code></pre>
 <h4 id="\W">\W<a class="anchor-link" href="#\W">¶</a></h4><p>This is opposite to \w. It represents any non alphanumeric characters. Similar to [^0-9a-zA-Z]</p>
-<pre><code>'text\Wmining' matches: "text mining", "text$mining" etc . Just matches anything that is non alphanumeric.
-
-</code></pre>
+<pre><span class="code-line"><code>'text\Wmining' matches: "text mining", "text$mining" etc . Just matches anything that is non alphanumeric.</span>
+<span class="code-line"></span>
+<span class="code-line"></code></pre>
 <h4 id="\s">\s<a class="anchor-link" href="#\s">¶</a></h4><p>White Space;</p>
 <h4 id="\S">\S<a class="anchor-link" href="#\S">¶</a></h4><p>Anything other than a white space;</p>
 <h3 id="Iteration-Metacharacters:">Iteration Metacharacters:<a class="anchor-link" href="#Iteration-Metacharacters:">¶</a></h3><p>Iteration metacharacters specify the number of times their preceding  character can occur in a pattern:</p>
@@ -1283,22 +1288,22 @@ h6:hover .anchor-link {
 </ol>
 <p>All of the above have one thing in common: the letter 'g' at the start and the letter 'd' at the end and letter 'o' in the middle with repititions. The regular expression 'g[o]d' would represent the first string "god" alone. It does'nt caputre the "good" and "goooood" because they have more than one "o". The simplest way to specify such repititions in regular expressions is to use certain <em>iteration metacharacters</em>:</p>
 <h4 id="?">?<a class="anchor-link" href="#?">¶</a></h4><p>The question mark (?) specfies that the preceding character occurs only 0 or 1 times only. For example:</p>
-<pre><code> "go?d"  matches : "god" and "gd" i.e "o" can occur once or no occurance at all;
-
-
-</code></pre>
+<pre><span class="code-line"><code> "go?d"  matches : "god" and "gd" i.e "o" can occur once or no occurance at all;</span>
+<span class="code-line"></span>
+<span class="code-line"></span>
+<span class="code-line"></code></pre>
 <h4 id="*">*<a class="anchor-link" href="#*">¶</a></h4><p>The asterisk (*) specifies that the preceding  character can occur zero or any number of times:</p>
-<pre><code> "go*d" matches: "god", "good", "goooood", "gd", "goooooooooooood" (like i said any number of "o"s)
-
-</code></pre>
+<pre><span class="code-line"><code> "go*d" matches: "god", "good", "goooood", "gd", "goooooooooooood" (like i said any number of "o"s)</span>
+<span class="code-line"></span>
+<span class="code-line"></code></pre>
 <h4 id="+">+<a class="anchor-link" href="#+">¶</a></h4><p>The plus (+) sign specifies that it's preceding character should occur atleast i.e &gt;=1 times:</p>
-<pre><code> "go+d" matches:  "god", "good", "goooood", "gooooooooooood" etc but not "gd". 
-
-
-
-
-
-</code></pre>
+<pre><span class="code-line"><code> "go+d" matches:  "god", "good", "goooood", "gooooooooooood" etc but not "gd". </span>
+<span class="code-line"></span>
+<span class="code-line"></span>
+<span class="code-line"></span>
+<span class="code-line"></span>
+<span class="code-line"></span>
+<span class="code-line"></code></pre>
 <h3 id="Some-more-examples:">Some more examples:<a class="anchor-link" href="#Some-more-examples:">¶</a></h3><p>Lets try to use a combination of these metacharacters to form complex regular expressions</p>
 <table>
 <thead><tr>
@@ -1335,7 +1340,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [2]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="kn">import</span> <span class="nn">re</span>
+<div class=" highlight hl-ipython2"><pre><span class="code-line"><span></span><span class="kn">import</span> <span class="nn">re</span></span>
 </pre></div>
 </div>
 </div>
@@ -1355,7 +1360,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [11]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="n">pattern</span> <span class="o">=</span> <span class="s2">".oo."</span>
+<div class=" highlight hl-ipython2"><pre><span class="code-line"><span></span><span class="n">pattern</span> <span class="o">=</span> <span class="s2">".oo."</span></span>
 </pre></div>
 </div>
 </div>
@@ -1375,10 +1380,10 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [13]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="n">target_string</span><span class="o">=</span><span class="s2">"I love food, food which is good."</span>
-
-<span class="n">matches</span> <span class="o">=</span><span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">pattern</span><span class="p">,</span> <span class="n">target_string</span><span class="p">)</span>
-<span class="k">print</span> <span class="s2">"list of matches: "</span><span class="p">,</span> <span class="n">matches</span>
+<div class=" highlight hl-ipython2"><pre><span class="code-line"><span></span><span class="n">target_string</span><span class="o">=</span><span class="s2">"I love food, food which is good."</span></span>
+<span class="code-line"></span>
+<span class="code-line"><span class="n">matches</span> <span class="o">=</span><span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">pattern</span><span class="p">,</span> <span class="n">target_string</span><span class="p">)</span></span>
+<span class="code-line"><span class="k">print</span> <span class="s2">"list of matches: "</span><span class="p">,</span> <span class="n">matches</span></span>
 </pre></div>
 </div>
 </div>
@@ -1387,7 +1392,7 @@ h6:hover .anchor-link {
 <div class="output">
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>list of matches:  ['food', 'food', 'good']
+<pre><span class="code-line">list of matches:  ['food', 'food', 'good']</span>
 </pre>
 </div>
 </div>
@@ -1408,10 +1413,10 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [23]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="k">for</span> <span class="n">match</span> <span class="ow">in</span>  <span class="n">re</span><span class="o">.</span><span class="n">finditer</span><span class="p">(</span><span class="n">pattern</span><span class="p">,</span> <span class="n">target_string</span><span class="p">):</span>
-    <span class="n">start</span> <span class="o">=</span> <span class="n">match</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
-    <span class="n">end</span> <span class="o">=</span> <span class="n">match</span><span class="o">.</span><span class="n">end</span><span class="p">()</span>
-    <span class="k">print</span> <span class="s2">"positions: "</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="s2">":"</span><span class="p">,</span> <span class="n">end</span><span class="p">,</span> <span class="n">target_string</span><span class="p">[</span><span class="n">start</span><span class="p">:</span><span class="n">end</span><span class="p">]</span>
+<div class=" highlight hl-ipython2"><pre><span class="code-line"><span></span><span class="k">for</span> <span class="n">match</span> <span class="ow">in</span>  <span class="n">re</span><span class="o">.</span><span class="n">finditer</span><span class="p">(</span><span class="n">pattern</span><span class="p">,</span> <span class="n">target_string</span><span class="p">):</span></span>
+<span class="code-line">    <span class="n">start</span> <span class="o">=</span> <span class="n">match</span><span class="o">.</span><span class="n">start</span><span class="p">()</span></span>
+<span class="code-line">    <span class="n">end</span> <span class="o">=</span> <span class="n">match</span><span class="o">.</span><span class="n">end</span><span class="p">()</span></span>
+<span class="code-line">    <span class="k">print</span> <span class="s2">"positions: "</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="s2">":"</span><span class="p">,</span> <span class="n">end</span><span class="p">,</span> <span class="n">target_string</span><span class="p">[</span><span class="n">start</span><span class="p">:</span><span class="n">end</span><span class="p">]</span></span>
 </pre></div>
 </div>
 </div>
@@ -1420,9 +1425,9 @@ h6:hover .anchor-link {
 <div class="output">
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>positions:  7 : 11 food
-positions:  13 : 17 food
-positions:  27 : 31 good
+<pre><span class="code-line">positions:  7 : 11 food</span>
+<span class="code-line">positions:  13 : 17 food</span>
+<span class="code-line">positions:  27 : 31 good</span>
 </pre>
 </div>
 </div>
@@ -1437,42 +1442,42 @@ positions:  27 : 31 good
 <p><br><br><br/></br></br></p>
 <h2 id="Things-to-try:">Things to try:<a class="anchor-link" href="#Things-to-try:">¶</a></h2><ol>
 <li><p>Write a regular expression that matches the below strings:</p>
-<pre><code>a. casper
-b. Jasper</code></pre>
+<pre><span class="code-line"><code>a. casper</span>
+<span class="code-line">b. Jasper</code></pre>
 </li>
 <li><p>Write a regular expression that would match the bellow strings:</p>
-<pre><code>a. hi
-b. hiii
-c. hiiiiiii</code></pre>
+<pre><span class="code-line"><code>a. hi</span>
+<span class="code-line">b. hiii</span>
+<span class="code-line">c. hiiiiiii</code></pre>
 </li>
 <li><p>Write a regular expression that would match the bellow strings:</p>
-<pre><code>a. code
-b. coding
-c. coder</code></pre>
+<pre><span class="code-line"><code>a. code</span>
+<span class="code-line">b. coding</span>
+<span class="code-line">c. coder</code></pre>
 </li>
 <li><p>Write a regular expression that would match the bellow strings:</p>
-<pre><code>a. john is a happy man
-b. john is a good man
-c. john is a great man</code></pre>
+<pre><span class="code-line"><code>a. john is a happy man</span>
+<span class="code-line">b. john is a good man</span>
+<span class="code-line">c. john is a great man</code></pre>
 </li>
 <li><p>Write a regular expression that would match the strings in a,b,c and skips strings d,c:</p>
-<pre><code>a. cat
-b. rat
-c. bat
-d. sat
-e. mat</code></pre>
+<pre><span class="code-line"><code>a. cat</span>
+<span class="code-line">b. rat</span>
+<span class="code-line">c. bat</span>
+<span class="code-line">d. sat</span>
+<span class="code-line">e. mat</code></pre>
 </li>
 <li><p>Write a regular expression that would match the below strings:</p>
-<pre><code>a. life is good
-b. life is great
-c. life is awesome</code></pre>
+<pre><span class="code-line"><code>a. life is good</span>
+<span class="code-line">b. life is great</span>
+<span class="code-line">c. life is awesome</code></pre>
 </li>
 </ol>
 <ol>
 <li>Consider the given string : " JAMES is  always Confident, consistent and persistent the way he works."
-<pre><code>a. Write a regular expression that would capture the qualities of JAMES in the sentence
-b. Write a program that would capture and print these regular expressions
-c. The program should also print the postions of the words in the sentence.</code></pre>
+<pre><span class="code-line"><code>a. Write a regular expression that would capture the qualities of JAMES in the sentence</span>
+<span class="code-line">b. Write a program that would capture and print these regular expressions</span>
+<span class="code-line">c. The program should also print the postions of the words in the sentence.</code></pre>
 </li>
 </ol>
 </div>
@@ -1516,9 +1521,10 @@ c. The program should also print the postions of the words in the sentence.</cod
 
 
 
+
 <div id="disqus_thread"></div>
 <script type="text/javascript">
-    var disqus_shortname = 'chandansblog';
+    var disqus_shortname = 'chandan-u-github-io';
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
         dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
